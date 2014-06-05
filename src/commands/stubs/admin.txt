@@ -1,0 +1,23 @@
+<?php
+
+use KraftHaus\Bauhaus\Admin;
+
+class $NAME$Admin extends Admin
+{
+
+    public function configureList($mapper)
+    {
+        // ...
+    }
+
+    public function configureForm($mapper)
+    {
+        // ...
+    }
+
+    public function configureFilters($mapper)
+    {
+        // ...
+    }
+
+}

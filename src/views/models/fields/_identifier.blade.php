@@ -1,0 +1,1 @@
+<strong>{{ link_to(route('admin.model.edit', [$model, $row]), $value) }}</strong>

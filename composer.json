@@ -1,0 +1,25 @@
+{
+    "name": "krafthaus/bauhaus",
+    "description": "",
+    "authors": [
+        {
+            "name": "KraftHaus",
+            "email": "hello@krafthaus.nl"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.1.*",
+        "intervention/image": "2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/controllers",
+			"src/commands"
+        ],
+        "psr-0": {
+            "KraftHaus\\Bauhaus": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}

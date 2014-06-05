@@ -1,0 +1,35 @@
+.navbar-default {
+	border: none;
+
+	.navbar-nav {
+		a {
+			text-transform: uppercase;
+			font-size: 13px;
+			font-weight: bold;
+			letter-spacing: 1px;
+
+			&.navbar-brand {
+				transition: none;
+			}
+		}
+	}
+}
+
+.navbar-brand {
+	background: #fa5e40;
+	font-size: 13px;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+section.sub-header {
+	margin-bottom: 35px;
+	padding: 15px 15px;
+	border-bottom: 1px solid #dfdfdf;
+	background: #fff;
+
+	h3 {
+		margin: 0;
+	}
+}

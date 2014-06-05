@@ -1,0 +1,10 @@
+{
+	"name": "krafthaus-bauhaus",
+	"version": "1.0.0",
+	"devDependencies": {
+		"gulp": "3.6.2",
+		"gulp-watch": "0.6.4",
+		"gulp-sass": "0.7.1",
+		"gulp-uglifyjs": "0.3.0"
+	}
+}

@@ -1,0 +1,121 @@
+<?php
+
+namespace KraftHaus\Bauhaus\Field;
+
+/**
+ * This file is part of the KraftHaus Bauhaus package.
+ *
+ * (c) KraftHaus <hello@krafthaus.nl>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+use KraftHaus\Bauhaus\Field\BaseField;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Input;
+
+/**
+ * Class BelongsToField
+ * @package KraftHaus\Bauhaus\Field
+ */
+class BelongsToField extends BaseField
+{
+
+	/**
+	 * Holds the display field name.
+	 * @var string
+	 */
+	protected $displayField = null;
+
+	/**
+	 * Set the display field name.
+	 *
+	 * @param  string $displayField
+	 *
+	 * @access public
+	 * @return BelongsToField
+	 */
+	public function display($displayField)
+	{
+		$this->displayField = $displayField;
+		return $this;
+	}
+
+	/**
+	 * Get the display field name.
+	 *
+	 * @access public
+	 * @return string
+	 */
+	public function getDisplayField()
+	{
+		return $this->displayField;
+	}
+
+	/**
+	 * Render the field.
+	 *
+	 * @access public
+	 * @return mixed|string
+	 */
+	public function render()
+	{
+		if ($this->getDisplayField() === null) {
+			throw new \InvalidArgumentException(sprintf('Please provide a display field for the `%s` relation.', $this->getName()));
+		}
+
+		switch ($this->getContext()) {
+			case BaseField::CONTEXT_LIST:
+				$value = $this->getValue();
+				return $value->{$this->getDisplayField()};
+				break;
+
+			case BaseField::CONTEXT_FILTER:
+                $baseModel = $this->getAdmin()->getModel();
+                $baseModel = new $baseModel;
+
+                $relatedModel = $baseModel->{$this->getName()}()->getRelated();
+
+                $items = [];
+                foreach ($relatedModel::all() as $item) {
+                    $items[$item->id] = $item->{$this->getDisplayField()};
+                }
+
+                $column = Str::singular($relatedModel->getTable()) . '_id';
+                if (Input::has($column)) {
+                    $this->setValue(Input::get($column));
+                }
+
+				return View::make('krafthaus/bauhaus::models.fields._belongs_to')
+					->with('field', $this)
+					->with('items', $items);
+				break;
+
+			case BaseField::CONTEXT_FORM:
+				$baseModel = $this->getAdmin()->getModel();
+				$baseModel = new $baseModel;
+
+				$relatedModel = $baseModel->{$this->getName()}()->getRelated();
+
+				$items = [];
+				foreach ($relatedModel::all() as $item) {
+					$items[$item->id] = $item->{$this->getDisplayField()};
+				}
+
+				if ($this->getValue() !== null) {
+					$this->setValue($this->getValue()->id);
+				}
+
+				return View::make('krafthaus/bauhaus::models.fields._belongs_to')
+					->with('field', $this)
+					->with('items', $items);
+
+				break;
+		}
+
+		return $this->getValue();
+	}
+
+}

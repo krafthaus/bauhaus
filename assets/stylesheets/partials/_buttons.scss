@@ -1,0 +1,20 @@
+.btn {
+
+	&.btn-red {
+		background: #fa5e40;
+		border: none;
+		color: #fff;
+
+		&:hover {
+			background: darken(#dd5147, 5%);
+		}
+	}
+
+	&.btn-rounded {
+		font-weight: bold;
+		text-transform: uppercase;
+		font-size: 12px;
+		letter-spacing: 1px;
+		border-radius: 25px;
+	}
+}

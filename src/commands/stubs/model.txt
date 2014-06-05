@@ -1,0 +1,8 @@
+<?php
+
+class $NAME$ extends \Eloquent
+{
+
+	protected $fillable = [];
+
+}
