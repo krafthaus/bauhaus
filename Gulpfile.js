@@ -1,7 +1,8 @@
 var gulp   = require('gulp'),
 	watch  = require('gulp-watch'),
 	sass   = require('gulp-sass'),
-	uglify = require('gulp-uglifyjs');
+	uglify = require('gulp-uglifyjs'),
+	rename = require('gulp-rename');
 
 var paths = {
 	stylesheets: [
@@ -31,6 +32,7 @@ gulp.task('uglify', function () {
 		.pipe(uglify({
 			mangle: false
 		}))
+		.pipe(rename('application.min.js'))
 		.pipe(gulp.dest('public/javascripts'));
 });
 
