@@ -21,7 +21,8 @@ $ composer update
 ```php
 'providers' => array(
 	// ...
-	'KraftHaus\Bauhaus\BauhausServiceProvider'
+	'KraftHaus\Bauhaus\BauhausServiceProvider',
+	'Intervention\Image\ImageServiceProvider',
 )
 ```
 
