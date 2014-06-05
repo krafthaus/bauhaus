@@ -1,5 +1,8 @@
 Bauhaus - The missing Laravel 4 Admin Generator
 ---
+
+[![Analytics](https://ga-beacon.appspot.com/UA-XXXXX-X/your-repo/page-name)](https://github.com/igrigorik/ga-beacon)
+
 Bauhaus is an admin generator / builder / interface for [Laravel](http://laravel.com).
 With Bauhaus you can easily create visual stunning lists, forms and filters for your models.
 
