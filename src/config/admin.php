@@ -55,19 +55,7 @@ return [
 	 * @var array
 	 */
 	'menu' => [
-		[
-			'title'    => 'Content',
-			'children' => [
-				[
-					'title' => 'Projects',
-					'class' => 'Project'
-				],
-				[
-					'title' => 'Artworks',
-					'class' => 'Artwork'
-				]
-			]
-		]
+		// ...
 	],
 
 	'dashboard' => [
