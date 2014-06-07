@@ -41,6 +41,18 @@ This will add the main bauhaus config file in your application config directory.
 
 And last but not least you need to publish to package's assets with the `php artisan asset:publish krafthaus/bauhaus` command.
 
+Creating your first Bauhaus model
+---
+To build your first (and most exciting) admin controller you'll have to follow the following easy steps:
+
+Run `$ php artisan bauhaus:scaffold --model=name` where `name` is the name of the model you want to use.
+
+This will create 3 files:
+- A new (empty) model in `app/models/YourModelName`.
+- A new migration in the `app/database/migrations` directory.
+- And ofcourse a Baushaus model file in `app/admin`.
+
+
 License
 ---
 This package is available under the [MIT license](LICENSE).
