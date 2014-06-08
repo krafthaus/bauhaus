@@ -54,7 +54,6 @@ class BauhausServiceProvider extends ServiceProvider
 
 		require_once __DIR__ . '/../../filters.php';
 		require_once __DIR__ . '/../../routes.php';
-		require_once __DIR__ . '/../../macros.php';
 		require_once __DIR__ . '/../../composers.php';
 	}
 
