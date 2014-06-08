@@ -62,8 +62,16 @@ class ImageField extends FileField
 	 */
 	public function render()
 	{
-		return View::make('krafthaus/bauhaus::models.fields._image')
-			->with('field', $this);
+		switch ($this->getContext()) {
+			case BaseField::CONTEXT_LIST:
+				return '<img src="' . asset($this->getValue()). '" width="10%">';
+				break;
+			case BaseField::CONTEXT_FILTER:
+			case BaseField::CONTEXT_FORM:
+				return View::make('krafthaus/bauhaus::models.fields._image')
+					->with('field', $this);
+				break;
+		}
 	}
 
 	/**
