@@ -54,6 +54,9 @@ This will create 3 files:
 - A new migration in the `app/database/migrations` directory.
 - And ofcourse a Baushaus model file in `app/admin`.
 
+Support
+---
+Have a bug? Please create an issue here on GitHub that conforms with [necolas's guidelines](https://github.com/necolas/issue-guidelines).
 
 License
 ---
