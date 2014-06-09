@@ -11,6 +11,7 @@ namespace KraftHaus\Bauhaus\Field;
  * file that was distributed with this source code.
  */
 
+use Closure;
 use Illuminate\Support\Str;
 
 /**
@@ -391,7 +392,7 @@ abstract class BaseField
 		return $this->before;
 	}
 
-	public function saving(\Closure $callback)
+	public function saving(Closure $callback)
 	{
 		$this->saving = $callback;
 		return $this;
