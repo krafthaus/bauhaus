@@ -21,7 +21,7 @@ return [
 	 * The package main title.
 	 * @var string
 	 */
-	'title' => 'KraftHaus Bauhaus',
+	'title' => 'Bauhaus',
 
 	/**
 	 * Authorization filter settings.
