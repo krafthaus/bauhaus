@@ -28,6 +28,10 @@ class ListBuilder extends BaseBuilder
 	 */
 	protected $result = [];
 
+	/**
+	 * Holds the Paginator object.
+	 * @var Paginator
+	 */
 	protected $paginator;
 
 	/**
