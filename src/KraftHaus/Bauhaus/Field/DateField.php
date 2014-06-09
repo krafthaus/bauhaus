@@ -29,7 +29,13 @@ class DateField extends BaseField
 	 */
 	public function render()
 	{
-		$this->setValue($this->getValue()->format('Y-m-d'));
+		if ($this->getValue() instanceof Carbon) {
+			$value = $this->getValue()->format('Y:m:d');
+		} else {
+			$value = date('Y:m:d', strtotime($this->getValue()));
+		}
+
+		$this->setValue($value);
 
 		return View::make('krafthaus/bauhaus::models.fields._date')
 			->with('field', $this);

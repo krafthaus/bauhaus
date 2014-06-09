@@ -13,6 +13,7 @@ namespace KraftHaus\Bauhaus\Field;
 
 use KraftHaus\Bauhaus\Field\BaseField;
 use Illuminate\Support\Facades\View;
+use Carbon\Carbon;
 
 /**
  * Class TimeField
@@ -29,7 +30,13 @@ class TimeField extends BaseField
 	 */
 	public function render()
 	{
-		$this->setValue($this->getValue()->format('H:i:s'));
+		if ($this->getValue() instanceof Carbon) {
+			$value = $this->getValue()->format('H:i:s');
+		} else {
+			$value = date('H:i:s', strtotime($this->getValue()));
+		}
+
+		$this->setValue($value);
 
 		return View::make('krafthaus/bauhaus::models.fields._time')
 			->with('field', $this);

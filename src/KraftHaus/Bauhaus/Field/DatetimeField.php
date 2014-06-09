@@ -29,6 +29,14 @@ class DatetimeField extends BaseField
 	 */
 	public function render()
 	{
+		if ($this->getValue() instanceof Carbon) {
+			$value = $this->getValue()->format('Y:m:d H:i:s');
+		} else {
+			$value = date('Y:m:d H:i:s', strtotime($this->getValue()));
+		}
+
+		$this->setValue($value);
+
 		return View::make('krafthaus/bauhaus::models.fields._datetime')
 			->with('field', $this);
 	}
