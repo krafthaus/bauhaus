@@ -111,28 +111,67 @@ abstract class BaseBuilder
 		return $this->model;
 	}
 
+	/**
+	 * Set the input for the builder from the Laravel input object.
+	 * 
+	 * @param  array $input
+	 *
+	 * @access public
+	 * @return BaseBuilder
+	 */
 	public function setInput($input)
 	{
 		$this->input = $input;
 		return $this;
 	}
 
+	/**
+	 * Get the input array.
+	 *
+	 * @access public
+	 * @return array
+	 */
 	public function getInput()
 	{
 		return $this->input;
 	}
 
+	/**
+	 * Set an specific input variable.
+	 * 
+	 * @param  string $key
+	 * @param  mixed  $value
+	 *
+	 * @access public
+	 * @return BaseBuilder
+	 */
 	public function setInputVariable($key, $value)
 	{
 		$this->input[$key] = $value;
 		return $this;
 	}
 
+	/**
+	 * Get a specific input variable.
+	 * 
+	 * @param  string $key
+	 *
+	 * @access public
+	 * @return mixed
+	 */
 	public function getInputVariable($key)
 	{
 		return $this->input[$key];
 	}
 
+	/**
+	 * Unset a specific input variable.
+	 * 
+	 * @param  string $key
+	 *
+	 * @access public
+	 * @return BaseBuilder
+	 */
 	public function unsetInputVariable($key)
 	{
 		unset($this->input[$key]);
