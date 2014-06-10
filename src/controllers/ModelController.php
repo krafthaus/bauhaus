@@ -89,7 +89,7 @@ class ModelController extends Controller
 		}
 
 		// Set the flash message
-		Session::flash('message.success', sprintf('Create a new `%s`.', $model->getSingularName()));
+		Session::flash('message.success', sprintf('Created a new %s.', $model->getSingularName()));
 		return Redirect::route('admin.model.index', $name);
 	}
 
@@ -140,7 +140,7 @@ class ModelController extends Controller
 		}
 
 		// Set the flash message
-		Session::flash('message.success', sprintf('Updated the a `%s`.', $model->getSingularName()));
+		Session::flash('message.success', sprintf('Updated the a %s.', $model->getSingularName()));
 		return Redirect::route('admin.model.index', $name);
 	}
 
@@ -171,8 +171,10 @@ class ModelController extends Controller
 				->destroy();
 		}
 
+		$string = (count($items) > 1 ? 'multiple' : 'one');
+
 		// Set the flash message
-		Session::flash('message.success', sprintf('Deleted multiple `%s`.', $model->getPluralName()));
+		Session::flash('message.success', sprintf('Deleted %s %s.', $string, $model->getPluralName()));
 		return Redirect::route('admin.model.index', $name);
 	}
 
