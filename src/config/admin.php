@@ -24,6 +24,12 @@ return [
 	'title' => 'Bauhaus',
 
 	/**
+	 * The directory where the bauhaus models are located.
+	 * @var string
+	 */
+	'directory' => 'admin',
+
+	/**
 	 * Authorization filter settings.
 	 * @var array
 	 */

@@ -13,6 +13,7 @@ namespace KraftHaus\Bauhaus;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Config;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
@@ -59,9 +60,11 @@ class ScaffoldCommand extends Command
 		file_put_contents(app_path('models/' . ucfirst($model) . '.php'), $stub);
 
 		// Create the admin controller
+		$directory = Config::get('bauhaus::admin.directory');
+
 		$stub = file_get_contents(__DIR__ . '/stubs/admin.txt');
 		$stub = str_replace('$NAME$', Str::studly($model), $stub);
-		file_put_contents(app_path('admin/' . ucfirst($model) . 'Admin.php'), $stub);
+		file_put_contents(app_path($directory . '/' . ucfirst($model) . 'Admin.php'), $stub);
 	}
 
 	/**
