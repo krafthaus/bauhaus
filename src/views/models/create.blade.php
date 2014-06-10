@@ -60,15 +60,17 @@
 
 			</div>
 			<div class="col-sm-4">
-				<div class="panel panel-default">
-					<div class="panel-body">
-						@foreach ($model->getFormBuilder()->getResult()->getFields() as $field)
-							@if ($field->getPosition() == 'right')
-								{{ $field->render() }}
-							@endif
-						@endforeach
+				@if ($model->getFormMapper()->hasFieldsOnPosition('right'))
+					<div class="panel panel-default">
+						<div class="panel-body">
+							@foreach ($model->getFormBuilder()->getResult()->getFields() as $field)
+								@if ($field->getPosition() == 'right')
+									{{ $field->render() }}
+								@endif
+							@endforeach
+						</div>
 					</div>
-				</div>
+				@endif
 
 				<div class="col-sm-12">
 					<input type="submit" class="btn btn-default btn-red btn-rounded" value="Create {{ $model->getSingularName() }}">

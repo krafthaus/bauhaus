@@ -137,4 +137,25 @@ class FormMapper extends BaseMapper
 		return $this->position;
 	}
 
+	/**
+	 * Check for fields on a specific position.
+	 *
+	 * @param  string $position
+	 *
+	 * @access public
+	 * @return bool
+	 */
+	public function hasFieldsOnPosition($position)
+	{
+		$fieldsOnPosition = false;
+
+		foreach ($this->getFields() as $field) {
+			if ($field->getPosition() == $position) {
+				$fieldsOnPosition = true;
+			}
+		}
+
+		return $fieldsOnPosition;
+	}
+
 }
