@@ -66,6 +66,16 @@ return [
 				<p>	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, velit incidunt nostrum neque cumque fugiat debitis voluptas beatae corrupti vero tempore repudiandae corporis repellat sapiente laudantium odio ad? Earum, sit.</p>
 			'
 		]
+	],
+
+	/**
+	 * Global date/time formatting.
+	 * @var array
+	 */
+	'date_format' => [
+		'date'     => 'Y-m-d',
+		'time'     => 'H:i:s',
+		'datetime' => 'Y-m-d H:i:s'
 	]
 
 ];

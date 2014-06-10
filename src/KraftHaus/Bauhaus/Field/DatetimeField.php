@@ -13,6 +13,7 @@ namespace KraftHaus\Bauhaus\Field;
 
 use KraftHaus\Bauhaus\Field\BaseField;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Config;
 
 /**
  * Class DatetimeField
@@ -29,10 +30,12 @@ class DatetimeField extends BaseField
 	 */
 	public function render()
 	{
+		$format = Config::get('bauhaus::admin.date_format.datetime');
+
 		if ($this->getValue() instanceof Carbon) {
-			$value = $this->getValue()->format('Y:m:d H:i:s');
+			$value = $this->getValue()->format($format);
 		} else {
-			$value = date('Y:m:d H:i:s', strtotime($this->getValue()));
+			$value = date($format, strtotime($this->getValue()));
 		}
 
 		$this->setValue($value);
