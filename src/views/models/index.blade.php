@@ -3,12 +3,14 @@
 @section('subheader')
 	<div class="row">
 		<div class="col-sm-6">
-			<h3>List {{ $model->getPluralName() }}</h3>
+			<h3>
+				{{ trans('bauhaus::content.list-title', ['model' => $model->getPluralName()]) }}
+			</h3>
 		</div>
 		<div class="col-sm-6 text-right">
 			<a href="{{ route('admin.model.create', $name) }}" class="btn btn-default btn-red btn-rounded">
 				<i class="fa fa-plus"></i>
-				Create new {{ $model->getSingularName() }}
+				{{ trans('bauhaus::content.create-new', ['model' => $model->getSingularName()]) }}
 			</a>
 		</div>
 	</div>
