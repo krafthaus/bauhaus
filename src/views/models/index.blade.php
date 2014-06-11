@@ -4,13 +4,13 @@
 	<div class="row">
 		<div class="col-sm-6">
 			<h3>
-				{{ trans('bauhaus::content.list-title', ['model' => $model->getPluralName()]) }}
+				{{ trans('bauhaus::index.list-title', ['model' => $model->getPluralName()]) }}
 			</h3>
 		</div>
 		<div class="col-sm-6 text-right">
 			<a href="{{ route('admin.model.create', $name) }}" class="btn btn-default btn-red btn-rounded">
 				<i class="fa fa-plus"></i>
-				{{ trans('bauhaus::content.create-new', ['model' => $model->getSingularName()]) }}
+				{{ trans('bauhaus::index.button.create-new', ['model' => $model->getSingularName()]) }}
 			</a>
 		</div>
 	</div>
@@ -29,7 +29,7 @@
 	@if (Input::has('_filtering'))
 		<div class="alert alert-warning">
 			<strong>Warning!</strong>
-			You are currently browsing filtered results.
+			{{ trans('bauhaus::index.browsing-filtered') }}
 		</div>
 	@endif
 
@@ -40,15 +40,15 @@
 					<div class="panel-body text-center">
 
 						@if (Input::has('_filtering'))
-							<p>The filter query did not return any results.</p>
+							<p>{{ trans('bauhaus::index.no-filter-results', ['model' => $model->getPluralName()]) }}</p>
 							<a class="btn btn-default btn-rounded" href="{{ route('admin.model.index', $name) }}">
-								Reset filters
+								{{ trans('bauhaus::index.button.reset-filters') }}
 							</a>
 						@else
-							<p>You have no {{ strtolower($model->getPluralName()) }} created yet.</p>
+							<p>{{ trans('bauhaus::index.no-items-yet', ['model' => $model->getPluralName()]) }}</p>
 							<a href="{{ route('admin.model.create', $name) }}" class="btn btn-default btn-red btn-rounded">
 								<i class="fa fa-plus"></i>
-								Create new {{ $model->getSingularName() }}
+								{{ trans('bauhaus::index.button.create-new', ['model' => $model->getSingularName()]) }}
 							</a>
 						@endif
 					</div>
@@ -84,7 +84,7 @@
 
 									<td align="right">
 										<a href="{{ route('admin.model.edit', [$name, $item->getIdentifier()]) }}" class="btn btn-xs btn-default">
-											Edit
+											{{ trans('bauhaus::index.button.edit') }}
 										</a>
 									</td>
 
@@ -94,7 +94,7 @@
 						<tfoot>
 							<tr>
 								<td colspan="{{ count($model->getListMapper()->getFields()) + 1 }}">
-									<input type="submit" class="btn btn-default btn-rounded" value="Delete selected {{ $model->getPluralName() }}">
+									<input type="submit" class="btn btn-default btn-rounded" value="{{ trans('bauhaus::index.button.delete-selected', ['model' => $model->getPluralName()]) }}">
 								</td>
 								<td align="right">
 									{{ $model->getListBuilder()->getPaginator()->links() }}
@@ -122,10 +122,10 @@
 								<div class="row">
 									<div class="col-sm-9 col-sm-offset-3">
 										<a class="btn btn-default btn-rounded" href="{{ route('admin.model.index', $name) }}">
-											Reset
+											{{ trans('bauhaus::index.button.reset') }}
 										</a>
 										<div class="pull-right">
-											<input type="submit" class="btn btn-default btn-rounded btn-red" value="Filter {{ $model->getPluralName() }}">
+											<input type="submit" class="btn btn-default btn-rounded btn-red" value="{{ trans('bauhaus::index.button.filter-submit', ['model' => $model->getPluralName()]) }}">
 										</div>
 									</div>
 								</div>
