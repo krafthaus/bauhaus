@@ -8,5 +8,5 @@ url: "http://yourdomain.com"
 # Build settings
 markdown: kramdown
 permalink: pretty
-baseurl: bauhaus
+baseurl: /bauhaus
 highlighter: true
