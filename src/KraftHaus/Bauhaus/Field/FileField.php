@@ -13,6 +13,7 @@ namespace KraftHaus\Bauhaus\Field;
 
 use KraftHaus\Bauhaus\Field\BaseField;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Str;
 
 /**
  * Class FileField
@@ -22,6 +23,8 @@ class FileField extends BaseField
 {
 
 	protected $location;
+	protected $naming;
+	protected $originalname;
 
 	public function location($location)
 	{
@@ -34,13 +37,39 @@ class FileField extends BaseField
 		return $this->location;
 	}
 
+	public function naming($naming)
+	{
+		$this->naming = $naming;
+		return $this;
+	}
+
+	public function getNaming()
+	{
+		return $this->naming;
+	}
+
+	public function setOriginalname($name)
+	{
+		$this->originalname = $name;
+		return $this;
+	}
+
+	public function getOriginalName()
+	{
+		return $this->originalname;
+	}
+
 	public function preUpdate()
 	{
 		$formBuilder = $this->getAdmin()->getFormBuilder();
 
 		if (Input::hasFile($this->getName())) {
 			$file = Input::file($this->getName());
+			$this->setOriginalname($file->getClientOriginalName());
+
 			$name = $file->getClientOriginalName();
+			$name = $this->handleNaming($name, $file->getClientOriginalExtension());
+			$this->setName($name);
 
 			$file->move($this->getLocation(), $name);
 
@@ -61,6 +90,22 @@ class FileField extends BaseField
 	{
 		return View::make('krafthaus/bauhaus::models.fields._file')
 			->with('field', $this);
+	}
+
+	protected function handleNaming($name, $extention = null)
+	{
+		switch ($this->getNaming()) {
+			case 'original':
+				return $name;
+			case 'random':
+				$name = Str::random();
+				
+				if ($extention !== null) {
+					$name = sprintf('%s.%s', $name, $extention);
+				}
+
+				return $name;
+		}
 	}
 
 }

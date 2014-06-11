@@ -85,28 +85,25 @@ class ImageField extends FileField
 	public function postUpdate($input)
 	{
 		foreach ($this->getSizes() as $size) {
-			if (Input::hasFile($this->getName())) {
-				$file = Input::file($this->getName());
-				$name = $file->getClientOriginalName();
+			$name = $this->getName();
 
-				$image = Image::make(sprintf('%s/%s', $this->getLocation(), $name));
+			$image = Image::make(sprintf('%s/%s', $this->getLocation(), $name));
 
-				switch ($size[2]) {
-					case 'resize':
-						$image->resize($size[0], $size[1], function ($constraint) {
-							$constraint->aspectRatio();
-						});
-						break;
-					case 'resizeCanvas':
-						$image->resizeCanvas($size[0], $size[1], 'center');
-						break;
-					case 'fit':
-						$image->fit($size[0], $size[1]);
-						break;
-				}
-
-				$image->save($size[3] . '/' . $name);
+			switch ($size[2]) {
+				case 'resize':
+					$image->resize($size[0], $size[1], function ($constraint) {
+						$constraint->aspectRatio();
+					});
+					break;
+				case 'resizeCanvas':
+					$image->resizeCanvas($size[0], $size[1], 'center');
+					break;
+				case 'fit':
+					$image->fit($size[0], $size[1]);
+					break;
 			}
+
+			$image->save(sprintf('%s/%s', $this->getLocation(), $size[3] . '-' . $name));
 		}
 
 		parent::postUpdate($input);
