@@ -24,6 +24,7 @@ class FileField extends BaseField
 
 	protected $location;
 	protected $naming;
+	protected $originalname;
 
 	public function location($location)
 	{
@@ -47,14 +48,28 @@ class FileField extends BaseField
 		return $this->naming;
 	}
 
+	public function setOriginalname($name)
+	{
+		$this->originalname = $name;
+		return $this;
+	}
+
+	public function getOriginalName()
+	{
+		return $this->originalname;
+	}
+
 	public function preUpdate()
 	{
 		$formBuilder = $this->getAdmin()->getFormBuilder();
 
 		if (Input::hasFile($this->getName())) {
 			$file = Input::file($this->getName());
+			$this->setOriginalname($file->getClientOriginalName());
+
 			$name = $file->getClientOriginalName();
 			$name = $this->handleNaming($name, $file->getClientOriginalExtension());
+			$this->setName($name);
 
 			$file->move($this->getLocation(), $name);
 
