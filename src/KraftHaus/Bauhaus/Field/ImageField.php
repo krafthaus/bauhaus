@@ -87,7 +87,11 @@ class ImageField extends FileField
 		foreach ($this->getSizes() as $size) {
 			$name = $this->getName();
 
-			$image = Image::make(sprintf('%s/%s', $this->getLocation(), $name));
+			try {
+				$image = Image::make(sprintf('%s/%s', $this->getLocation(), $name));
+			} catch (NotReadableException $e) {
+				continue;
+			}
 
 			switch ($size[2]) {
 				case 'resize':
