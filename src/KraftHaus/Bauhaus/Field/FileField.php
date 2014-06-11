@@ -56,9 +56,6 @@ class FileField extends BaseField
 			$name = $file->getClientOriginalName();
 			$name = $this->handleNaming($name, $file->getClientOriginalExtension());
 
-			print_r($name);
-			exit();
-
 			$file->move($this->getLocation(), $name);
 
 			$value = sprintf('%s/%s', $this->getLocation(), $name);
