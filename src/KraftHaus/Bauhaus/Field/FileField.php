@@ -62,6 +62,7 @@ class FileField extends BaseField
 	public function preUpdate()
 	{
 		$formBuilder = $this->getAdmin()->getFormBuilder();
+		$tempName    = $this->getName();
 
 		if (Input::hasFile($this->getName())) {
 			$file = Input::file($this->getName());
@@ -74,7 +75,7 @@ class FileField extends BaseField
 			$file->move($this->getLocation(), $name);
 
 			$value = sprintf('%s/%s', $this->getLocation(), $name);
-			$formBuilder->setInputVariable($this->getName(), $value);
+			$formBuilder->setInputVariable($tempName, $value);
 		} else {
 			$formBuilder->unsetInputVariable($this->getName());
 		}
