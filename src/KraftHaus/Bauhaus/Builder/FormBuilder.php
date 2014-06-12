@@ -183,6 +183,11 @@ class FormBuilder extends BaseBuilder
 			$model::create($this->getInput());
 		}
 
+		// Field post update
+		foreach ($this->getMapper()->getFields() as $field) {
+			$field->postUpdate($this->getInput());
+		}
+
 		return $this;
 	}
 
