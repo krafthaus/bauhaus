@@ -1,7 +1,7 @@
 {
     "name": "krafthaus/bauhaus",
     "description": "The missing Laravel 4 Admin Generator",
-    "keywords": ["Admin Generator", "admin", "KraftHaus", "Laravel"],
+    "keywords": ["admin generator", "cms", "admin", "krafthaus", "laravel", "backend", "form", "forms"],
     "type": "laravel-package",
     "license": "MIT",
     "authors": [
