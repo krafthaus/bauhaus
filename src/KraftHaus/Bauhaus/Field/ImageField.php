@@ -14,6 +14,7 @@ namespace KraftHaus\Bauhaus\Field;
 use KraftHaus\Bauhaus\Field\FileField;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Input;
+use Intervention\Image\Exception\NotReadableException;
 use Image;
 
 /**
