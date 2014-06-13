@@ -88,6 +88,18 @@ class Admin
 	protected $filterBuilder;
 
 	/**
+	 * Holds the ScopeMapper object.
+	 * @var ScopeMapper
+	 */
+	protected $scopeMapper;
+
+	/**
+	 * Holds the ScopeBuilder object.
+	 * @var ScopeBuilder
+	 */
+	protected $scopeBuilder;
+
+	/**
 	 * Public class constructor.
 	 *
 	 * @access public
@@ -468,6 +480,75 @@ class Admin
 	public function configureScopes($mapper)
 	{
 		// intentionally left blank
+	}
+
+	/**
+	 * Configures the scopes and builds the scope data from that.
+	 *
+	 * @access public
+	 * @return Admin
+	 */
+	public function buildScopes()
+	{
+		$this->setScopeMapper(new ScopeMapper);
+		$this->configureScopes($this->getScopeMapper());
+
+		$this->setScopeBuilder(new FilterBuilder($this->getScopeMapper()));
+		$this->getScopeBuilder()
+			->build();
+
+		return $this;
+	}
+
+	/**
+	 * Set the ScopeMapper object.
+	 *
+	 * @param  ScopeMapper $mapper
+	 *
+	 * @access public
+	 * @return Admin
+	 */
+	public function setScopeMapper($mapper)
+	{
+		$this->scopeMapper = $mapper;
+		$mapper->setAdmin($this);
+		return $this;
+	}
+
+	/**
+	 * Get the ScopeMapper object.
+	 *
+	 * @access public
+	 * @return ScopeMapper
+	 */
+	public function getScopeMapper()
+	{
+		return $this->scopeMapper;
+	}
+
+	/**
+	 * Set the ScopeBuilder object.
+	 *
+	 * @param  ScopeBuilder $scopeBuilder
+	 *
+	 * @access public
+	 * @return Admin
+	 */
+	public function setScopeBuilder($scopeBuilder)
+	{
+		$this->scopeBuilder = $scopeBuilder;
+		return $this;
+	}
+
+	/**
+	 * Get the ScopeBuilder object.
+	 *
+	 * @access public
+	 * @return ScopeBuilder
+	 */
+	public function getScopeBuilder()
+	{
+		return $this->scopeBuilder;
 	}
 
 }

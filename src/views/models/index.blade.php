@@ -33,6 +33,18 @@
 		</div>
 	@endif
 
+	@if ($model->getScopeMapper()->hasScopes())
+		<div class="row">
+			<div class="col-sm-12">
+				@foreach ($model->getScopeMapper()->getScopes() as $scope)
+				<a href="?_scope={{ $scope->getScope() }}" class="btn btn-default btn-rounded">
+					{{ $scope->getLabel() }}
+				</a>
+				@endforeach
+			</div>
+		</div>
+	@endif
+
 	@if (count($model->getListBuilder()->getResult()) == 0)
 		<div class="row">
 			<div class="col-sm-4 col-sm-offset-4">
