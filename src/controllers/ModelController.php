@@ -39,6 +39,7 @@ class ModelController extends Controller
 
 		$model->buildList();
 		$model->buildFilters();
+		$model->buildScopes();
 
 		return View::make('krafthaus/bauhaus::models.index')
 			->with('name',  $name)

@@ -61,6 +61,11 @@ class ListBuilder extends BaseBuilder
 			$items->where($key, 'LIKE', '%' . $value . '%');
 		}
 
+		// Result scopes
+		if (Input::has('_scope')) {
+			$items->{Input::get('_scope')}();
+		}
+
 		$items = $items->paginate($listMapper->getAdmin()->getPerPage());
 		$this->setPaginator($items);
 
