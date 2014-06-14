@@ -63,7 +63,7 @@ class BelongsToField extends BaseField
 	public function render()
 	{
 		if ($this->getDisplayField() === null) {
-			throw new \InvalidArgumentException(sprintf('Please provide a display field for the `%s` relation.', $this->getName()));
+			throw new \InvalidArgumentException(sprintf('Please provide a display field for the `%s` relation via the display(); method.', $this->getName()));
 		}
 
 		switch ($this->getContext()) {
