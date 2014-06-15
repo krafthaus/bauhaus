@@ -16,6 +16,7 @@ var paths = {
 		'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js',
 		'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/dropdown.js',
 		'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js',
+		'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/modal.js',
 		'bower_components/bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js',
 		'assets/javascripts/**/*.js'
 	]
