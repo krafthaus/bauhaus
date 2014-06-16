@@ -47,6 +47,7 @@
 
 	<script src="http://eonasdan.github.io/bootstrap-datetimepicker/scripts/moment.js"></script>
 	<script src="{{ asset('packages/krafthaus/bauhaus/javascripts/application.min.js') }}"></script>
+	@yield('scripts')
 
 </body>
 </html>
