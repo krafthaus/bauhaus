@@ -51,6 +51,9 @@ Route::group(['prefix' => Config::get('bauhaus::admin.uri')], function () {
 			'as'   => 'admin.model.multi-destroy',
 			'uses' => 'KraftHaus\Bauhaus\ModelController@multiDestroy'
 		]);
+
+		// extra route includes
+		require_once __DIR__ . '/routes/modals.php';
 	});
 
 });
