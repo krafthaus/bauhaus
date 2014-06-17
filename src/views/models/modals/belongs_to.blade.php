@@ -40,7 +40,7 @@
 					@endif
 
 				</div>
-				<div class="col-sm-4">
+				<div class="col-sm-12">
 					@if ($model->getFormMapper()->hasFieldsOnPosition('right'))
 						<div class="panel panel-default">
 							<div class="panel-body">
