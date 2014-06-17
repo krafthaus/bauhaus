@@ -36,11 +36,13 @@
 	@if ($model->getScopeMapper()->hasScopes())
 		<div class="row">
 			<div class="col-sm-12">
-				@foreach ($model->getScopeMapper()->getScopes() as $scope)
-				<a href="?_scope={{ $scope->getScope() }}" class="btn btn-default btn-rounded">
-					{{ $scope->getLabel() }}
-				</a>
-				@endforeach
+				<p>
+					@foreach ($model->getScopeMapper()->getScopes() as $scope)
+					<a href="?_scope={{ $scope->getScope() }}" class="btn btn-default btn-rounded">
+						{{ $scope->getLabel() }}
+					</a>
+					@endforeach
+				</p>
 			</div>
 		</div>
 	@endif
