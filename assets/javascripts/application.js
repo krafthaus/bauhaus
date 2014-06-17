@@ -28,6 +28,7 @@
 		pick12HourFormat: false
 	});
 
+	// Date picker
 	$('.field-date').datetimepicker({
 		icons: {
 			time: "fa fa-clock-o",
@@ -38,6 +39,7 @@
 		pickTime: false
 	});
 
+	// Time picker
 	$('.field-time').datetimepicker({
 		icons: {
 			time: "fa fa-clock-o",
