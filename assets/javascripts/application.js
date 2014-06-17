@@ -48,6 +48,23 @@
 		pickDate: false
 	});
 
+	// Ajax form submit
+	$(document).on('submit', 'form[data-async]', function (e) {
+		var $form   = $(this),
+			$target = $($form.attr('data-target'));
+
+		$.ajax({
+			type: $form.attr('method'),
+			url:  $form.attr('action'),
+			data: $form.serialize(),
+			success: function (data) {
+				$target.html(data);
+			}
+		});
+
+		e.preventDefault();
+	});
+
 	// ...
 
 })(jQuery, window, document);
