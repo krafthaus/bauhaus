@@ -13,7 +13,11 @@
 
 	// auto tab selection
 	$('.nav-tabs a:first').tab('show');
+	$(document).on('loaded.bs.modal', function () {
+		$('.nav-tabs a:first').tab('show');
+	});
 
+	// DateTime picker
 	$('.field-datetime').datetimepicker({
 		icons: {
 			time: "fa fa-clock-o",
