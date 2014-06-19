@@ -9,6 +9,9 @@
  * file that was distributed with this source code.
  */
 
+/**
+ * View composer to make the menu available on all the views.
+ */
 View::composer('krafthaus/bauhaus::*', function ($view) {
 	 $view->with('menu', app('krafthaus.bauhaus.menu')->build());
 });
