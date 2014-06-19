@@ -79,4 +79,15 @@
 		</div>
 	{{ Form::close() }}
 
+	<div class="modal fade" id="field-modal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close">&times;</button>
+					<h4 class="modal-title">Loading</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+
 @stop
