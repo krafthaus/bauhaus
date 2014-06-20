@@ -6,6 +6,9 @@ With Bauhaus you can easily create visual stunning lists, forms and filters for 
 
 [Documentation is located here.](https://github.com/krafthaus/bauhaus/wiki)
 
+![Bauhaus List](https://raw.githubusercontent.com/krafthaus/bauhaus/gh-pages/screenshots/list.png)
+![Bauhaus Form](https://raw.githubusercontent.com/krafthaus/bauhaus/gh-pages/screenshots/form.png)
+
 Installation
 ---
 Add bauhaus to your composer.json file:
