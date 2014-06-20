@@ -146,6 +146,18 @@ class Admin
 	}
 
 	/**
+	 * Get the model table name.
+	 *
+	 * @access public
+	 * @return mixed
+	 */
+	public function getTable()
+	{
+		$model = $this->getModel();
+		return (new $model)->getTable();
+	}
+
+	/**
 	 * Sets the number of items per page.
 	 *
 	 * @param  int $perPage
