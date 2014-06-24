@@ -2,5 +2,5 @@
 layout: default
 ---
 
-Field: BelongsTo
+Field: Number
 ---

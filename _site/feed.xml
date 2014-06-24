@@ -3,8 +3,8 @@
   <channel>
     <title>Your awesome title</title>
     <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</description>
-    <link>http://yourdomain.combauhaus/</link>
-    <atom:link href="http://yourdomain.combauhaus/feed.xml" rel="self" type="application/rss+xml" />
+    <link>http://yourdomain.com/bauhaus/</link>
+    <atom:link href="http://yourdomain.com/bauhaus/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
         <title>Welcome to Jekyll!</title>
@@ -23,8 +23,8 @@ print_hi(&amp;#39;Tom&amp;#39;)
 
 </description>
         <pubDate>Wed, 11 Jun 2014 13:40:42 +0200</pubDate>
-        <link>http://yourdomain.combauhaus/jekyll/update/2014/06/11/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">http://yourdomain.combauhaus/jekyll/update/2014/06/11/welcome-to-jekyll/</guid>
+        <link>http://yourdomain.com/bauhaus/jekyll/update/2014/06/11/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">http://yourdomain.com/bauhaus/jekyll/update/2014/06/11/welcome-to-jekyll/</guid>
       </item>
     
   </channel>
