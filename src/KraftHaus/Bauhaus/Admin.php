@@ -52,6 +52,24 @@ class Admin
 	protected $pluralName = null;
 
 	/**
+	 * Holds the list view string.
+	 * @var string
+	 */
+	protected $listViewString = 'krafthaus/bauhaus::models.index';
+
+	/**
+	 * Holds the form view string.
+	 * @var string
+	 */
+	protected $formViewString = 'krafthaus/bauhaus::models.edit';
+
+	/**
+	 * Holds the filter view string.
+	 * @var string
+	 */
+	protected $filterViewString = 'krafthaus/bauhaus::models.partials._filter';
+
+	/**
 	 * Holds the ListMapper object.
 	 * @var ListMapper
 	 */
@@ -230,6 +248,39 @@ class Admin
 	public function getPluralName()
 	{
 		return $this->pluralName;
+	}
+
+	/**
+	 * Get the list view string.
+	 *
+	 * @access public
+	 * @return string
+	 */
+	public function getListViewString()
+	{
+		return $this->listViewString;
+	}
+
+	/**
+	 * Get the form view string.
+	 *
+	 * @access public
+	 * @return string
+	 */
+	public function getFormViewString()
+	{
+		return $this->formViewString;
+	}
+
+	/**
+	 * Get the filter view string.
+	 *
+	 * @access public
+	 * @return string
+	 */
+	public function getFilterViewString()
+	{
+		return $this->filterViewString;
 	}
 
 	/**
