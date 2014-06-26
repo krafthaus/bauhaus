@@ -12,7 +12,8 @@
 /**
  * Auth filter.
  * This filter is configurable in the config file.
- * https://github.com/krafthaus/bauhaus/wiki/Authentication
+ * 
+ * @see https://github.com/krafthaus/bauhaus/wiki/Authentication
  */
 Route::filter('bauhaus.auth', function () {
 	$filter = Config::get('bauhaus::admin.auth.permission');
