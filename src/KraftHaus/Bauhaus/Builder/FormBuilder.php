@@ -118,7 +118,7 @@ class FormBuilder extends BaseBuilder
 		$items = $model::with([]);
 
 		$items->where('id', $this->getIdentifier());
-		$item  = $items->first();
+		$item = $items->first();
 
 		$result = new FormResult;
 		$result->setIdentifier($item->id);
