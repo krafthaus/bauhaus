@@ -19,7 +19,7 @@
 	@if (Session::has('message.error'))
 		<div class="alert alert-danger">
 			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-			<strong>Whoops!</strong>
+			<strong>{{ trans('bauhaus::messages.error.title') }}</strong>
 			{{ Session::get('message.error') }}
 		</div>
 	@endif

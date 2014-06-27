@@ -21,14 +21,14 @@
 	@if (Session::has('message.success'))
 		<div class="alert alert-success">
 			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-			<strong>Success!</strong>
+			<strong>{{ trans('bauhaus::messages.success.title') }}</strong>
 			{{ Session::get('message.success') }}
 		</div>
 	@endif
 
 	@if (Input::has('_filtering'))
 		<div class="alert alert-warning">
-			<strong>Warning!</strong>
+			<strong>{{ trans('bauhaus::messages.warning.title') }}</strong>
 			{{ trans('bauhaus::index.browsing-filtered') }}
 		</div>
 	@endif
