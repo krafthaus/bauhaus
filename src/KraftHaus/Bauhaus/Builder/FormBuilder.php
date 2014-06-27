@@ -11,6 +11,7 @@ namespace KraftHaus\Bauhaus\Builder;
  * file that was distributed with this source code.
  */
 
+use Closure;
 use Illuminate\Support\Facades\Validator;
 use KraftHaus\Bauhaus\Result\FormResult;
 use KraftHaus\Bauhaus\Field\BaseField;
@@ -131,7 +132,7 @@ class FormBuilder extends BaseBuilder
 			if ($clone->hasBefore()) {
 				$before = $clone->getBefore();
 
-				if ($before instanceof \Closure) {
+				if ($before instanceof Closure) {
 					$value = $before($value);
 				} else {
 					$value = $before;
