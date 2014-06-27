@@ -62,12 +62,26 @@ class FormBuilder extends BaseBuilder
 		return $this->identifier;
 	}
 
+	/**
+	 * Set the form context.
+	 *
+	 * @param  FormBuilder $context
+	 *
+	 * @access public
+	 * @return FormBuilder
+	 */
 	public function setContext($context)
 	{
 		$this->context = $context;
 		return $this;
 	}
 
+	/**
+	 * Get the form context.
+	 *
+	 * @access public
+	 * @return mixed
+	 */
 	public function getContext()
 	{
 		return $this->context;
