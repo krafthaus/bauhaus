@@ -5665,7 +5665,7 @@ a, td, button, input[type=submit] {
       transition: none; }
   .navbar-default .navbar-nav .navbar-image {
     float: left;
-    margin: 15px;
+    margin: 7px 15px;
     border-radius: 50%; }
 
 .navbar-brand {
