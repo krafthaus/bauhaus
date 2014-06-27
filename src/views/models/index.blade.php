@@ -28,6 +28,7 @@
 
 	@if (Input::has('_filtering'))
 		<div class="alert alert-warning">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 			<strong>{{ trans('bauhaus::messages.warning.title') }}</strong>
 			{{ trans('bauhaus::index.browsing-filtered') }}
 		</div>
