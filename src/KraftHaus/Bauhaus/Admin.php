@@ -394,6 +394,7 @@ class Admin
 		$this->getFormBuilder()
 			->setModel($this->getModel())
 			->setIdentifier($identifier)
+			->setContext($identifier === null ? FormBuilder::CONTEXT_CREATE : FormBuilder::CONTEXT_EDIT)
 			->build();
 
 		return $this;

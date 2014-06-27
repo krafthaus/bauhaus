@@ -22,6 +22,9 @@ use KraftHaus\Bauhaus\Field\BaseField;
 class FormBuilder extends BaseBuilder
 {
 
+	const CONTEXT_CREATE = 'create';
+	const CONTEXT_EDIT = 'edit';
+
 	/**
 	 * Holds the form result.
 	 * @var array
@@ -57,6 +60,17 @@ class FormBuilder extends BaseBuilder
 	public function getIdentifier()
 	{
 		return $this->identifier;
+	}
+
+	public function setContext($context)
+	{
+		$this->context = $context;
+		return $this;
+	}
+
+	public function getContext()
+	{
+		return $this->context;
 	}
 
 	/**
