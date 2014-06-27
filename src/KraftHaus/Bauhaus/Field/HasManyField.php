@@ -19,39 +19,8 @@ use Illuminate\Support\Str;
  * Class HasManyField
  * @package KraftHaus\Bauhaus\Field
  */
-class HasManyField extends BaseField
+class HasManyField extends RelationField
 {
-
-	/**
-	 * Holds the display field name.
-	 * @var string
-	 */
-	protected $displayField;
-
-	/**
-	 * Set the display field name.
-	 *
-	 * @param  string $displayField
-	 *
-	 * @access public
-	 * @return BelongsToField
-	 */
-	public function display($displayField)
-	{
-		$this->displayField = $displayField;
-		return $this;
-	}
-
-	/**
-	 * Get the display field name.
-	 *
-	 * @access public
-	 * @return string
-	 */
-	public function getDisplayField()
-	{
-		return $this->displayField;
-	}
 
 	/**
 	 * Render the field.

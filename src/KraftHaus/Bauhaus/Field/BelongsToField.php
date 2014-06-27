@@ -20,39 +20,8 @@ use Illuminate\Support\Facades\Input;
  * Class BelongsToField
  * @package KraftHaus\Bauhaus\Field
  */
-class BelongsToField extends BaseField
+class BelongsToField extends RelationField
 {
-
-	/**
-	 * Holds the display field name.
-	 * @var string
-	 */
-	protected $displayField = null;
-
-	/**
-	 * Set the display field name.
-	 *
-	 * @param  string $displayField
-	 *
-	 * @access public
-	 * @return BelongsToField
-	 */
-	public function display($displayField)
-	{
-		$this->displayField = $displayField;
-		return $this;
-	}
-
-	/**
-	 * Get the display field name.
-	 *
-	 * @access public
-	 * @return string
-	 */
-	public function getDisplayField()
-	{
-		return $this->displayField;
-	}
 
 	/**
 	 * Render the field.
