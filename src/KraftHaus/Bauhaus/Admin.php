@@ -256,6 +256,14 @@ class Admin
 		return $this->pluralName;
 	}
 
+	/**
+	 * Get a specific view.
+	 *
+	 * @param  string $view
+	 *
+	 * @access public
+	 * @return string
+	 */
 	public function getView($view)
 	{
 		$view = sprintf('%sViewString', $view);
