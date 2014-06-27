@@ -120,7 +120,7 @@
 			</div>
 
 			@if ($model->getFilterBuilder()->getResult()->getFields())
-				@include($model->getFilterViewString())
+				@include($model->getView('filter'))
 			@endif
 		</div>
 	@endif

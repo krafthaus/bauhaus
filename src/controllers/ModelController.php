@@ -41,7 +41,7 @@ class ModelController extends Controller
 		$model->buildFilters();
 		$model->buildScopes();
 
-		return View::make($model->getListViewString())
+		return View::make($model->getView('list'))
 			->with('name',  $name)
 			->with('model', $model);
 	}
@@ -59,7 +59,7 @@ class ModelController extends Controller
 		$model = sprintf('\\%sAdmin', Str::studly($name));
 		$model = (new $model)->buildForm();
 
-		return View::make('krafthaus/bauhaus::models.create')
+		return View::make($model->getView('create'))
 			->with('name',  $name)
 			->with('model', $model);
 	}
@@ -108,7 +108,7 @@ class ModelController extends Controller
 		$model = sprintf('\\%sAdmin', Str::studly($name));
 		$model = (new $model)->buildForm($id);
 
-		return View::make('krafthaus/bauhaus::models.edit')
+		return View::make($model->getView('edit'))
 			->with('name',  $name)
 			->with('model', $model)
 			->with('id',    $id);

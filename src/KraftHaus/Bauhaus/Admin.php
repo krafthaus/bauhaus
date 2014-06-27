@@ -58,10 +58,16 @@ class Admin
 	protected $listViewString = 'krafthaus/bauhaus::models.index';
 
 	/**
-	 * Holds the form view string.
+	 * Holds the edit form view string.
 	 * @var string
 	 */
-	protected $formViewString = 'krafthaus/bauhaus::models.edit';
+	protected $editViewString = 'krafthaus/bauhaus::models.edit';
+
+	/**
+	 * Holds the create form view string.
+	 * @var string
+	 */
+	protected $createViewString = 'krafthaus/bauhaus::models.create';
 
 	/**
 	 * Holds the filter view string.
@@ -250,37 +256,10 @@ class Admin
 		return $this->pluralName;
 	}
 
-	/**
-	 * Get the list view string.
-	 *
-	 * @access public
-	 * @return string
-	 */
-	public function getListViewString()
+	public function getView($view)
 	{
-		return $this->listViewString;
-	}
-
-	/**
-	 * Get the form view string.
-	 *
-	 * @access public
-	 * @return string
-	 */
-	public function getFormViewString()
-	{
-		return $this->formViewString;
-	}
-
-	/**
-	 * Get the filter view string.
-	 *
-	 * @access public
-	 * @return string
-	 */
-	public function getFilterViewString()
-	{
-		return $this->filterViewString;
+		$view = sprintf('%sViewString', $view);
+		return $this->$view;
 	}
 
 	/**
