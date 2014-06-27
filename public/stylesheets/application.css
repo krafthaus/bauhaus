@@ -5663,6 +5663,10 @@ a, td, button, input[type=submit] {
     letter-spacing: 1px; }
     .navbar-default .navbar-nav a.navbar-brand {
       transition: none; }
+  .navbar-default .navbar-nav .navbar-image {
+    float: left;
+    margin: 15px;
+    border-radius: 50%; }
 
 .navbar-brand {
   background: #fa5e40;
