@@ -5,22 +5,22 @@
 		</div>
 		<div class="panel-body">
 			{{ Form::open(['method' => 'get', 'class' => 'form-horizontal']) }}
-			<input type="hidden" name="_filtering" value="✓">
+				<input type="hidden" name="_filtering" value="✓">
 
-			@foreach ($model->getFilterBuilder()->getResult()->getFields() as $field)
-			{{ $field->render() }}
-			@endforeach
+				@foreach ($model->getFilterBuilder()->getResult()->getFields() as $field)
+					{{ $field->render() }}
+				@endforeach
 
-			<div class="row">
-				<div class="col-sm-9 col-sm-offset-3">
-					<a class="btn btn-default btn-rounded" href="{{ route('admin.model.index', $name) }}">
-						{{ trans('bauhaus::index.button.reset') }}
-					</a>
-					<div class="pull-right">
-						<input type="submit" class="btn btn-default btn-rounded btn-red" value="{{ trans('bauhaus::index.button.filter-submit', ['model' => $model->getPluralName()]) }}">
+				<div class="row">
+					<div class="col-sm-9 col-sm-offset-3">
+						<a class="btn btn-default btn-rounded" href="{{ route('admin.model.index', $name) }}">
+							{{ trans('bauhaus::index.button.reset') }}
+						</a>
+						<div class="pull-right">
+							<input type="submit" class="btn btn-default btn-rounded btn-red" value="{{ trans('bauhaus::index.button.filter-submit', ['model' => $model->getPluralName()]) }}">
+						</div>
 					</div>
 				</div>
-			</div>
 			{{ Form::close() }}
 		</div>
 	</div>

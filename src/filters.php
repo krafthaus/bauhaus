@@ -12,7 +12,7 @@
 /**
  * Auth filter.
  * This filter is configurable in the config file.
- * 
+ *
  * @see https://github.com/krafthaus/bauhaus/wiki/Authentication
  */
 Route::filter('bauhaus.auth', function () {
