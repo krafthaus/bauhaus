@@ -75,12 +75,12 @@ class BelongsToManyField extends RelationField
 
 	public function postUpdate($input)
 	{
-		$model = $this->getName();
-		$self  = $this->getAdmin()->getModel();
+		$model = $this->getAdmin()->getModel();
+		$model = $model::find($this->getAdmin()->getFormBuilder()->getIdentifier());
 
-		foreach ($input[$model] as $item) {
-			$model::find($item)->update([strtolower($self) . '_id' => $this->getAdmin()->getFormBuilder()->getIdentifier()]);
-		}
+		$pivot = $this->getName();
+
+		$model->{$pivot}()->sync($input[$pivot]);
 	}
 
 }
