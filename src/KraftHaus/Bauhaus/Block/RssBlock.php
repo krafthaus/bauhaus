@@ -31,7 +31,6 @@ class RssBlock extends BaseBlock
 	{
 		$feed = $this->compose();
 		return View::make('krafthaus/bauhaus::blocks.rss')
-			->with('title', $this->getArgument('title'))
 			->with('feed', $feed);
 	}
 
@@ -43,7 +42,7 @@ class RssBlock extends BaseBlock
 	 */
 	protected function compose()
 	{
-		$content = file_get_contents($this->getArgument('url'));
+		$content = file_get_contents($this->getArgument('feed'));
 		$xml = simplexml_load_string($content);
 
 		return $xml;

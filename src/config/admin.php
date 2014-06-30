@@ -71,6 +71,9 @@ return [
 				<h3>Welcome to the Bauhaus admin mapper.</h3>
 				<p>	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, velit incidunt nostrum neque cumque fugiat debitis voluptas beatae corrupti vero tempore repudiandae corporis repellat sapiente laudantium odio ad? Earum, sit.</p>
 			'
+		], [
+			'type' => 'KraftHaus\Bauhaus\Block\RssBlock',
+			'feed' => 'https://github.com/krafthaus/bauhaus/commits/master.atom'
 		]
 	],
 

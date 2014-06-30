@@ -1,9 +1,7 @@
-<h3>{{ $title }}</h3>
-
 <ul>
-	@foreach ($feed->channel->item as $item)
+	@foreach ($feed->entry as $item)
 	<li>
-		<a href="{{ $item->link }}" target="_blank">
+		<a href="{{ $item->link['href'] }}" target="_blank">
 			{{ $item->title }}
 		</a>
 	</li>
