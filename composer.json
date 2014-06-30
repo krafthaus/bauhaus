@@ -23,5 +23,8 @@
             "KraftHaus\\Bauhaus": "src/"
         }
     },
+	"suggest": {
+		"krafthaus/bauhaususer": "Add user capabilities to bauhaus"
+	},
     "minimum-stability": "stable"
 }
