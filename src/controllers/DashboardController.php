@@ -15,7 +15,8 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\View;
 
 /**
- * 
+ * Class DashboardController
+ * @package KraftHaus\Bauhaus
  */
 class DashboardController extends Controller
 {

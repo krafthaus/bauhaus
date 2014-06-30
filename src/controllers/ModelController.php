@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
 /**
- * 
+ * Class ModelController
+ * @package KraftHaus\Bauhaus
  */
 class ModelController extends Controller
 {
