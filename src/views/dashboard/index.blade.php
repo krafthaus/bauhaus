@@ -10,6 +10,14 @@
 
 @section('content')
 
+	@if (Session::has('message.success'))
+		<div class="alert alert-success">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<strong>{{ trans('bauhaus::messages.success.title') }}</strong>
+			{{ Session::get('message.success') }}
+		</div>
+	@endif
+
 	@foreach ($blocks as $block)
 		{{ $block->render() }}
 	@endforeach
