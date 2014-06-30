@@ -69,6 +69,12 @@ abstract class BaseField
 	protected $description = null;
 
 	/**
+	 * Holds the field placeholder.
+	 * @var null|string
+	 */
+	protected $placeholder = null;
+
+	/**
 	 * Holds the field tab name.
 	 * @var null|string
 	 */
@@ -304,6 +310,31 @@ abstract class BaseField
 	public function getDescription()
 	{
 		return $this->description;
+	}
+
+	/**
+	 * Set the field placeholder.
+	 *
+	 * @param  string $placeholder
+	 *
+	 * @access public
+	 * @return BaseField
+	 */
+	public function placeholder($placeholder)
+	{
+		$this->placeholder = $placeholder;
+		return $this;
+	}
+
+	/**
+	 * Get the field placeholder.
+	 *
+	 * @access public
+	 * @return null|string
+	 */
+	public function getPlaceholder()
+	{
+		return $this->placeholder;
 	}
 
 	/**
