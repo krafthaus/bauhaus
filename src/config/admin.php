@@ -65,15 +65,14 @@ return [
 	],
 
 	'dashboard' => [
-		[
-			'type' => 'KraftHaus\Bauhaus\Block\TextBlock',
-			'content' => '
-				<h3>Welcome to the Bauhaus admin mapper.</h3>
-				<p>	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, velit incidunt nostrum neque cumque fugiat debitis voluptas beatae corrupti vero tempore repudiandae corporis repellat sapiente laudantium odio ad? Earum, sit.</p>
-			'
-		], [
-			'type' => 'KraftHaus\Bauhaus\Block\RssBlock',
-			'feed' => 'https://github.com/krafthaus/bauhaus/commits/master.atom'
+		'top' => [
+			[
+				'type' => 'KraftHaus\Bauhaus\Block\TextBlock',
+				'content' => '
+					<h3>Welcome to the Bauhaus admin mapper.</h3>
+					<p>To modify this dashboard, please view the `app/config/krafthaus/bauhaus/admin.php` file.</p>
+				'
+			]
 		]
 	],
 

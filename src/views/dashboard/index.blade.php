@@ -18,8 +18,28 @@
 		</div>
 	@endif
 
-	@foreach ($blocks as $block)
-		{{ $block->render() }}
-	@endforeach
+	<div class="row">
+		<div class="col-sm-12">
+			{{ KraftHaus\Bauhaus\Block\Builder::render('top') }}
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-4">
+			{{ KraftHaus\Bauhaus\Block\Builder::render('left') }}
+		</div>
+		<div class="col-sm-4">
+			{{ KraftHaus\Bauhaus\Block\Builder::render('mid') }}
+		</div>
+		<div class="col-sm-4">
+			{{ KraftHaus\Bauhaus\Block\Builder::render('right') }}
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-4">
+			{{ KraftHaus\Bauhaus\Block\Builder::render('bottom') }}
+		</div>
+	</div>
 
 @stop
