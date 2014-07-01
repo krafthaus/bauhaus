@@ -37,14 +37,31 @@ class Builder
 		$this->items = Config::get('bauhaus::admin.dashboard');
 	}
 
-	public function build()
+	public function build($position)
 	{
-		foreach ($this->items as $key => $item) {
-			$type = array_shift($item);
-			$this->items[$key] = new $type($item);
+		$items = [];
+
+		if (isset($this->items[$position])) {
+			foreach ($this->items[$position] as $key => $item) {
+				$type = array_shift($item);
+				$items[$key] = new $type($item);
+			}
 		}
 
-		return $this->items;
+		return $items;
+	}
+
+	public static function render($position)
+	{
+		$self  = new self;
+		$items = $self->build($position);
+
+		$render = '';
+		foreach ($items as $item) {
+			$render.= $item->render();
+		}
+
+		return $render;
 	}
 
 }

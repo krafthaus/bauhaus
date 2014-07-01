@@ -28,10 +28,7 @@ class DashboardController extends Controller
 	 */
 	public function index()
 	{
-		$blocks = app('krafthaus.bauhaus.block')->build();
-
-		return View::make('krafthaus/bauhaus::dashboard.index')
-			->with('blocks', $blocks);
+		return View::make('krafthaus/bauhaus::dashboard.index');
 	}
 
 }
