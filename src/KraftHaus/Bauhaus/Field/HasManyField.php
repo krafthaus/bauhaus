@@ -81,4 +81,16 @@ class HasManyField extends RelationField
 		}
 	}
 
+	/**
+	 * Override the getAttributes method to add the multiple attribute.
+	 *
+	 * @access public
+	 * @return array
+	 */
+	public function getAttributes()
+	{
+		$this->attribute('multiple', true);
+		return $this->attributes;
+	}
+
 }

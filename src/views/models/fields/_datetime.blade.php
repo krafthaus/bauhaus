@@ -2,7 +2,7 @@
 	<label class="col-sm-3 control-label">{{ $field->getLabel() }}</label>
 	<div class="col-sm-9">
 		<div class="input-group date field-datetime" data-date-format="YYYY-MM-DD hh:mm:ss">
-			{{ Form::text($field->getName(), $field->getValue(), ['class' => 'form-control']) }}
+			{{ Form::text($field->getName(), $field->getValue(), $field->getAttributes()) }}
 			<span class="input-group-addon">
 				<i class="fa fa-calendar"></i>
 			</span>

@@ -75,6 +75,14 @@ abstract class BaseField
 	protected $placeholder = null;
 
 	/**
+	 * Holds the field attributes.
+	 * @var array
+	 */
+	protected $attributes = [
+		'class' => 'form-control'
+	];
+
+	/**
 	 * Holds the field tab name.
 	 * @var null|string
 	 */
@@ -322,8 +330,7 @@ abstract class BaseField
 	 */
 	public function placeholder($placeholder)
 	{
-		$this->placeholder = $placeholder;
-		return $this;
+		return $this->attribute('placeholder', $placeholder);
 	}
 
 	/**
@@ -335,6 +342,59 @@ abstract class BaseField
 	public function getPlaceholder()
 	{
 		return $this->placeholder;
+	}
+
+	/**
+	 * Set an attribute on this field.
+	 * Like class or id.
+	 *
+	 * @param  string $attribute
+	 * @param  string $value
+	 *
+	 * @access public
+	 * @return BaseField
+	 */
+	public function attribute($attribute, $value)
+	{
+		$this->attributes[$attribute] = (string) $value;
+		return $this;
+	}
+
+	/**
+	 * Check if a given attribute is set on this field.
+	 *
+	 * @param  string $attribute
+	 *
+	 * @access public
+	 * @return bool
+	 */
+	public function hasAttribute($attribute)
+	{
+		return isset($this->attributes[$attribute]);
+	}
+
+	/**
+	 * Get a given attribute for this field.
+	 *
+	 * @param  string $attribute
+	 *
+	 * @access public
+	 * @return mixed
+	 */
+	public function getAttribute($attribute)
+	{
+		return $this->attributes[$attribute];
+	}
+
+	/**
+	 * Return all the field attributes.
+	 *
+	 * @access public
+	 * @return array
+	 */
+	public function getAttributes()
+	{
+		return $this->attributes;
 	}
 
 	/**

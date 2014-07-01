@@ -1,7 +1,7 @@
 <div class="form-group {{ $errors->has($field->getName()) ? 'has-error' : '' }}">
 	<label class="col-sm-3 control-label">{{ $field->getLabel() }}</label>
 	<div class="col-sm-{{ $field->getInline() ? 6 : 9 }}">
-		{{ Form::select($field->getName() . '_id', $items, $field->getValue(), ['class' => 'form-control']) }}
+		{{ Form::select($field->getName() . '_id', $items, $field->getValue(), $field->getAttributes()) }}
 		@if ($field->getDescription())
 			<p class="help-block">{{ $field->getDescription() }}</p>
 		@endif
