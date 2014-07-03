@@ -12,7 +12,10 @@
 return [
 
 	'success' => [
-		'title' => 'Success!'
+		'title'         => 'Success!',
+		'model-created' => 'Created a new :model',
+		'model-updated' => 'Updated a :model',
+		'model-deleted' => 'Deleted :count :model'
 	],
 
 	'warning' => [
@@ -20,7 +23,8 @@ return [
 	],
 
 	'error' => [
-		'title' => 'Whoops!'
+		'title'              => 'Whoops!',
+		'validations-errors' => 'Validation errors'
 	]
 
 ];

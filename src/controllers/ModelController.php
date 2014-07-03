@@ -84,14 +84,17 @@ class ModelController extends Controller
 
 		// Check validation errors
 		if (get_class($result) == 'Illuminate\Validation\Validator') {
-			Session::flash('message.error', 'Validation errors');
+			Session::flash('message.error', trans('bauhaus::messages.error.validation-errors'));
 			return Redirect::route('admin.model.create', [$name])
 				->withInput()
 				->withErrors($result);
 		}
 
 		// Set the flash message
-		Session::flash('message.success', sprintf('Created a new %s.', $model->getSingularName()));
+		Session::flash('message.success', trans('bauhaus::messages.success.model-created', [
+			'model' => $model->getSingularName()
+		]));
+		
 		return Redirect::route('admin.model.index', $name);
 	}
 
@@ -135,14 +138,17 @@ class ModelController extends Controller
 
 		// Check validation errors
 		if (get_class($result) == 'Illuminate\Validation\Validator') {
-			Session::flash('message.error', 'Validation errors');
+			Session::flash('message.error', trans('bauhaus::messages.error.validation-errors'));
 			return Redirect::route('admin.model.edit', [$name, $id])
 				->withInput()
 				->withErrors($result);
 		}
 
 		// Set the flash message
-		Session::flash('message.success', sprintf('Updated the a %s.', $model->getSingularName()));
+		Session::flash('message.success', trans('bauhaus::messages.success.model-updated', [
+			'model' => $model->getSingularName()
+		]));
+
 		return Redirect::route('admin.model.index', $name);
 	}
 
@@ -173,10 +179,12 @@ class ModelController extends Controller
 				->destroy();
 		}
 
-		$string = (count($items) > 1 ? 'multiple' : 'one');
-
 		// Set the flash message
-		Session::flash('message.success', sprintf('Deleted %s %s.', $string, $model->getPluralName()));
+		Session::flash('message.success', trans('bauhaus::messages.success.model-deleted', [
+			'count' => (count($items) > 1 ? 'multiple' : 'one'),
+			'model' => $model->getPluralName()
+		]));
+
 		return Redirect::route('admin.model.index', $name);
 	}
 
