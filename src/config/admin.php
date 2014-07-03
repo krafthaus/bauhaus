@@ -77,6 +77,21 @@ return [
 	],
 
 	/**
+	 * Custom asset files.
+	 * Use these settings to ad custom asset files to the layout (css / js).
+	 */
+	'assets' => [
+		'stylesheets' => [
+			// Custom stylesheet file.
+			// asset('stylesheets/custom-admin.css')
+		],
+		'javascripts' => [
+			// Custom javascript file.
+			// asset('javascripts/custom-admin.js')
+		]
+	],
+
+	/**
 	 * Global date/time formatting.
 	 * @var array
 	 */
