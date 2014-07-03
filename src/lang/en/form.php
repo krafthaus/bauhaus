@@ -11,8 +11,12 @@
 
 return [
 
+	'title' => [
+		'edit-model'   => 'Edit :model',
+		'create-model' => 'Create new :model'
+	],
+
 	'button' => [
-		'edit-model'    => 'Edit :model',
 		'back-to-index' => 'Back to :model'
 	],
 

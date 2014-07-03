@@ -3,7 +3,7 @@
 @section('subheader')
 	<div class="row">
 		<div class="col-sm-6">
-			<h3>{{ trans('bauhaus::form.button.edit-model', ['model' => $model->getSingularName()]) }}</h3>
+			<h3>{{ trans('bauhaus::form.title.edit-model', ['model' => $model->getSingularName()]) }}</h3>
 		</div>
 		<div class="col-sm-6 text-right">
 			<a href="{{ route('admin.model.index', $name) }}" class="btn btn-default btn-rounded">

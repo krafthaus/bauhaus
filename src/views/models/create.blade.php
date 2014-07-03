@@ -3,12 +3,12 @@
 @section('subheader')
 	<div class="row">
 		<div class="col-sm-6">
-			<h3>Create new {{ $model->getSingularName() }}</h3>
+			<h3>{{ trans('bauhaus::form.title.create-model', ['model' => $model->getSingularName()]) }}</h3>
 		</div>
 		<div class="col-sm-6 text-right">
 			<a href="{{ route('admin.model.index', $name) }}" class="btn btn-default btn-rounded">
 				<i class="fa fa-long-arrow-left"></i>
-				Back to {{ $model->getPluralName() }}
+				{{ trans('bauhaus::form.button.back-to-index', ['model' => $model->getPluralName()]) }}
 			</a>
 		</div>
 	</div>
@@ -19,7 +19,7 @@
 	@if (Session::has('message.error'))
 		<div class="alert alert-danger">
 			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-			<strong>Whoops!</strong>
+			<strong>{{ trans('bauhaus::messages.error.title') }}</strong>
 			{{ Session::get('message.error') }}
 		</div>
 	@endif
@@ -33,7 +33,9 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close">&times;</button>
-					<h4 class="modal-title">Loading</h4>
+					<h4 class="modal-title">
+						{{ trans('bauhaus::form.modal.loading') }}
+					</h4>
 				</div>
 			</div>
 		</div>
