@@ -12,6 +12,7 @@
 return [
 
 	'list-title'        => 'List :model',
+	'filter-title'      => 'Filter :model',
 	'browsing-filtered' => 'You are currently browsing filtered results.',
 	'no-filter-results' => 'The filter query did not return any results.',
 	'no-items-yet'      => 'You have no :model created yet.',

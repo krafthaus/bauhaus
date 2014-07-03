@@ -45,7 +45,7 @@
 		@endif
 
 		<div class="col-sm-12">
-			<input type="submit" class="btn btn-default btn-red btn-rounded" value="Save {{ $model->getSingularName() }}">
+			<input type="submit" class="btn btn-default btn-red btn-rounded" value="{{ trans('bauhaus::form.button.save', ['model' => $model->getSingularName()]) }}">
 		</div>
 	</div>
 </div>

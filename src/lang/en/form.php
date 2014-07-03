@@ -17,7 +17,8 @@ return [
 	],
 
 	'button' => [
-		'back-to-index' => 'Back to :model'
+		'back-to-index' => 'Back to :model',
+		'save'          => 'Save :model'
 	],
 
 	'modal' => [

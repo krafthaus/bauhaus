@@ -1,7 +1,7 @@
 <div class="col-sm-4">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			Filter {{ $model->getPluralName() }}
+			<h3>{{ trans('bauhaus::index.filter-title', ['model' => $model->getPluralName()]) }}</h3>
 		</div>
 		<div class="panel-body">
 			{{ Form::open(['method' => 'get', 'class' => 'form-horizontal']) }}
