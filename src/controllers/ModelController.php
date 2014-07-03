@@ -94,7 +94,7 @@ class ModelController extends Controller
 		Session::flash('message.success', trans('bauhaus::messages.success.model-created', [
 			'model' => $model->getSingularName()
 		]));
-		
+
 		return Redirect::route('admin.model.index', $name);
 	}
 
