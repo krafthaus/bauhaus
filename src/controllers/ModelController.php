@@ -188,4 +188,17 @@ class ModelController extends Controller
 		return Redirect::route('admin.model.index', $name);
 	}
 
+	public function export($name, $type)
+	{
+		$model = sprintf('\\%sAdmin', Str::studly($name));
+		$model = new $model;
+
+		$model->buildList();
+		$model->buildFilters();
+		$model->buildScopes();
+
+		return $model->getExportBuilder()
+			->export($type);
+	}
+
 }

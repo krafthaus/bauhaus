@@ -18,6 +18,7 @@ use KraftHaus\Bauhaus\Mapper\ScopeMapper;
 use KraftHaus\Bauhaus\Builder\ListBuilder;
 use KraftHaus\Bauhaus\Builder\FormBuilder;
 use KraftHaus\Bauhaus\Builder\FilterBuilder;
+use KraftHaus\Bauhaus\Export\Builder as ExportBuilder;
 use Illuminate\Support\Str;
 
 /**
@@ -600,6 +601,18 @@ class Admin
 	public function getScopeBuilder()
 	{
 		return $this->scopeBuilder;
+	}
+
+	/**
+	 * Get a new export builder instance.
+	 *
+	 * @access public
+	 * @return ExportBuilder
+	 */
+	public function getExportBuilder()
+	{
+		return (new ExportBuilder())
+			->setListBuilder($this->getListBuilder());
 	}
 
 }
