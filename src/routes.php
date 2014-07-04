@@ -55,7 +55,7 @@ Route::group(['prefix' => Config::get('bauhaus::admin.uri')], function () {
 		Route::get('model/{model}/export/{type}', [
 			'as'   => 'admin.model.export',
 			'uses' => 'KraftHaus\Bauhaus\ModelController@export'
-		]);
+		])->where('type', 'json|xml|csv|xls');
 
 		// extra route includes
 		require_once __DIR__ . '/routes/modals.php';
