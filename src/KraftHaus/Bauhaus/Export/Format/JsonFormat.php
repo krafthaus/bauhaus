@@ -37,7 +37,10 @@ class JsonFormat extends BaseFormat
 			}
 		}
 
-		return Response::json($result);
+		return Response::make(Response::json($result)->getContent(), 200, [
+			'Content-Type'        => 'application/json',
+			'Content-Disposition' => 'attachment; filename="export.json"',
+		]);
 	}
 
 }
