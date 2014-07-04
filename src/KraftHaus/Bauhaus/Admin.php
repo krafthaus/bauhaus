@@ -125,6 +125,17 @@ class Admin
 	protected $scopeBuilder;
 
 	/**
+	 * Holds the export types.
+	 * @var array
+	 */
+	protected $exportTypes = [
+		'json',
+		'xml',
+		'csv',
+		'xls'
+	];
+
+	/**
 	 * Public class constructor.
 	 *
 	 * @access public
@@ -601,6 +612,31 @@ class Admin
 	public function getScopeBuilder()
 	{
 		return $this->scopeBuilder;
+	}
+
+	/**
+	 * Set the export types array.
+	 *
+	 * @param  array $exportTypes
+	 *
+	 * @access public
+	 * @return Admin
+	 */
+	public function setExportTypes(array $exportTypes)
+	{
+		$this->exportTypes = $exportTypes;
+		return $this;
+	}
+
+	/**
+	 * Get the export types array.
+	 *
+	 * @access public
+	 * @return array
+	 */
+	public function getExportTypes()
+	{
+		return $this->exportTypes;
 	}
 
 	/**

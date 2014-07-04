@@ -116,10 +116,11 @@
 											Export <span class="caret"></span>
 										</button>
 										<ul class="dropdown-menu" role="menu">
-											<li><a href="{{ route('admin.model.export', [$name, 'json']) }}">JSON</a></li>
-<!--											<li><a href="{{ route('admin.model.export', [$name, 'xml']) }}">XML</a></li>-->
-											<li><a href="{{ route('admin.model.export', [$name, 'csv']) }}">CSV</a></li>
-<!--											<li><a href="{{ route('admin.model.export', [$name, 'xls']) }}">XLS</a></li>-->
+											@foreach ($model->getExportTypes() as $exportType)
+											<li>
+												<a href="{{ route('admin.model.export', [$name, $exportType]) }}">{{ $exportType }}</a>
+											</li>
+											@endforeach
 										</ul>
 									</div>
 								</td>
