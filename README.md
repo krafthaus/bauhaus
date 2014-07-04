@@ -6,7 +6,7 @@ Bauhaus - The missing Laravel 4 Admin Generator
 [![Total Downloads](https://poser.pugx.org/krafthaus/bauhaus/downloads.png)](https://packagist.org/packages/krafthaus/bauhaus)
 [![License](https://poser.pugx.org/krafthaus/bauhaus/license.png)](https://packagist.org/packages/krafthaus/bauhaus)
 
-Bauhaus is an admin generator / builder / interface for [Laravel](http://laravel.com).
+Bauhaus is an admin generator / builder / interface for [Laravel](http://laravel.com) with scoping, exporting and filtering functionality.
 With Bauhaus you can easily create visual stunning lists, forms and filters for your models.
 
 Bauhaus is currently available in the following languages:
