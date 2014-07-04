@@ -23,6 +23,18 @@ class JsonFormat extends BaseFormat
 {
 
 	/**
+	 * Holds the content type.
+	 * @var string
+	 */
+	protected $contentType = 'text/csv';
+
+	/**
+	 * Holds the filename.
+	 * @var string
+	 */
+	protected $filename = 'export.json';
+
+	/**
 	 * Create the json response.
 	 *
 	 * @access public
@@ -37,10 +49,7 @@ class JsonFormat extends BaseFormat
 			}
 		}
 
-		return Response::make(Response::json($result)->getContent(), 200, [
-			'Content-Type'        => 'application/json',
-			'Content-Disposition' => 'attachment; filename="export.json"',
-		]);
+		return $this->createResponse(Response::json($result)->getContent());
 	}
 
 }

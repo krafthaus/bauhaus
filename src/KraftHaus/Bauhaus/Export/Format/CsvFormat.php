@@ -12,7 +12,6 @@ namespace KraftHaus\Bauhaus\Export\Format;
  */
 
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Response;
 use KraftHaus\Bauhaus\Export\Format\BaseFormat;
 
 /**
@@ -21,6 +20,18 @@ use KraftHaus\Bauhaus\Export\Format\BaseFormat;
  */
 class CsvFormat extends BaseFormat
 {
+
+	/**
+	 * Holds the content-type.
+	 * @var string
+	 */
+	protected $contentType = 'text/csv';
+
+	/**
+	 * Holds the filename.
+	 * @var string
+	 */
+	protected $filename = 'export.csv';
 
 	/**
 	 * Create the json response.
@@ -48,10 +59,7 @@ class CsvFormat extends BaseFormat
 			$result.= implode(',', $row) . PHP_EOL;
 		}
 
-		return Response::make(rtrim($result, "\n"), 200, [
-			'Content-Type'        => 'text/csv',
-			'Content-Disposition' => 'attachment; filename="export.csv"',
-		]);
+		return $this->createResponse($result);
 	}
 
 }
