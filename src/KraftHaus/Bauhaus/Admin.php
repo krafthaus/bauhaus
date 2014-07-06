@@ -53,6 +53,12 @@ class Admin
 	protected $pluralName = null;
 
 	/**
+	 * Holds the master view string.
+	 * @var string
+	 */
+	protected $masterViewString = 'krafthaus/bauhaus::layouts.master';
+
+	/**
 	 * Holds the list view string.
 	 * @var string
 	 */

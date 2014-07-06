@@ -1,4 +1,4 @@
-@extends('krafthaus/bauhaus::layouts.master')
+@extends($model->getView('master'))
 
 @section('subheader')
 	<div class="row">
