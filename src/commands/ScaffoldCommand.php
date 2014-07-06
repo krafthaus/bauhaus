@@ -34,7 +34,7 @@ class ScaffoldCommand extends Command
 	 * The console command description.
 	 * @var string
 	 */
-	protected $description = '';
+	protected $description = 'Creates initial bauhaus models';
 
 	/**
 	 * Execute the console command.
