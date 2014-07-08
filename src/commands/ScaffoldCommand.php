@@ -65,6 +65,8 @@ class ScaffoldCommand extends Command
 		$stub = file_get_contents(__DIR__ . '/stubs/admin.txt');
 		$stub = str_replace('$NAME$', Str::studly($model), $stub);
 		file_put_contents(app_path($directory . '/' . ucfirst($model) . 'Admin.php'), $stub);
+
+		$this->call('dump-autoload');
 	}
 
 	/**
