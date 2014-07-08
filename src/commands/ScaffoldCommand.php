@@ -77,7 +77,9 @@ class ScaffoldCommand extends Command
 	 */
 	protected function getOptions()
 	{
-		return [['model', null, InputOption::VALUE_REQUIRED, 'An example option.', null]];
+		return [
+			['model', null, InputOption::VALUE_REQUIRED, 'An example option.', null]
+		];
 	}
 
 }
