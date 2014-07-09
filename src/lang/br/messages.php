@@ -24,7 +24,7 @@ return [
 
 	'error' => [
 		'title'              => 'Whoops!',
-		'validations-errors' => 'Validation errors'
+		'validation-errors' => 'Validation errors'
 	]
 
 ];
