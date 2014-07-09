@@ -23,8 +23,8 @@ return [
 	],
 
 	'error' => [
-		'title'              => 'Oops!',
-		'validations-errors' => 'Validatie fouten'
+		'title'             => 'Oops!',
+		'validation-errors' => 'Validatie fouten'
 	]
 
 ];
