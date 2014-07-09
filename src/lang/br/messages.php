@@ -23,8 +23,8 @@ return [
 	],
 
 	'error' => [
-		'title'              => 'Whoops!',
-		'validation-errors' => 'Validation errors'
+		'title'              => 'Erro!',
+		'validation-errors' => 'Preencha os campos selecionados'
 	]
 
 ];
