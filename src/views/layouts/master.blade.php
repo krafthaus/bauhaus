@@ -40,12 +40,12 @@
 	</header>
 
 	<section class="sub-header">
-		<div class="container">
+		<div class="container-fluid">
 			@yield('subheader')
 		</div>
 	</section>
 
-	<div class="container">
+	<div class="container-fluid">
 		@yield('content')
 	</div>
 
