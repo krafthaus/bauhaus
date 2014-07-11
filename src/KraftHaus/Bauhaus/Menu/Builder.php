@@ -91,9 +91,14 @@ class Builder
 		$html = '';
 
 		foreach ($menu as $value) {
+			$icon = '';
+			if (isset($value['icon'])) {
+				$icon = sprintf('<i class="fa fa-%s"></i> ', $value['icon']);
+			}
+
 			if (isset($value['children'])) {
 				$html.= '<li class="dropdown">';
-				$html.= sprintf('<a href="#" class="dropdown-toggle" data-toggle="dropdown">%s<b class="caret"></b></a>', $value['title']);
+				$html.= sprintf('<a href="#" class="dropdown-toggle" data-toggle="dropdown">%s%s<b class="caret"></b></a>', $icon, $value['title']);
 				$html.= '<ul class="dropdown-menu">';
 				$html.= $this->buildMenu($value['children']);
 				$html.= '</ul>';
@@ -115,7 +120,7 @@ class Builder
 			} elseif (isset($value['image'])) {
 				$html.= sprintf('<li><img src="%s" class="navbar-image"></li>', $value['image']);
 			} else {
-				$html.= sprintf('<li><a href="%s">%s</a></li>', $url, $value['title']);
+				$html.= sprintf('<li><a href="%s">%s%s</a></li>', $url, $icon, $value['title']);
 			}
 		}
 
