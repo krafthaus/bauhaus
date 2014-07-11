@@ -5687,8 +5687,7 @@ a, td, button, input[type=submit] {
 .navbar-brand {
   font-size: 13px;
   font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 1px; }
+  background: rgba(255, 255, 255, 0.1); }
 
 section.sub-header {
   margin-bottom: 35px;
