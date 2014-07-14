@@ -11,7 +11,6 @@ namespace KraftHaus\Bauhaus\Export\Format;
  * file that was distributed with this source code.
  */
 
-use Illuminate\Http\JsonResponse;
 use KraftHaus\Bauhaus\Export\Format\BaseFormat;
 
 /**
