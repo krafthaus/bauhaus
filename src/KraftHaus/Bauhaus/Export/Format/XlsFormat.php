@@ -30,7 +30,7 @@ class XlsFormat extends BaseFormat
 	 * Holds the filename.
 	 * @var string
 	 */
-	protected $filename = 'export.xls';
+	protected $filename = 'export';
 
 	/**
 	 * Create the json response.
