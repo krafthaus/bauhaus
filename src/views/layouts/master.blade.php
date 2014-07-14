@@ -39,14 +39,23 @@
 		</nav>
 	</header>
 
-	<section class="sub-header">
-		<div class="container-fluid">
-			@yield('subheader')
-		</div>
-	</section>
-
 	<div class="container-fluid">
-		@yield('content')
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				@yield('sidebar')
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<section class="sub-header">
+					<div class="container-fluid">
+						@yield('subheader')
+					</div>
+				</section>
+
+				<div class="container-fluid">
+					@yield('content')
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<script src="http://eonasdan.github.io/bootstrap-datetimepicker/scripts/moment.js"></script>

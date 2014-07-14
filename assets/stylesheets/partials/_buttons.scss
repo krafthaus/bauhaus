@@ -10,10 +10,19 @@
 		}
 	}
 
+	&.btn-blue {
+		background: #4099FA;
+		color: #fff;
+
+		&:hover {
+			background: darken(#4099FA, 5%);
+		}
+	}
+
 	&.btn-rounded {
 		font-weight: bold;
 		font-size: 12px;
 		letter-spacing: 1px;
-		border-radius: 25px;
+		border-radius: 6px;
 	}
 }

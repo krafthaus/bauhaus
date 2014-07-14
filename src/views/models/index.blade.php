@@ -2,18 +2,54 @@
 
 @section('subheader')
 	<div class="row">
-		<div class="col-sm-6">
+		<div class="col-sm-12">
 			<h3>
 				{{ trans('bauhaus::index.list-title', ['model' => $model->getPluralName()]) }}
 			</h3>
 		</div>
-		<div class="col-sm-6 text-right">
-			<a href="{{ route('admin.model.create', $name) }}" class="btn btn-default btn-red btn-rounded">
+	</div>
+@stop
+
+@section('sidebar')
+	<ul class="nav nav-sidebar">
+		<li>
+			<a href="{{ route('admin.model.index', $name) }}">
+				<i class="fa fa-bars"></i>
+				Overview
+			</a>
+		</li>
+		<li>
+			<a href="{{ route('admin.model.create', $name) }}">
 				<i class="fa fa-plus"></i>
 				{{ trans('bauhaus::index.button.create-new', ['model' => $model->getSingularName()]) }}
 			</a>
-		</div>
-	</div>
+		</li>
+	</ul>
+
+	@if ($model->getScopeMapper()->hasScopes())
+		<ul class="nav nav-sidebar">
+			<li class="title">
+				<i class="fa fa-search"></i>
+				Scopes
+			</li>
+			@foreach ($model->getScopeMapper()->getScopes() as $scope)
+				<li>
+					<a href="?_scope={{ $scope->getScope() }}&_filtering=✓" class="inset">
+						{{ $scope->getLabel() }}
+					</a>
+				</li>
+			@endforeach
+		</ul>
+	@endif
+
+	<ul class="nav nav-sidebar nav-bottom">
+		<li>
+			<a href="#">
+				<i class="fa fa-share-square-o"></i>
+				Export ...
+			</a>
+		</li>
+	</ul>
 @stop
 
 @section('content')
@@ -34,26 +70,11 @@
 		</div>
 	@endif
 
-	@if ($model->getScopeMapper()->hasScopes())
-		<div class="row scope-row">
-			<div class="col-sm-12">
-				<p>
-					@foreach ($model->getScopeMapper()->getScopes() as $scope)
-					<a href="?_scope={{ $scope->getScope() }}&_filtering=✓" class="btn btn-default btn-rounded">
-						{{ $scope->getLabel() }}
-					</a>
-					@endforeach
-				</p>
-			</div>
-		</div>
-	@endif
-
 	@if (count($model->getListBuilder()->getResult()) == 0)
 		<div class="row">
 			<div class="col-sm-4 col-sm-offset-4">
 				<div class="panel panel-default">
 					<div class="panel-body text-center">
-
 						@if (Input::has('_filtering'))
 							<p>{{ trans('bauhaus::index.no-filter-results', ['model' => $model->getPluralName()]) }}</p>
 							<a class="btn btn-default btn-rounded" href="{{ route('admin.model.index', $name) }}">

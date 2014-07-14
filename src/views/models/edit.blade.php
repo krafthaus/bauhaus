@@ -2,16 +2,27 @@
 
 @section('subheader')
 	<div class="row">
-		<div class="col-sm-6">
+		<div class="col-sm-12">
 			<h3>{{ trans('bauhaus::form.title.edit-model', ['model' => $model->getSingularName()]) }}</h3>
 		</div>
-		<div class="col-sm-6 text-right">
-			<a href="{{ route('admin.model.index', $name) }}" class="btn btn-default btn-rounded">
+	</div>
+@stop
+
+@section('sidebar')
+	<ul class="nav nav-sidebar">
+		<li>
+			<a href="{{ route('admin.model.index', $name) }}">
 				<i class="fa fa-long-arrow-left"></i>
 				{{ trans('bauhaus::form.button.back-to-index', ['model' => $model->getPluralName()]) }}
 			</a>
-		</div>
-	</div>
+		</li>
+		<li>
+			<a href="{{ route('admin.model.create', $name) }}">
+				<i class="fa fa-plus"></i>
+				{{ trans('bauhaus::index.button.create-new', ['model' => $model->getSingularName()]) }}
+			</a>
+		</li>
+	</ul>
 @stop
 
 @section('content')

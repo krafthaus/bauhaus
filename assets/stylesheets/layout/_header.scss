@@ -29,18 +29,16 @@
 }
 
 .navbar-brand {
-	font-size: 13px;
 	font-weight: bold;
 	background: rgba(255, 255, 255, .1);
 }
 
 section.sub-header {
 	margin-bottom: 35px;
-	padding: 15px 15px;
-	border-bottom: 1px solid #dfdfdf;
-	background: #F3F3F3;
+	padding: 15px 0;
 
 	h3 {
 		margin: 0;
+		font-weight: normal;
 	}
 }
