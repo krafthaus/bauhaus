@@ -11,6 +11,7 @@ namespace KraftHaus\Bauhaus;
  * file that was distributed with this source code.
  */
 
+use Illuminate\Support\Facades\Config;
 use KraftHaus\Bauhaus\Mapper\ListMapper;
 use KraftHaus\Bauhaus\Mapper\FormMapper;
 use KraftHaus\Bauhaus\Mapper\FilterMapper;
@@ -129,17 +130,6 @@ class Admin
 	 * @var ScopeBuilder
 	 */
 	protected $scopeBuilder;
-
-	/**
-	 * Holds the export types.
-	 * @var array
-	 */
-	protected $exportTypes = [
-		'json',
-		'xml',
-		'csv',
-		'xls'
-	];
 
 	/**
 	 * Public class constructor.
@@ -642,7 +632,11 @@ class Admin
 	 */
 	public function getExportTypes()
 	{
-		return $this->exportTypes;
+		if (isset($this->exportTypes)) {
+			return $this->exportTypes;
+		}
+
+		return Config::get('bauhaus::admin.export-types');
 	}
 
 	/**

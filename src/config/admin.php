@@ -99,6 +99,13 @@ return [
 		'date'     => 'Y-m-d',
 		'time'     => 'H:i:s',
 		'datetime' => 'Y-m-d H:i:s'
+	],
+
+	'export-types' => [
+		'json',
+		'xml',
+		'csv',
+		'xls'
 	]
 
 ];
