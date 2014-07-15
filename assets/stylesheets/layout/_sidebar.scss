@@ -31,10 +31,11 @@
 		width: 100%;
 		background: #eee;
 
-		a {
-			padding-top: 10px;
-			padding-bottom: 10px;
-			font-weight: bold;
+		.btn-group,
+		button {
+			width: 100%;
+			border: none;
+			margin-bottom: 0;
 		}
 	}
 

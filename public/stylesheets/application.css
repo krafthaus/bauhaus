@@ -5724,10 +5724,10 @@ section.sub-header {
     margin-bottom: 0;
     width: 100%;
     background: #eee; }
-    .nav-sidebar.nav-bottom a {
-      padding-top: 10px;
-      padding-bottom: 10px;
-      font-weight: bold; }
+    .nav-sidebar.nav-bottom .btn-group, .nav-sidebar.nav-bottom button {
+      width: 100%;
+      border: none;
+      margin-bottom: 0; }
   .nav-sidebar li {
     text-shadow: 1px 2px 0 #fff; }
     .nav-sidebar li a {

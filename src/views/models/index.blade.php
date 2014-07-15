@@ -44,10 +44,20 @@
 
 	<ul class="nav nav-sidebar nav-bottom">
 		<li>
-			<a href="#">
-				<i class="fa fa-share-square-o"></i>
-				Export ...
-			</a>
+			<!-- Single button -->
+			<div class="btn-group dropup">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+					<i class="fa fa-share-square-o"></i>
+					Export ...
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					@foreach ($model->getExportTypes() as $exportType)
+					<li>
+						<a href="{{ route('admin.model.export', [$name, $exportType]) }}">{{ $exportType }}</a>
+					</li>
+					@endforeach
+				</ul>
+			</div>
 		</li>
 	</ul>
 @stop
@@ -131,19 +141,6 @@
 							<tr>
 								<td colspan="{{ count($model->getListMapper()->getFields()) + 1 }}">
 									<input type="submit" class="btn btn-default btn-rounded" value="{{ trans('bauhaus::index.button.delete-selected', ['model' => $model->getPluralName()]) }}">
-
-									<div class="btn-group">
-										<button type="button" class="btn btn-default btn-rounded dropdown-toggle" data-toggle="dropdown">
-											Export <span class="caret"></span>
-										</button>
-										<ul class="dropdown-menu" role="menu">
-											@foreach ($model->getExportTypes() as $exportType)
-											<li>
-												<a href="{{ route('admin.model.export', [$name, $exportType]) }}">{{ $exportType }}</a>
-											</li>
-											@endforeach
-										</ul>
-									</div>
 								</td>
 								<td align="right">
 									{{ $model->getListBuilder()->getPaginator()->links() }}
