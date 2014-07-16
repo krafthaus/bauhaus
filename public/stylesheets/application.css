@@ -5650,10 +5650,8 @@ button.close {
 
 body {
   padding-top: 50px;
+  background: #f7f9f8;
   -webkit-font-smoothing: antialiased; }
-
-a, td, button, input[type=submit] {
-  transition: all 0.15s; }
 
 .navbar-default {
   border: none;

@@ -31,6 +31,8 @@ class BelongsToField extends RelationField
 	 */
 	public function render()
 	{
+		$this->attribute('multiple', true);
+
 		if ($this->getDisplayField() === null) {
 			throw new \InvalidArgumentException(sprintf('Please provide a display field for the `%s` relation via the display(); method.', $this->getName()));
 		}
