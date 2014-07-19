@@ -13,7 +13,7 @@ With Bauhaus you can easily create visual stunning lists, forms and filters for 
 Use Bauhaus if you want:
 - Create list and forms easily tightly coupled on your models
 - A nice and clean admin interface
-- ...
+- and much, much more
 
 Bauhaus is currently available in the following languages:
 - English
