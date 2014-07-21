@@ -47,13 +47,6 @@ class ScaffoldCommand extends Command
 		$model = $this->option('model');
 		$plural = Str::plural($model);
 
-		// Create the migration
-		$this->call('migrate:make', [
-			'name'     => sprintf('create_%s_table', $plural),
-			'--table'  => $plural,
-			'--create' => true
-		]);
-
 		// Create the model
 		$stub = file_get_contents(__DIR__ . '/stubs/model.txt');
 		$stub = str_replace('$NAME$', Str::studly($model), $stub);
@@ -66,7 +59,12 @@ class ScaffoldCommand extends Command
 		$stub = str_replace('$NAME$', Str::studly($model), $stub);
 		file_put_contents(app_path($directory . '/' . ucfirst($model) . 'Admin.php'), $stub);
 
-		$this->call('dump-autoload');
+		// Create the migration
+		$this->call('migrate:make', [
+			'name'     => sprintf('create_%s_table', $plural),
+			'--table'  => $plural,
+			'--create' => true
+		]);
 	}
 
 	/**
