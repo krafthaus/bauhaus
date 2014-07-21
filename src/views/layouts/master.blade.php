@@ -58,6 +58,14 @@
 		</div>
 	</div>
 
+	<script src="http://eonasdan.github.io/bootstrap-datetimepicker/scripts/moment.js"></script>
+	<script src="{{ asset('packages/krafthaus/bauhaus/javascripts/application.min.js') }}"></script>
+	@yield('scripts')
+
+	@foreach (Config::get('bauhaus::admin.assets.javascripts') as $javascript)
+		<script src="{{ $javascript }}"></script>
+	@endforeach
+
 	<div class="modal fade" id="field-modal">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -70,14 +78,6 @@
 			</div>
 		</div>
 	</div>
-
-	<script src="http://eonasdan.github.io/bootstrap-datetimepicker/scripts/moment.js"></script>
-	<script src="{{ asset('packages/krafthaus/bauhaus/javascripts/application.min.js') }}"></script>
-	@yield('scripts')
-
-	@foreach (Config::get('bauhaus::admin.assets.javascripts') as $javascript)
-		<script src="{{ $javascript }}"></script>
-	@endforeach
 
 </body>
 </html>
