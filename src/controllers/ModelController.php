@@ -173,6 +173,10 @@ class ModelController extends Controller
 		$model = sprintf('\\%sAdmin', Str::studly($name));
 		$model = new $model;
 
+		if (count($items) === 0) {
+			return Redirect::route('admin.model.index', $name);
+		}
+
 		foreach ($items as $id => $item) {
 			$model->buildForm($id)
 				->getFormBuilder()
