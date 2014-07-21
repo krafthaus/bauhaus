@@ -187,6 +187,15 @@ class ModelController extends Controller
 		return Redirect::route('admin.model.index', $name);
 	}
 
+	/**
+	 * Export the current listing of the resources.
+	 *
+	 * @param  string $name
+	 * @param  string $type
+	 *
+	 * @access public
+	 * @return Response
+	 */
 	public function export($name, $type)
 	{
 		$model = sprintf('\\%sAdmin', Str::studly($name));
