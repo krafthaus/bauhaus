@@ -13,3 +13,8 @@ Route::get('modal/belongs_to/{model}/create', [
 	'as'   => 'modal.belongs_to.create',
 	'uses' => 'KraftHaus\Bauhaus\Modal\FieldBelongsToController@create'
 ]);
+
+Route::get('modal/delete/{model}', [
+	'as'   => 'modal.delete',
+	'uses' => 'KraftHaus\Bauhaus\Modal\ModelController@delete'
+]);

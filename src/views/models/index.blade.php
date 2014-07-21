@@ -104,7 +104,7 @@
 	@else
 		<div class="row">
 			<div class="col-sm-{{ $model->getFilterBuilder()->getResult()->getFields() ? 8 : 12 }}">
-				{{ Form::open(['method' => 'POST', 'route' => ['admin.model.multi-destroy', $name]]) }}
+				{{ Form::open(['method' => 'POST', 'route' => ['admin.model.multi-destroy', $name], 'id' => 'delete-multi-form']) }}
 					<table class="table table-hover">
 						<thead>
 							<tr>
@@ -140,7 +140,9 @@
 						<tfoot>
 							<tr>
 								<td colspan="{{ count($model->getListMapper()->getFields()) + 1 }}">
-									<input type="submit" class="btn btn-default btn-rounded" value="{{ trans('bauhaus::index.button.delete-selected', ['model' => $model->getPluralName()]) }}">
+									<a href="{{ route('modal.delete', $name) }}" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#field-modal">
+										{{ trans('bauhaus::index.button.delete-selected', ['model' => $model->getPluralName()]) }}
+									</a>
 								</td>
 								<td align="right">
 									{{ $model->getListBuilder()->getPaginator()->links() }}
