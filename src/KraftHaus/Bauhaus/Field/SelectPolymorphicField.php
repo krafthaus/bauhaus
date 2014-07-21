@@ -65,6 +65,11 @@ class SelectPolymorphicField extends SelectField
 		$baseModel = $this->getAdmin()->getModel();
 		$baseModel = $baseModel::find($this->getAdmin()->getFormBuilder()->getIdentifier());
 
+		if (!$baseModel) {
+			$baseModel = $this->getAdmin()->getModel();
+			$baseModel = new $baseModel;
+		}
+
 		$relatedModel = $baseModel->{$this->getName()}()->getRelated();
 
 		if (isset($baseModel->{$this->getName()}[0])) {
