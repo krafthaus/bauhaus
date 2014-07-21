@@ -67,6 +67,11 @@
 		e.preventDefault();
 	});
 
+	// Init tinymce
+	tinymce.init({
+		selector: '.form-wysiwyg'
+	});
+
 	// ...
 
 })(jQuery, window, document);

@@ -18,6 +18,7 @@ var paths = {
 		'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js',
 		'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/modal.js',
 		'bower_components/bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js',
+		'bower_components/tinymce/tinymce.js',
 		'assets/javascripts/**/*.js'
 	]
 };
