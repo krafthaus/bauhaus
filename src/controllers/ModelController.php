@@ -153,7 +153,7 @@ class ModelController extends Controller
 	}
 
 	/**
-	 * Remove the specified resource from storage.
+	 * Remove the specified resources from storage.
 	 *
 	 * @param  string $model
 	 * @param  int  $id
@@ -161,11 +161,6 @@ class ModelController extends Controller
 	 * @access public
 	 * @return Response
 	 */
-	public function destroy($name, $id)
-	{
-		//
-	}
-
 	public function multiDestroy($name)
 	{
 		$items = Input::get('delete');
