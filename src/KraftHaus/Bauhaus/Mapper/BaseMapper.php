@@ -16,9 +16,27 @@ use Illuminate\Support\Str;
 class BaseMapper
 {
 
+	/**
+	 * Holds the admin instance.
+	 * @var Admin
+	 */
 	protected $admin;
+
+	/**
+	 * Holds the mapper fields.
+	 * @var array
+	 */
 	protected $fields = [];
 
+	/**
+	 * "magic" caller method to simply instantiate field types.
+	 * 
+	 * @param  string $type
+	 * @param  array  $arguments
+	 *
+	 * @access public
+	 * @return BaseField
+	 */
 	public function __call($type, array $arguments)
 	{
 		$name  = array_shift($arguments);
