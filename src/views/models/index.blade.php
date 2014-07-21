@@ -44,7 +44,6 @@
 
 	<ul class="nav nav-sidebar nav-bottom">
 		<li>
-			<!-- Single button -->
 			<div class="btn-group dropup">
 				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 					<i class="fa fa-share-square-o"></i>
