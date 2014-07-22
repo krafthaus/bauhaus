@@ -153,6 +153,22 @@ class Admin
 	}
 
 	/**
+	 * Get a model instance.
+	 *
+	 * @param  string $name
+	 *
+	 * @access public
+	 * @return string
+	 */
+	public function getInstance($name)
+	{
+		$model = sprintf('\\%sAdmin', Str::studly($name));
+		$model = new $model;
+
+		return $model;
+	}
+
+	/**
 	 * Set the model name.
 	 *
 	 * @param  string $model
