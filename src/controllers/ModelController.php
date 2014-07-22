@@ -17,6 +17,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use KraftHaus\Bauhaus\Facade\Bauhaus;
 
 /**
  * Class ModelController
@@ -35,12 +36,10 @@ class ModelController extends Controller
 	 */
 	public function index($name)
 	{
-		$model = sprintf('\\%sAdmin', Str::studly($name));
-		$model = new $model;
-
-		$model->buildList();
-		$model->buildFilters();
-		$model->buildScopes();
+		$model = Bauhaus::getInstance($name)
+			->buildList()
+			->buildFilters()
+			->buildScopes();
 
 		return View::make($model->getView('list'))
 			->with('name',  $name)
@@ -57,8 +56,7 @@ class ModelController extends Controller
 	 */
 	public function create($name)
 	{
-		$model = sprintf('\\%sAdmin', Str::studly($name));
-		$model = (new $model)->buildForm();
+		$model = Bauhaus::getInstance($name)->buildForm();
 
 		return View::make($model->getView('create'))
 			->with('name',  $name)
@@ -75,9 +73,7 @@ class ModelController extends Controller
 	 */
 	public function store($name)
 	{
-		$model = sprintf('\\%sAdmin', Str::studly($name));
-		$model = new $model;
-
+		$model  = Bauhaus::getInstance($name);
 		$result = $model->buildForm()
 			->getFormBuilder()
 			->create(Input::all());
@@ -109,8 +105,7 @@ class ModelController extends Controller
 	 */
 	public function edit($name, $id)
 	{
-		$model = sprintf('\\%sAdmin', Str::studly($name));
-		$model = (new $model)->buildForm($id);
+		$model = Bauhaus::getInstance($name)->buildForm($id);
 
 		return View::make($model->getView('edit'))
 			->with('name',  $name)
@@ -129,9 +124,7 @@ class ModelController extends Controller
 	 */
 	public function update($name, $id)
 	{
-		$model = sprintf('\\%sAdmin', Str::studly($name));
-		$model = new $model;
-
+		$model  = Bauhaus::getInstance($name);
 		$result = $model->buildForm($id)
 			->getFormBuilder()
 			->update(Input::all());
@@ -164,9 +157,7 @@ class ModelController extends Controller
 	public function multiDestroy($name)
 	{
 		$items = Input::get('delete');
-		
-		$model = sprintf('\\%sAdmin', Str::studly($name));
-		$model = new $model;
+		$model = Bauhaus::getInstance($name);
 
 		if (count($items) === 0) {
 			return Redirect::route('admin.model.index', $name);
@@ -198,12 +189,10 @@ class ModelController extends Controller
 	 */
 	public function export($name, $type)
 	{
-		$model = sprintf('\\%sAdmin', Str::studly($name));
-		$model = new $model;
-
-		$model->buildList();
-		$model->buildFilters();
-		$model->buildScopes();
+		$model = Bauhaus::getInstance($name)
+			->buildList()
+			->buildFilters()
+			->buildScopes();
 
 		return $model->getExportBuilder()
 			->export($type);
