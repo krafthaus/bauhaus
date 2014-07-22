@@ -1,0 +1,23 @@
+<?php $model = Bauhaus::getInstance('$NAME$')->buildList(); ?>
+
+<table>
+	<thead>
+		@foreach ($model->getListMapper()->getFields() as $field)
+			<tr>
+				<th>#</th>
+				<th>{{ $field->getLabel() }}</th>
+			</tr>
+		@endforeach
+	</thead>
+	<tbody>
+		@foreach ($model->getListBuilder()->getResult() as $item)
+			<tr>
+				<td>{{ $item->getIdentifier() }}</td>
+
+				@foreach ($item->getFields() as $field)
+					<td>{{ $field->render() }}</td>
+				@endforeach
+			</tr>
+		@endforeach
+	</tbody>
+</table>

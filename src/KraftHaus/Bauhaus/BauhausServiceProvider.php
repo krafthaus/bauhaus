@@ -75,8 +75,14 @@ class BauhausServiceProvider extends ServiceProvider
 			return new ExportViewsCommand($app);
 		});
 
+		// add the generate views command to the application
+		$this->app['bauhaus:views:generate'] = $this->app->share(function ($app) {
+			return new GenerateViewsCommand($app);
+		});
+
 		$this->commands('bauhaus:scaffold');
 		$this->commands('bauhaus:export:views');
+		$this->commands('bauhaus:views:generate');
 	}
 
 	/**

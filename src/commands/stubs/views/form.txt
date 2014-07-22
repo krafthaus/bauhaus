@@ -1,0 +1,14 @@
+<?php
+
+    $id    = null;
+    $model = Bauhaus::getInstance('$NAME$')->buildForm($id);
+
+?>
+
+{{ Form::open(['method' => 'PUT']) }}
+
+	@foreach ($model->getFormBuilder()->getResult()->getFields() as $field)
+		{{ $field->render() }}
+	@endforeach
+
+{{ Form::close() }}
