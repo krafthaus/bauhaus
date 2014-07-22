@@ -23,7 +23,13 @@ return [
 		'edit'            => 'Editar',
 		'delete-selected' => 'Deletar :model selecionados',
 		'reset'           => 'Limpar',
-		'filter-submit'   => 'Buscar :model'
+		'filter-submit'   => 'Buscar :model',
+		'overview'        => 'Overview'
+	],
+
+	'sidebar' => [
+		'scopes' => 'Scopes',
+		'export' => 'Export ...'
 	]
 
 ];
