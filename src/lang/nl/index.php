@@ -23,7 +23,13 @@ return [
 		'edit'            => 'Bewerken',
 		'delete-selected' => 'Verwijder geselecteerde :model',
 		'reset'           => 'Herstel',
-		'filter-submit'   => 'Filter :model'
+		'filter-submit'   => 'Filter :model',
+		'overview'        => 'Overzicht'
+	],
+
+	'sidebar' => [
+		'scopes' => 'Varianten',
+		'export' => 'Exporteer ...'
 	]
 
 ];
