@@ -1,5 +1,3 @@
-<?php $model = Bauhaus::getInstance('$NAME$')->buildList(); ?>
-
 <table>
 	<thead>
 		@foreach ($model->getListMapper()->getFields() as $field)
