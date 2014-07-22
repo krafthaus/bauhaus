@@ -15,7 +15,7 @@
 		<li>
 			<a href="{{ route('admin.model.index', $name) }}">
 				<i class="fa fa-bars"></i>
-				Overview
+				{{ trans('bauhaus::index.button.overview') }}
 			</a>
 		</li>
 		<li>
@@ -30,7 +30,7 @@
 		<ul class="nav nav-sidebar">
 			<li class="title">
 				<i class="fa fa-search"></i>
-				Scopes
+				{{ trans('bauhaus::index.sidebar.scopes') }}
 			</li>
 			@foreach ($model->getScopeMapper()->getScopes() as $scope)
 				<li>
