@@ -47,7 +47,7 @@
 			<div class="btn-group dropup">
 				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 					<i class="fa fa-share-square-o"></i>
-					Export ...
+					{{ trans('bauhaus::index.sidebar.export') }}
 				</button>
 				<ul class="dropdown-menu" role="menu">
 					@foreach ($model->getExportTypes() as $exportType)

@@ -28,7 +28,8 @@ return [
 	],
 
 	'sidebar' => [
-		'scopes' => 'Scopes'
+		'scopes' => 'Scopes',
+		'export' => 'Export ...'
 	]
 
 ];
