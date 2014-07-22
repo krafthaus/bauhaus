@@ -13,12 +13,12 @@
 
 				<div class="row">
 					<div class="col-sm-9 col-sm-offset-3">
-						<a class="btn btn-default btn-rounded" href="{{ route('admin.model.index', $name) }}">
-							{{ trans('bauhaus::index.button.reset') }}
-						</a>
 						<div class="pull-right">
 							<input type="submit" class="btn btn-default btn-rounded btn-red" value="{{ trans('bauhaus::index.button.filter-submit', ['model' => $model->getPluralName()]) }}">
 						</div>
+						<a class="btn btn-default btn-rounded" href="{{ route('admin.model.index', $name) }}">
+							{{ trans('bauhaus::index.button.reset') }}
+						</a>
 					</div>
 				</div>
 			{{ Form::close() }}
