@@ -19,17 +19,17 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 
 /**
- * Class ExportViewsCommand
+ * Class ViewsExportCommand
  * @package KraftHaus\Bauhaus
  */
-class ExportViewsCommand extends Command
+class ViewsExportCommand extends Command
 {
 
 	/**
 	 * The console command name.
 	 * @var string
 	 */
-	protected $name = 'bauhaus:export:views';
+	protected $name = 'bauhaus:views:export';
 
 	/**
 	 * The console command description.

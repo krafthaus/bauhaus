@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\File;
 use Symfony\Component\Console\Input\InputOption;
 
 /**
- * Class GenerateViewsCommand
+ * Class ViewsGenerateCommand
  * @package KraftHaus\Bauhaus
  */
-class GenerateViewsCommand extends Command
+class ViewsGenerateCommand extends Command
 {
 
 	/**
