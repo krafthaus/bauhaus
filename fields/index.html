@@ -82,9 +82,8 @@
 				<p>Renders a dropdown (select) list with related items based on the relationship set on your model.</p>
 
 				<h4>Description</h4>
-				<pre>
-$mapper->belongsTo( string $relationship )
-	->display( string $field )</pre>
+				<pre><code class="language-php">$mapper->belongsTo( string $relationship )
+	->display( string $field )</code></pre>
 
 				<h4>Parameters</h4>
 				<dl>
@@ -96,9 +95,8 @@ $mapper->belongsTo( string $relationship )
 				</dl>
 
 				<h4>Examples</h4>
-				<pre>
-$mapper->belongsTo('posts')
-	->display('title');</pre>
+				<pre><code class="language-php">$mapper->belongsTo('posts')
+	->display('title');</code></pre>
 
 				<h4>See also</h4>
 				<ul>
@@ -114,9 +112,8 @@ $mapper->belongsTo('posts')
 				<p>Renders a multi-dropdown (multi-select) list with related items based on the relationship set on your model.</p>
 
 				<h4>Description</h4>
-				<pre>
-$mapper->belongsToMany( string $relationship )
-	->display( string $field )</pre>
+				<pre><code class="language-php">$mapper->belongsToMany( string $relationship )
+	->display( string $field )</code></pre>
 
 				<h4>Parameters</h4>
 				<dl>
@@ -128,9 +125,8 @@ $mapper->belongsToMany( string $relationship )
 				</dl>
 
 				<h4>Examples</h4>
-				<pre>
-$mapper->belongsToMany('users')
-	->display('email');</pre>
+				<pre><code class="language-php">$mapper->belongsToMany('users')
+	->display('email');</code></pre>
 
 				<h4>See also</h4>
 				<ul>
@@ -145,8 +141,7 @@ $mapper->belongsToMany('users')
 				<p>The boolean field type renders a checkbox.</p>
 
 				<h4>Description</h4>
-				<pre>
-$mapper->boolean( string $field )</pre>
+				<pre><code class="language-php">$mapper->boolean( string $field )</code></pre>
 				<blockquote>
 					<p><strong>NOTE:</strong> The boolean field type should be represented as an integer field in your database (usually <em>TINYINT(1)</em>).</p>
 				</blockquote>
@@ -181,8 +176,7 @@ $mapper->boolean( string $field )</pre>
 				<p>The identifier field is exclusively used on the list view for rendering a string that links to the edit view.</p>
 
 				<h4>Description</h4>
-				<pre>
-$mapper->identifier( string $field )</pre>
+				<pre><code class="language-php">$mapper->identifier( string $field )</code></pre>
 				<blockquote>
 					<p><strong>NOTE:</strong> This field is exclusively used on the list view.</p>
 				</blockquote>
@@ -226,8 +220,7 @@ $mapper->identifier( string $field )</pre>
 				<p>Renders the field result in string format.</p>
 
 				<h4>Description</h4>
-				<pre>
-$mapper->string( string $field )</pre>
+				<pre><code class="language-php">$mapper->string( string $field )</code></pre>
 				<blockquote>
 					<p><strong>NOTE:</strong> This field is exclusively used on the list view.</p>
 				</blockquote>
