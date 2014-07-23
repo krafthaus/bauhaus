@@ -1,0 +1,9 @@
+{
+	"name": "krafthaus-bauhaus",
+	"version": "1.0",
+	"dependencies": {
+		"jquery": "1.11.1",
+		"bootstrap-sass-official": "3.1.1",
+		"font-awesome": "4.0.3"
+	}
+}

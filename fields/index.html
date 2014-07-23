@@ -1,0 +1,245 @@
+<!doctype html>
+	<html class="no-js" lang="">
+	<head>
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<title>Krafthaus Bauhaus</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+
+		<link rel="stylesheet" href="/static/stylesheets/application.css">
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,600,900">
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:400,700">
+
+	</head>
+	<body>
+
+	<a name="top"></a>
+
+	<!--[if lt IE 8]>
+	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+
+	<header>
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+
+					<a class="navbar-brand" href="/">Bauhaus</a>
+				</div>
+
+				<div class="collapse navbar-collapse" id="navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="/getting-started">Getting started</a></li>
+						<li><a href="/views">Views</a></li>
+						<li class="active"><a href="/fields">Fields</a></li>
+						<li><a href="/tutorials">Tutorials</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<div id="subheader">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-8">
+					<h1>Fields</h1>
+					<h3>A detailed documentation about every field type in Bauhaus.</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-9">
+
+				<!-- BELONGS-TO -->
+				<a name="field-belongsto"></a>
+				<h3>Belongs To <small>Relationship field</small></h3>
+				<p>Renders a dropdown (select) list with related items based on the relationship set on your model.</p>
+
+				<h4>Description</h4>
+				<pre>
+$mapper->belongsTo( string $relationship )
+	->display( string $field )</pre>
+
+				<h4>Parameters</h4>
+				<dl>
+					<dt>$relationship</dt>
+					<dd>The name of the belongsTo method on your model.</dd>
+
+					<dt>$field</dt>
+					<dd>The field name on the other side of the relation.</dd>
+				</dl>
+
+				<h4>Examples</h4>
+				<pre>
+$mapper->belongsTo('posts')
+	->display('title');</pre>
+
+				<h4>See also</h4>
+				<ul>
+					<li><a href="#field-belongstomany">Belongs To Many</a></li>
+					<li><a href="#field-hasmany">Has Many</a></li>
+				</ul>
+
+				<hr>
+
+				<!-- BELONGS-TO-MANY -->
+				<a name="field-belongstomany"></a>
+				<h3>Belongs To Many <small>Relationship field</small></h3>
+				<p>Renders a multi-dropdown (multi-select) list with related items based on the relationship set on your model.</p>
+
+				<h4>Description</h4>
+				<pre>
+$mapper->belongsToMany( string $relationship )
+	->display( string $field )</pre>
+
+				<h4>Parameters</h4>
+				<dl>
+					<dt>$relationship</dt>
+					<dd>The name of the belongsToMany method on your model.</dd>
+
+					<dt>$field</dt>
+					<dd>The field name on the other side of the relation.</dd>
+				</dl>
+
+				<h4>Examples</h4>
+				<pre>
+$mapper->belongsToMany('users')
+	->display('email');</pre>
+
+				<h4>See also</h4>
+				<ul>
+					<li><a href="#field-belongsto">Belongs To</a></li>
+					<li><a href="#field-hasmany">Has Many</a></li>
+				</ul>
+				<hr/>
+
+				<!-- BOOLEAN -->
+				<a name="field-boolean"></a>
+				<h3>Boolean</h3>
+				<p>The boolean field type renders a checkbox.</p>
+
+				<h4>Description</h4>
+				<pre>
+$mapper->boolean( string $field )</pre>
+				<blockquote>
+					<p><strong>NOTE:</strong> The boolean field type should be represented as an integer field in your database (usually <em>TINYINT(1)</em>).</p>
+				</blockquote>
+
+				<h4>Parameters</h4>
+				<dl>
+					<dt>$field</dt>
+					<dd>The field name in your model.</dd>
+				</dl>
+
+				<hr/>
+
+				<a name="field-date"></a>
+				<h4>Date</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, architecto incidunt inventore libero maiores nesciunt officia similique sit unde. Aperiam eius enim facere magni qui quisquam sed vel voluptas.</p>
+
+				<a name="field-datetime"></a>
+				<h4>Date Time</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, architecto incidunt inventore libero maiores nesciunt officia similique sit unde. Aperiam eius enim facere magni qui quisquam sed vel voluptas.</p>
+
+				<a name="field-file"></a>
+				<h4>File</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, architecto incidunt inventore libero maiores nesciunt officia similique sit unde. Aperiam eius enim facere magni qui quisquam sed vel voluptas.</p>
+
+				<a name="field-hasmany"></a>
+				<h4>Has Many</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, architecto incidunt inventore libero maiores nesciunt officia similique sit unde. Aperiam eius enim facere magni qui quisquam sed vel voluptas.</p>
+
+				<a name="field-identifier"></a>
+				<h4>Identifier</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, architecto incidunt inventore libero maiores nesciunt officia similique sit unde. Aperiam eius enim facere magni qui quisquam sed vel voluptas.</p>
+
+				<a name="field-image"></a>
+				<h4>Image</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, architecto incidunt inventore libero maiores nesciunt officia similique sit unde. Aperiam eius enim facere magni qui quisquam sed vel voluptas.</p>
+
+				<a name="field-number"></a>
+				<h4>Number</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, architecto incidunt inventore libero maiores nesciunt officia similique sit unde. Aperiam eius enim facere magni qui quisquam sed vel voluptas.</p>
+
+				<a name="field-password"></a>
+				<h4>Password</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, architecto incidunt inventore libero maiores nesciunt officia similique sit unde. Aperiam eius enim facere magni qui quisquam sed vel voluptas.</p>
+
+				<a name="field-select"></a>
+				<h4>Select</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, architecto incidunt inventore libero maiores nesciunt officia similique sit unde. Aperiam eius enim facere magni qui quisquam sed vel voluptas.</p>
+
+				<a name="field-string"></a>
+				<h4>String</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, architecto incidunt inventore libero maiores nesciunt officia similique sit unde. Aperiam eius enim facere magni qui quisquam sed vel voluptas.</p>
+
+				<a name="field-textarea"></a>
+				<h4>Textarea</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, architecto incidunt inventore libero maiores nesciunt officia similique sit unde. Aperiam eius enim facere magni qui quisquam sed vel voluptas.</p>
+
+				<a name="field-text"></a>
+				<h4>Text</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, architecto incidunt inventore libero maiores nesciunt officia similique sit unde. Aperiam eius enim facere magni qui quisquam sed vel voluptas.</p>
+
+				<a name="field-time"></a>
+				<h4>Time</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, architecto incidunt inventore libero maiores nesciunt officia similique sit unde. Aperiam eius enim facere magni qui quisquam sed vel voluptas.</p>
+
+				<a name="field-wysiwyg"></a>
+				<h4>WYSIWYG</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, architecto incidunt inventore libero maiores nesciunt officia similique sit unde. Aperiam eius enim facere magni qui quisquam sed vel voluptas.</p>
+			</div>
+			<div class="col-sm-3">
+				<ul id="sidebar" data-spy="affix" data-offset-top="350">
+					<li class="title">Basic</li>
+					<li><a href="#field-boolean">Boolean</a></li>
+					<li><a href="#field-file">File</a></li>
+					<li><a href="#field-identifier">Identifier</a></li>
+					<li><a href="#field-number">Number</a></li>
+					<li><a href="#field-password">Password</a></li>
+					<li><a href="#field-select">Select</a></li>
+					<li><a href="#field-string">String</a></li>
+					<li><a href="#field-textarea">Textarea</a></li>
+					<li><a href="#field-text">Text</a></li>
+					<li><a href="#field-wysiwyg">WYSIWYG</a></li>
+
+					<li class="title">Date</li>
+					<li><a href="#field-time">Time</a></li>
+					<li><a href="#field-date">Date</a></li>
+					<li><a href="#field-datetime">Date Time</a></li>
+
+					<li class="title">Relationship</li>
+					<li><a href="#field-belongsto">Belongs To</a></li>
+					<li><a href="#field-belongstomany">Belongs To Many</a></li>
+					<li><a href="#field-hasmany">Has Many</a></li>
+					<li><a href="#field-select-polymorphic">Select Polymorphic</a></li>
+
+					<li class="title">Other</li>
+					<li><a href="#field-image">Image</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="/static/javascripts/jquery-1.11.1.min.js"><\/script>')</script>
+	<script src="/static/javascripts/application.js"></script>
+
+	</body>
+</html>

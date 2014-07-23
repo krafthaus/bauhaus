@@ -1,0 +1,55 @@
+header {
+	.navbar-default {
+		margin-bottom: 0;
+	}
+}
+
+#masthead,
+#subheader {
+	margin-bottom: 45px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	background: #1e2449; /* Old browsers */
+	background: -moz-linear-gradient(left,  #1e2449 0%, #311a33 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#1e2449), color-stop(100%,#311a33)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  #1e2449 0%,#311a33 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  #1e2449 0%,#311a33 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  #1e2449 0%,#311a33 100%); /* IE10+ */
+	background: linear-gradient(to right,  #1e2449 0%,#311a33 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e2449', endColorstr='#311a33',GradientType=1 ); /* IE6-9 */
+
+	h1,
+	h3,
+	p {
+		color: #fff;
+	}
+
+	h1 {
+		font-weight: bold;
+	}
+}
+
+#masthead {
+	padding-top: 150px;
+	padding-bottom: 150px;
+
+	p.lead {
+		font-size: 35px;
+		font-weight: 500;
+	}
+
+	a.btn {
+		background: none;
+		font-size: 20px;
+		color: #fff;
+		border-radius: 5px;
+		font-weight: bold;
+		padding: 15px 25px;
+
+		&:hover {
+			background: #fff;
+			color: #1e2449;
+			border-color: #fff;
+		}
+	}
+}

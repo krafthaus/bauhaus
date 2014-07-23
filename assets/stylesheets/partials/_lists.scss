@@ -1,0 +1,26 @@
+#sidebar {
+	list-style: none;
+	padding: 0;
+
+	li {
+		font-size: 15px;
+
+		&.title {
+			color: #1e2449;
+			font-weight: bold;
+			margin-top: 25px;
+			text-transform: uppercase;
+			font-size: 14px;
+		}
+
+		a {
+			margin-left: 10px;
+			color: #999;
+
+			&:hover {
+				color: #1e2449 !important;
+				text-decoration: none;
+			}
+		}
+	}
+}

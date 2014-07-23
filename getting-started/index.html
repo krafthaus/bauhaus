@@ -1,0 +1,170 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<title>Krafthaus Bauhaus</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+
+	<link rel="stylesheet" href="/static/stylesheets/application.css">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,600,900">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:400,700">
+
+</head>
+<body>
+
+	<a name="top"></a>
+
+	<!--[if lt IE 8]>
+	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+
+	<header>
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+
+					<a class="navbar-brand" href="/">Bauhaus</a>
+				</div>
+
+				<div class="collapse navbar-collapse" id="navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="/getting-started">Getting started</a></li>
+						<li><a href="/views">Views</a></li>
+						<li><a href="/fields">Fields</a></li>
+						<li><a href="/tutorials">Tutorials</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<div id="subheader">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-8">
+					<h1>Getting started</h1>
+					<h3>An overview of Bauhaus, how to install and use, basic templates and examples, and more.</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-9">
+				<a name="installation"></a>
+				<h3>Installation</h3>
+				<h4>Via Composer</h4>
+
+				<p>The Bauhaus package utilizes Composer for the installation in Laravel. If you haven’t already, start by installing Composer.</p>
+
+				<p>Now you can install Laravel by issuing the following command from your terminal: composer create-project laravel/laravel your-project-name --prefer-dist</p>
+
+				<a name="contributing"></a>
+				<h3>Contributing</h3>
+
+				<ul>
+					<li><a href="#contributing-introduction">Introduction</a></li>
+					<li><a href="#contributing-bug-reports">Bug Reports</a></li>
+					<li><a href="#contributing-feature-requests">Feature Requests</a></li>
+					<li><a href="#contributing-pull-requests">Pull Requests</a></li>
+				</ul>
+
+				<h4>Introduction</h4>
+				<p>
+					Bauhaus' sourcecode is hostsed on <a href="#">Github</a>. It's distributed under the <a href="#">MIT license</a>, so you are free to fork it and do whatever you like with it.
+					If you're doing something awesome with Bauhaus, we'd love to <a href="#">hear about it!</a>
+				</p>
+
+				<h4>Bug Reports</h4>
+				<p>A bug is a <em>demonstrable problem</em> that is caused by the code in the repository. Good bug reports are extremely helpful - thank you!</p>
+				<p>Guidelines for bug reports:</p>
+				<ol>
+					<li><strong>Use the Github issue search</strong> - Check if the issue has already been reported.</li>
+					<li><strong>Check if the issue has been fixed</strong> - Try to reproduce it using the latest master or development branch in this repository.</li>
+					<li><strong>Isolate the problem</strong> - Create a <a href="#">reduced test case</a> and a live example.</li>
+				</ol>
+
+				<p>
+					A good bug report shouldn't leave others needing to chase you up for more information. Please try to be as detailed as possible in your report.
+					What is your environment? What steps will reproduce the issue? What browser(s) and OS experience the problem? What would you expect to be the outcome?
+					All these details will help people to fix any potential bugs.
+				</p>
+
+				<p>Example:</p>
+				<blockquote>
+					<p>Short and descriptive example bug report title</p>
+					<p>A summary of the issue and the browser/OS environment in which it occurs. If suitable, include the steps required to reproduce the bug.</p>
+					<ol>
+						<li>This is the first step</li>
+						<li>This is the second step</li>
+						<li>Further steps, etc.</li>
+					</ol>
+
+					<p>A link to the reduced test case.</p>
+					<p>
+						Any other information you want to share that is relevant to the issue being reported.
+						This might include the lines of code that you have identified as causing the bug, and potential solutions (and your opinions on ther merits).
+					</p>
+				</blockquote>
+
+				<h4>Feature Requests</h4>
+				<p>
+					Feature requests are welcome. But take a moment to find out whether your idea fits with the scope and aims of Bauhaus.
+					It's up to <em>you</em> to make a strong case to convince us of the merits of this feature. Please provide as much detail and context as possible.
+				</p>
+
+				<h4>Pull Requests</h4>
+				<p>Good pull requests - patches, improvements, new features - are a fantastic help. They should remain focused in scope and avoid containing unrelated commits.</p>
+				<p>
+					<strong>Please ask first</strong> before embarking on any significant pull request (e.g. implementing features, refactoring code, porting a different languages),
+					otherwise you risk spending a lot of time working on something that we might not want to merge into Bauhaus.
+				</p>
+
+				<p>Please adhere to the coding conventions used throughout Bauhaus (indentation, accurate comments, etc.)</p>
+				<p>Follow this process if you'd like your work considered for inclusion in Bauhaus:</p>
+				<ol>
+					<li>
+						Fork Bauhaus, clone your fork, and configure the remotes:<br />
+						<code>
+							# Clone your fork if Bauhaus in the current directory<br />
+							git clone https://github.com/krafthaus/bauhaus<br />
+							<br />
+							# Navigate to the newly cloned directory<br />
+							cd &lt;new directory&r<br />
+
+							# Assign the original repo to a remote called "upstream"
+							git remote add upstream https://github.com/<upstream-owner>/<repo-name>
+						</code>
+					</li>
+				</ol>
+
+			</div>
+			<div class="col-sm-3">
+				<ul>
+					<li><a href="#installation">Installation</a></li>
+					<li><a href="#contributing">Contributing</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="/static/javascripts/jquery-1.11.1.min.js"><\/script>')</script>
+	<script src="/static/javascripts/application.js"></script>
+
+</body>
+</html>
