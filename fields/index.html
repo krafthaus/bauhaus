@@ -99,9 +99,31 @@
 				</dl>
 
 				<h4>Examples</h4>
-				<pre><code class="language-php">// Render the title from the posts relationship.
-$mapper->belongsTo('posts')
-	->display('title');</code></pre>
+				<pre><code class="language-php">// Your model file
+class User extends Eloquent
+{
+	// Setup the relationship with the Posts model
+	public function posts()
+	{
+		return $this->belongsTo('Posts');
+	}
+}
+
+// Your Bauhaus file
+class User extends Admin
+{
+	public function configureList($mapper)
+	{
+		// This renders the post title as a string in your list view.
+		$mapper->belongsTo('posts')->display('title');
+	}
+
+	public function configureForm($mapper)
+	{
+		// This renders a list of posts in your form.
+		$mapper->belongsTo('posts')->display('title');
+	}
+}</code></pre>
 
 				<h4>See also</h4>
 				<ul>
