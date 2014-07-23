@@ -76,6 +76,26 @@
 		<div class="row">
 			<div class="col-sm-9">
 
+				<!-- BOOLEAN -->
+				<a name="field-boolean"></a>
+				<h3>Boolean</h3>
+				<p>The boolean field type renders a checkbox.</p>
+
+				<div class="alert alert-warning">
+					<p><strong>NOTE:</strong> The boolean field type should be represented as an integer field in your database (usually <strong><em>TINYINT(1)</em></strong>).</p>
+				</div>
+
+				<h4>Description</h4>
+				<pre><code class="language-php">$mapper->boolean( string $field )</code></pre>
+
+				<h4>Parameters</h4>
+				<dl>
+					<dt>$field</dt>
+					<dd>The field name in your model.</dd>
+				</dl>
+
+				<hr/>
+
 				<!-- BELONGS-TO -->
 				<a name="field-belongsto"></a>
 				<h3>Belongs To <small>Relationship field</small></h3>
@@ -166,42 +186,6 @@ class User extends Admin
 				</ul>
 				<hr/>
 
-				<!-- BOOLEAN -->
-				<a name="field-boolean"></a>
-				<h3>Boolean</h3>
-				<p>The boolean field type renders a checkbox.</p>
-
-				<div class="alert alert-warning">
-					<p><strong>NOTE:</strong> The boolean field type should be represented as an integer field in your database (usually <strong><em>TINYINT(1)</em></strong>).</p>
-				</div>
-
-				<h4>Description</h4>
-				<pre><code class="language-php">$mapper->boolean( string $field )</code></pre>
-
-				<h4>Parameters</h4>
-				<dl>
-					<dt>$field</dt>
-					<dd>The field name in your model.</dd>
-				</dl>
-
-				<hr/>
-
-				<a name="field-date"></a>
-				<h4>Date</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, architecto incidunt inventore libero maiores nesciunt officia similique sit unde. Aperiam eius enim facere magni qui quisquam sed vel voluptas.</p>
-
-				<a name="field-datetime"></a>
-				<h4>Date Time</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, architecto incidunt inventore libero maiores nesciunt officia similique sit unde. Aperiam eius enim facere magni qui quisquam sed vel voluptas.</p>
-
-				<a name="field-file"></a>
-				<h4>File</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, architecto incidunt inventore libero maiores nesciunt officia similique sit unde. Aperiam eius enim facere magni qui quisquam sed vel voluptas.</p>
-
-				<a name="field-hasmany"></a>
-				<h4>Has Many</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, architecto incidunt inventore libero maiores nesciunt officia similique sit unde. Aperiam eius enim facere magni qui quisquam sed vel voluptas.</p>
-
 				<!-- IDENTIFIER -->
 				<a name="field-identifier"></a>
 				<h3>Identifier</h3>
@@ -230,22 +214,6 @@ class User extends Admin
 
 				<hr />
 
-				<a name="field-image"></a>
-				<h4>Image</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, architecto incidunt inventore libero maiores nesciunt officia similique sit unde. Aperiam eius enim facere magni qui quisquam sed vel voluptas.</p>
-
-				<a name="field-number"></a>
-				<h4>Number</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, architecto incidunt inventore libero maiores nesciunt officia similique sit unde. Aperiam eius enim facere magni qui quisquam sed vel voluptas.</p>
-
-				<a name="field-password"></a>
-				<h4>Password</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, architecto incidunt inventore libero maiores nesciunt officia similique sit unde. Aperiam eius enim facere magni qui quisquam sed vel voluptas.</p>
-
-				<a name="field-select"></a>
-				<h4>Select</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, architecto incidunt inventore libero maiores nesciunt officia similique sit unde. Aperiam eius enim facere magni qui quisquam sed vel voluptas.</p>
-
 				<!-- STRING -->
 				<a name="field-string"></a>
 				<h3>String</h3>
@@ -273,22 +241,6 @@ class User extends Admin
 				</ul>
 
 				<hr />
-
-				<a name="field-textarea"></a>
-				<h4>Textarea</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, architecto incidunt inventore libero maiores nesciunt officia similique sit unde. Aperiam eius enim facere magni qui quisquam sed vel voluptas.</p>
-
-				<a name="field-text"></a>
-				<h4>Text</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, architecto incidunt inventore libero maiores nesciunt officia similique sit unde. Aperiam eius enim facere magni qui quisquam sed vel voluptas.</p>
-
-				<a name="field-time"></a>
-				<h4>Time</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, architecto incidunt inventore libero maiores nesciunt officia similique sit unde. Aperiam eius enim facere magni qui quisquam sed vel voluptas.</p>
-
-				<a name="field-wysiwyg"></a>
-				<h4>WYSIWYG</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, architecto incidunt inventore libero maiores nesciunt officia similique sit unde. Aperiam eius enim facere magni qui quisquam sed vel voluptas.</p>
 			</div>
 			<div class="col-sm-3">
 				<ul id="sidebar" data-spy="affix" data-offset-top="350">
