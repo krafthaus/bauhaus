@@ -104,6 +104,8 @@
 	]
 }</code></pre>
 
+				<p>For this to take effect, run <code>composer dump-autoload</code>.</p>
+
 				<p>Then publish the config file with <code>php artisan config:publish krafthaus/bauhaus</code>. This will add the main bauhaus config file in your application config directory.</p>
 				<p>And last but not least you need to publish to package's assets with the <code>php artisan asset:publish krafthaus/bauhaus</code> command.</p>
 
@@ -112,12 +114,76 @@
 				<a name="getting-started"></a>
 				<h3>Getting Started</h3>
 
-				<p>To build your first (and most exciting) admin controller you'll have to follow the following easy steps:</p>
+				<p>
+					Lets say you're building a blog (of course this is only limited to your imagination) an need to have some way to manage, view and update your blog posts.
+					Bauhaus will help you create exactly just that in a couple easy and quick steps.
+				</p>
+
+				<p>Below is explained what those steps are.</p>
+
+				<ul>
+					<li>We will need to create a <a href="http://laravel.com/docs/eloquent" rel="external">model</a> (Eloquent model)</li>
+					<li>A <a href="http://laravel.com/docs/migrations" rel="external">migration</a> to create our database table</li>
+					<li>And a Bauhaus controller to manage our posts</li>
+				</ul>
+
+				Bauhaus tries to streamline this process by providing one command to rule them all:
+				<pre><code class="language-bash">$ php artisan bauhaus:scaffold --model=post</code></pre>
+
+				<p>Running this command will create a couple of files:</p>
+				<ul>
+					<li>A Bauhaus controller in the <code>app/admin</code> directory</li>
+					<li>A migration in <code>app/database/migrations</code></li>
+					<li>A new model in <code>app/models</code></li>
+				</ul>
+
+				<p>Open the newly created migration at <code>app/database/migrations/{timestamp}_create_posts_table.php</code> and change it into something like this:</p>
+				<pre><code class="language-php">class CreatePostsTable extends Migration
+{
+	public function up()
+	{
+		Schema::create('posts', function(Blueprint $table) {
+			$table->increments('id');
+			$table->string('title');
+			$table->text('content');
+			$table->timestamps();
+		});
+	}
+
+	public function down()
+	{
+		Schema::drop('posts');
+	}
+}</code></pre>
+
+				<p>Now open <code>app/admin/PostAdmin.php</code> in change the boilerplate code to the following:</p>
+				<pre><code class="language-php">class PostAdmin extends KraftHaus\Bauhaus\Admin
+{
+	public function configureList($mapper)
+	{
+		// Render the title in the overview
+		$mapper->identifier('title');
+	}
+
+	public function configureForm($mapper)
+	{
+		// Render a text field and a wysiwyg editor
+		$mapper->text('title');
+		$mapper->wysiwyg('content');
+	}
+}</code></pre>
+
+				<p>Now visit <code>http://your-project-url/admin/model/post</code> and voila, you have a working backend where you can view, edit and create your posts.</p>
 
 				<hr/>
 
 				<a name="contributing"></a>
 				<h3>Contributing</h3>
+
+				<hr/>
+
+				<a name="license"></a>
+				<h3>License</h3>
 
 			</div>
 			<div class="col-sm-3">
@@ -125,6 +191,7 @@
 					<li><a href="#installation">Installation</a></li>
 					<li><a href="#getting-started">Getting Started</a></li>
 					<li><a href="#contributing">Contributing</a></li>
+					<li><a href="#license">License</a></li>
 				</ul>
 			</div>
 		</div>
