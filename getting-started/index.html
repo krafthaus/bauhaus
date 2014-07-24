@@ -77,95 +77,42 @@
 			<div class="col-sm-9">
 				<a name="installation"></a>
 				<h3>Installation</h3>
-				<h4>Via Composer</h4>
 
-				<p>The Bauhaus package utilizes Composer for the installation in Laravel. If you haven’t already, start by installing Composer.</p>
+				<p>To install Bauhaus in your latest and greatest Laravel project, use composer and simply add krafthaus/bauhaus to your composer.json file:</p>
+				<pre><code class="language-javascript">"require": {
+	"laravel/framework": "4.1.*",
+	"krafthaus/bauhaus": "dev-master"
+}</code></pre>
 
-				<p>Now you can install Laravel by issuing the following command from your terminal: composer create-project laravel/laravel your-project-name --prefer-dist</p>
+				<p>Then use composer to install the package.</p>
+				<pre><code class="language-bash">$ composer update</code></pre>
 
-				<a name="contributing"></a>
-				<h3>Contributing</h3>
+				<h4>Registering</h4>
+				<p>Once installed, you have to register the service provider in <code>app/config/app.php</code> the providers array:</p>
+				<pre><code class="language-php">'providers' => array(
+	'KraftHaus\Bauhaus\BauhausServiceProvider'
+)</code></pre>
 
-				<ul>
-					<li><a href="#contributing-introduction">Introduction</a></li>
-					<li><a href="#contributing-bug-reports">Bug Reports</a></li>
-					<li><a href="#contributing-feature-requests">Feature Requests</a></li>
-					<li><a href="#contributing-pull-requests">Pull Requests</a></li>
-				</ul>
-
-				<h4>Introduction</h4>
+				<h4>Configuration</h4>
 				<p>
-					Bauhaus' sourcecode is hosted on <a href="#">Github</a>. It's distributed under the <a href="#">MIT license</a>, so you are free to fork it and do whatever you like with it.
-					If you're doing something awesome with Bauhaus, we'd love to <a href="#">hear about it!</a>
+					Once everything is installed and registered, you need to tell composer where to find the bauhaus files.
+					Add the admin folder to the app/ directory and put the following line in your composer.json file:
 				</p>
 
-				<h4>Bug Reports</h4>
-				<p>A bug is a <em>demonstrable problem</em> that is caused by the code in the repository. Good bug reports are extremely helpful - thank you!</p>
-				<p>Guidelines for bug reports:</p>
-				<ol>
-					<li><strong>Use the Github issue search</strong> - Check if the issue has already been reported.</li>
-					<li><strong>Check if the issue has been fixed</strong> - Try to reproduce it using the latest master or development branch in this repository.</li>
-					<li><strong>Isolate the problem</strong> - Create a <a href="#">reduced test case</a> and a live example.</li>
-				</ol>
+				<pre><code class="language-javascript">"autoload": {
+	"classmap": [
+		"app/admin"
+	]
+}</code></pre>
 
-				<p>
-					A good bug report shouldn't leave others needing to chase you up for more information. Please try to be as detailed as possible in your report.
-					What is your environment? What steps will reproduce the issue? What browser(s) and OS experience the problem? What would you expect to be the outcome?
-					All these details will help people to fix any potential bugs.
-				</p>
-
-				<p>Example:</p>
-				<blockquote>
-					<p>Short and descriptive example bug report title</p>
-					<p>A summary of the issue and the browser/OS environment in which it occurs. If suitable, include the steps required to reproduce the bug.</p>
-					<ol>
-						<li>This is the first step</li>
-						<li>This is the second step</li>
-						<li>Further steps, etc.</li>
-					</ol>
-
-					<p>A link to the reduced test case.</p>
-					<p>
-						Any other information you want to share that is relevant to the issue being reported.
-						This might include the lines of code that you have identified as causing the bug, and potential solutions (and your opinions on ther merits).
-					</p>
-				</blockquote>
-
-				<h4>Feature Requests</h4>
-				<p>
-					Feature requests are welcome. But take a moment to find out whether your idea fits with the scope and aims of Bauhaus.
-					It's up to <em>you</em> to make a strong case to convince us of the merits of this feature. Please provide as much detail and context as possible.
-				</p>
-
-				<h4>Pull Requests</h4>
-				<p>Good pull requests - patches, improvements, new features - are a fantastic help. They should remain focused in scope and avoid containing unrelated commits.</p>
-				<p>
-					<strong>Please ask first</strong> before embarking on any significant pull request (e.g. implementing features, refactoring code, porting a different languages),
-					otherwise you risk spending a lot of time working on something that we might not want to merge into Bauhaus.
-				</p>
-
-				<p>Please adhere to the coding conventions used throughout Bauhaus (indentation, accurate comments, etc.)</p>
-				<p>Follow this process if you'd like your work considered for inclusion in Bauhaus:</p>
-				<ol>
-					<li>
-						Fork Bauhaus, clone your fork, and configure the remotes:<br />
-						<code>
-							# Clone your fork if Bauhaus in the current directory<br />
-							git clone https://github.com/krafthaus/bauhaus<br />
-							<br />
-							# Navigate to the newly cloned directory<br />
-							cd &lt;new directory&r<br />
-
-							# Assign the original repo to a remote called "upstream"
-							git remote add upstream https://github.com/<upstream-owner>/<repo-name>
-						</code>
-					</li>
-				</ol>
+				<p>Then publish the config file with <code>php artisan config:publish krafthaus/bauhaus</code>. This will add the main bauhaus config file in your application config directory.</p>
+				<p>And last but not least you need to publish to package's assets with the <code>php artisan asset:publish krafthaus/bauhaus</code> command.</p>
 
 			</div>
 			<div class="col-sm-3">
-				<ul>
+				<ul id="sidebar" data-spy="affix" data-offset-top="350">
 					<li><a href="#installation">Installation</a></li>
+					<li><a href="#getting-started">Getting Started</a></li>
 					<li><a href="#contributing">Contributing</a></li>
 				</ul>
 			</div>
