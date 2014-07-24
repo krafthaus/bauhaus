@@ -216,6 +216,30 @@ $mapper->file('great_document')
 
 				<hr/>
 
+				<!-- SELECT -->
+				<a name="field-select"></a>
+				<h3>Select</h3>
+				<p>Renders a dropdown (select field) based on the given options and value.</p>
+
+				<h4>Description</h4>
+				<pre><code class="language-php">$mapper->select( string $field )
+	->options( array $options )</code></pre>
+
+				<h4>Parameters</h4>
+				<dl>
+					<dt>$field</dt>
+					<dd>The field name in your model.</dd>
+
+					<dt>$options</dt>
+					<dd>An array of options (associative and non-associative).</dd>
+				</dl>
+
+				<h4>Example</h4>
+				<pre><code class="language-php">$mapper->select('gender')
+	->options(['male', 'female']);</code></pre>
+
+				<hr/>
+
 				<!-- STRING -->
 				<a name="field-string"></a>
 				<h3>String</h3>
