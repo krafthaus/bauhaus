@@ -12,7 +12,8 @@ var paths = {
 		'assets/javascripts/**/*.js',
 		'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/affix.js',
 		'bower_components/prismjs/prism.js',
-		'bower_components/prismjs/components/prism-php.js'
+		'bower_components/prismjs/components/prism-php.js',
+		'bower_components/prismjs/components/prism-bash.js'
 	],
 	images: 'assets/images/**/*.{gif,png,jpg}'
 };
