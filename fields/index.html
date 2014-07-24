@@ -234,9 +234,17 @@ $mapper->file('great_document')
 					<dd>An array of options (associative and non-associative).</dd>
 				</dl>
 
-				<h4>Example</h4>
-				<pre><code class="language-php">$mapper->select('gender')
-	->options(['male', 'female']);</code></pre>
+				<h4>Examples</h4>
+				<pre><code class="language-php">// as a non-associative array
+$mapper->select('gender')
+	->options(['Male', 'Female']);</code></pre>
+
+				<pre><code class="language-php">// as an associative array
+$mapper->select('gender')
+	->options([
+		'm' => 'Male',
+		'f' => 'Female'
+	]);</code></pre>
 
 				<hr/>
 
