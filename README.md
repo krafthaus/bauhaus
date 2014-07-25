@@ -22,7 +22,7 @@ Bauhaus is currently available in the following languages:
 
 > Warning: Right now, Bauhaus is a moving target. Every day new changes will be pushed possibly breaking the design and/or other things. If you're having trouble running this package, please consider running the `php artisan asset:publish krafthaus/bauhaus` and/or the `php artisan config:publish krafthaus/bauhaus` command. Thank you!
 
-[Documentation is located here.](https://github.com/krafthaus/bauhaus/wiki)
+[Documentation is located here.](http://bauhaus.krafthaus.nl)
 
 ![Bauhaus List](https://raw.githubusercontent.com/krafthaus/bauhaus/gh-pages/screenshots/list.png)
 ![Bauhaus Form](https://raw.githubusercontent.com/krafthaus/bauhaus/gh-pages/screenshots/form.png)
