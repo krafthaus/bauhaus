@@ -50,7 +50,6 @@
 
 				<div class="collapse navbar-collapse" id="navbar-collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="/getting-started">Getting started</a></li>
 						<li><a href="/configuration">Configuration</a></li>
 						<li><a href="/views">Views</a></li>
 						<li><a href="/fields">Fields</a></li>
@@ -68,8 +67,158 @@
 					<h1>The missing Laravel 4 Admin Generator</h1>
 					<br/>
 					<br/>
-					<a class="btn btn-default" href="/getting-started#installation">Install Bauhaus</a>
+					<a class="btn btn-default" href="#installation">Install Bauhaus</a>
 				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-9">
+				<a name="philosophy"></a>
+				<h3>Philosophy</h3>
+				<p>
+					Bauhaus is an administration package with expressive, elegant syntax for the <a href="http://laravel.com/">Laravel framework</a>.
+					We believe backend development should be easier, faster, more flexible and tightly integrated with the provided framework (Laravel in this case).
+					Bauhaus attempts to take the pain out of web-development by providing tools and functionality to easily integrate a fast, clean and easy backend system into any new or existing website.
+				</p>
+
+				<p>
+					We share the same philosophy as Laravel itself, meaning that "we aim to make the development process a pleasing one for the developer without sacrificing application functionality. Happy developers make the best code".
+					Therefor, we've looked, tried, and tested other backend systems from a wide variety of languages and frameworks and combined the very best ideas to create Bauhaus.
+				</p>
+
+				<hr/>
+
+				<a name="installation"></a>
+				<h3>Installation</h3>
+
+				<p>To install Bauhaus in your latest and greatest Laravel project, use composer and simply add krafthaus/bauhaus to your composer.json file:</p>
+				<pre><code class="language-javascript">"require": {
+	"laravel/framework": "4.2.*",
+	"krafthaus/bauhaus": "dev-master"
+}</code></pre>
+
+				<p>Then use composer to install the package.</p>
+				<pre><code class="language-bash">$ composer update</code></pre>
+
+				<h4>Registering</h4>
+				<p>Once installed, you have to register the service provider in <code>app/config/app.php</code> the providers array:</p>
+				<pre><code class="language-php">'providers' => array(
+	'KraftHaus\Bauhaus\BauhausServiceProvider'
+)</code></pre>
+
+				<h4>Configuration</h4>
+				<p>
+					Once everything is installed and registered, you need to tell composer where to find the bauhaus files.
+					Add the admin folder to the app/ directory and put the following line in your composer.json file:
+				</p>
+
+				<pre><code class="language-javascript">"autoload": {
+	"classmap": [
+		"app/admin"
+	]
+}</code></pre>
+
+				<p>For this to take effect, run <code>composer dump-autoload</code>.</p>
+
+				<p>Then publish the config file with <code>php artisan config:publish krafthaus/bauhaus</code>. This will add the main bauhaus config file in your application config directory.</p>
+				<p>And last but not least you need to publish to package's assets with the <code>php artisan asset:publish krafthaus/bauhaus</code> command.</p>
+
+				<hr/>
+
+				<a name="getting-started"></a>
+				<h3>Getting Started</h3>
+
+				<p>
+					Lets say you're building a blog (of course this is only limited to your imagination) an need to have some way to manage, view and update your blog posts.
+					Bauhaus will help you create exactly just that in a couple easy and quick steps.
+				</p>
+
+				<p>Below is explained what those steps are.</p>
+
+				<ul>
+					<li>We will need to create a <a href="http://laravel.com/docs/eloquent" rel="external">model</a> (Eloquent model)</li>
+					<li>A <a href="http://laravel.com/docs/migrations" rel="external">migration</a> to create our database table</li>
+					<li>And a Bauhaus controller to manage our posts</li>
+				</ul>
+
+				Bauhaus tries to streamline this process by providing one command to rule them all:
+				<pre><code class="language-bash">$ php artisan bauhaus:scaffold --model=post</code></pre>
+
+				<p>Running this command will create a couple of files:</p>
+				<ul>
+					<li>A Bauhaus controller in the <code>app/admin</code> directory</li>
+					<li>A migration in <code>app/database/migrations</code></li>
+					<li>A new model in <code>app/models</code></li>
+				</ul>
+
+				<p>Open the newly created migration at <code>app/database/migrations/{timestamp}_create_posts_table.php</code> and change it into something like this:</p>
+				<pre><code class="language-php">class CreatePostsTable extends Migration
+{
+	public function up()
+	{
+		Schema::create('posts', function(Blueprint $table) {
+			$table->increments('id');
+			$table->string('title');
+			$table->text('content');
+			$table->timestamps();
+		});
+	}
+
+	public function down()
+	{
+		Schema::drop('posts');
+	}
+}</code></pre>
+
+				<p>Now open <code>app/admin/PostAdmin.php</code> in change the boilerplate code to the following:</p>
+				<pre><code class="language-php">class PostAdmin extends KraftHaus\Bauhaus\Admin
+{
+	public function configureList($mapper)
+	{
+		// Render the title in the overview
+		$mapper->identifier('title');
+	}
+
+	public function configureForm($mapper)
+	{
+		// Render a text field and a wysiwyg editor
+		$mapper->text('title');
+		$mapper->wysiwyg('content');
+	}
+}</code></pre>
+
+				<p>Now visit <code>http://your-project-url/admin/model/post</code> and voila, you have a working backend where you can view, edit and create your posts.</p>
+
+				<hr/>
+
+				<a name="contributing"></a>
+				<h3>Contributing</h3>
+
+				<p>
+					Thank you for considering contributing to Bauhaus.
+					If you are submitting a bug-fix, or an enhancement that is not a breaking change, submit your pull request to the branch corresponding to the latest stable release of the package.
+					If you are submitting a breaking change or an entirely new component, submit your pull request to the master branch.
+				</p>
+
+				<hr/>
+
+				<a name="license"></a>
+				<h3>License</h3>
+
+				<p>Bauhaus is open-sourced software licensed under the <a href="https://github.com/krafthaus/bauhaus/blob/master/LICENSE" rel="external">MIT license</a></p>
+
+			</div>
+			<div class="col-sm-3">
+				<ul id="sidebar" data-spy="affix" data-offset-top="570">
+					<li><a href="#philosophy">Philosophy</a></li>
+					<li><a href="#installation">Installation</a></li>
+					<li><a href="#getting-started">Getting Started</a></li>
+					<li><a href="#contributing">Contributing</a></li>
+					<li><a href="#license">License</a></li>
+				</ul>
 			</div>
 		</div>
 	</div>
