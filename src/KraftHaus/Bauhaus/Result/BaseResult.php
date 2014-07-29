@@ -11,6 +11,10 @@ namespace KraftHaus\Bauhaus\Result;
  * file that was distributed with this source code.
  */
 
+/**
+ * Class BaseResult
+ * @package KraftHaus\Bauhaus\Result
+ */
 class BaseResult
 {
 
