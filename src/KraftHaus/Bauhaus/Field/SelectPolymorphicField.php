@@ -86,6 +86,14 @@ class SelectPolymorphicField extends SelectField
 		return parent::render();
 	}
 
+	/**
+	 * Post update hook.
+	 *
+	 * @param  array $input
+	 *
+	 * @access public
+	 * @return void
+	 */
 	public function postUpdate($input)
 	{
 		$baseModel = $this->getAdmin()->getModel();
