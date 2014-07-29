@@ -214,7 +214,8 @@ class FormBuilder extends BaseBuilder
 		if (method_exists($this->getMapper()->getAdmin(), 'create')) {
 			$this->getMapper()->getAdmin()->create($this->getInput());
 		} else {
-			$model::create($this->getInput());
+			$model = $model::create($this->getInput());
+			$this->setIdentifier($model->id);
 		}
 
 		// Field post update
