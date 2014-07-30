@@ -135,6 +135,16 @@
 					<li>scope: The query scopes for filtering the list.</li>
 				</ul>
 
+				<hr/>
+
+				<a name="field-definition"></a>
+				<h4>Field definition</h4>
+
+				<p>
+					Your Bauhaus controller defines which of your model's fields will be available in each action by using the corresponding <em>Mapper</em> (<em>ListMapper</em>, <em>FormMapper</em>, ...) instances.
+					To attach fields from your model to your controller you need to use one of these instances. Luckily, these instances are automatically given to you as the first argument of your <em>configure</em> functions.
+				</p>
+
 			</div>
 
 			<div class="col-sm-3">
@@ -143,6 +153,7 @@
 					<li><a href="#access-the-interface">Accessing the interface</a></li>
 					<li><a href="#a-basic-controller">A basic controller</a></li>
 					<li><a href="#architecture">Architecture</a></li>
+					<li><a href="#field-definition">Field definition</a></li>
 				</ul>
 			</div>
 		</div>
