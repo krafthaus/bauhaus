@@ -74,13 +74,86 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-9">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa quaerat dignissimos corporis ullam, quasi eligendi accusantium facilis quos autem tenetur! Ex autem, possimus. Vel quia natus assumenda, odit, repudiandae consequatur.</p>
+				<h3>The basics</h3>
+
+				<a name="access-the-interface"></a>
+				<h4>Accessing the Bauhaus interface</h4>
+				<p>
+					If you've followed the steps in the <a href="/#installation">installation section</a> the (empty) Bauhaus interface should now be accessible via <em>http://yoursite.local/admin</em>.
+				</p>
+
+				<p>Bauhaus helps you manage your data using a graphic interface that will let you create, edit, update, delete your model's instances. Those actions need to be configured, which is done using a Bauhaus controller.</p>
+				<p>A Bauhaus controller represents the mapping of your model to each action. In it, you decide which fields to show on a listing, which to use as filters or what to show in a form.</p>
+
+				<hr/>
+
+				<a name="a-basic-controller"></a>
+				<h4>A basic controller</h4>
+				<p>The easiest way to create a Bauhaus controller for your model is to extend the <code>KraftHaus\Bauhaus\Admin</code> class.</p>
+				<p>Suppose your website has a Post model. This is how a basic Bauhaus controller should look like:</p>
+
+				<pre><code class="language-php">class PostAdmin extends KraftHaus\Bauhaus\Admin
+{
+	// Fields to be shown on the index view
+	public function configureList($mapper)
+	{
+		$mapper->identifier('title');
+		$mapper->string('slug');
+		$mapper->belongsTo('author')->display('fullname');
+	}
+
+	// Fields to be shown on the form view
+	public function configureForm($mapper)
+	{
+		$mapper->text('title')->label('Post title');
+		$mapper->belongsTo('author')->display('fullname');
+		$mapper->wysiwyg('body');
+	}
+}</code></pre>
+				<p>
+					Implementing these two functions is the first step to creating a Bauhaus controller. Other options are available that will let you further customize the way your model is shown and handled.
+					Those will be covered later on in this manual.
+				</p>
+
+				<p>Now that you have created your first Bauhaus controller, you can preview it at <em>http://yoursite.local/admin/model/Post</em>. (Keep in mind that the part after model in the url is the class name of the BauhausController without `Admin`).</p>
+
+				<hr/>
+
+				<a name="architecture"></a>
+				<h4>Architecture</h4>
+				<p>The architecture of Bauhaus is heavily inspired by the <a href="http://sonata-project.org/bundles/admin" rel="external,nofollow">Sonata Admin Bundle</a> and the <a href="http://www.djangoproject.com/" rel="external,nofollow">Django Admin Project</a>, which are truly great projects.</p>
+				<p>If you followed the instructions above, you should by now have a working Bauhaus controller.</p>
+				<p>
+					The Bauhaus controller maps a specifc model to the rich CRUD interface provided by Bauhaus. In other words, using your controller, you can configure what is shown by Bauhaus in each CRUD action for the associated model.
+					By now, you've seen two of those actions in the paragraphs above: list and form. However, a fully configured Bauhaus controller can define more actions:
+				</p>
+
+				<ul>
+					<li>list: The fields displayed in the list table.</li>
+					<li>filter: The fields available for filtering the list.</li>
+					<li>form: The fields used to create/edit the model.</li>
+					<li>scope: The query scopes for filtering the list.</li>
+				</ul>
+
+				<hr/>
+
+				<a name="field-definition"></a>
+				<h4>Field definition</h4>
+
+				<p>
+					Your Bauhaus controller defines which of your model's fields will be available in each action by using the corresponding <em>Mapper</em> (<em>ListMapper</em>, <em>FormMapper</em>, ...) instances.
+					To attach fields from your model to your controller you need to use one of these instances. Luckily, these instances are automatically given to you as the first argument of your <em>configure</em> functions.
+				</p>
+
 			</div>
 
 			<div class="col-sm-3">
 				<ul id="sidebar" data-spy="affix" data-offset-top="350">
-					<li><a href="#">Authentication</a></li>
-					<li><a href="#">Menu's</a></li>
+					<li class="title">Basics</li>
+					<li><a href="#access-the-interface">Accessing the interface</a></li>
+					<li><a href="#a-basic-controller">A basic controller</a></li>
+					<li><a href="#architecture">Architecture</a></li>
+					<li><a href="#field-definition">Field definition</a></li>
 				</ul>
 			</div>
 		</div>
