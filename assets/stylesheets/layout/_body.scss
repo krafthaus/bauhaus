@@ -10,4 +10,9 @@ hr {
 	display: block;
 	margin-top: 60px;
 	margin-bottom: 60px;
+
+	&.small {
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
 }

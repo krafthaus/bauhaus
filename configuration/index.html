@@ -155,6 +155,45 @@
 				<a name="creating-menu-items"></a>
 				<h4>Creating menu items</h4>
 
+				<p>There are two ways for creating menu items:</p>
+				<ol>
+					<li><a href="#">Via the configuration</a></li>
+					<li><a href="#">Via the MenuBuilder</a></li>
+				</ol>
+
+				<hr class="small">
+
+				<h5>1. Via the configuration</h5>
+				<p>In the Bauhaus config file, find the menu array. For every menu item you want to add, create a new array in the menu array. Something like the following:</p>
+				<pre><code class="language-php">[
+	'title' => 'Users',
+	'class' => 'User',
+	'icon'  => 'user' // optional icon based on the font-awesome icon set (w/o `fa fa-`).
+]</code></pre>
+
+				<hr class="small">
+
+				<h5>2. Via the MenuBuilder</h5>
+				<p>Everywhere in your application you can add menu items to the list by calling the following singleton:</p>
+				<pre><code class="language-php">app('krafthaus.bauhaus.menu')->addMenu('left', [
+	'title' => 'Users',
+	'class' => 'User'
+]);</code></pre>
+
+				<p>The first argument is the position of the item. Your options are: <code>left</code> and <code>right</code>.</p>
+
+				<hr class="small">
+
+				<h5>Dropdown menu</h5>
+				<p>To create a dropdown menu, instead of class use children as a key and just add items as before in the resulting array:</p>
+				<pre><code class="language-php">'title' => 'Pages',
+'children' => [
+	[
+		'title' => 'Overview',
+		'class' => 'Page'
+	]
+]</code></pre>
+
 				<hr/>
 
 				<a name="authentication"></a>
