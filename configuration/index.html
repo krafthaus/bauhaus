@@ -147,6 +147,49 @@
 
 				<p>Details about all the field types can be viewed <a href="/fields">here</a>.</p>
 
+				<hr/>
+
+				<h3>Configuration</h3>
+				<p>Every configuration option can be found in <code>app/config/packages/krafthaus/bauhaus/admin.php</code>.</p>
+
+				<a name="creating-menu-items"></a>
+				<h4>Creating menu items</h4>
+
+				<hr/>
+
+				<a name="authentication"></a>
+				<h4>Authentication</h4>
+
+				<p>Bauhaus is based on a bring-your-own-auth principle meaning that you'll have to bring your own auth system.</p>
+				<p>Every request will execute the <code>auth.permissions</code> function as a filter. If this function returns false, Bauhaus will redirect to the <code>auth.login_path</code>.</p>
+				<p>If you're interested in an integrated authentication solution for Bauhaus. Check out <a href="https://github.com/krafthaus/bauhaususer" rel="external">BauhausUser</a>.</p>
+
+				<pre><code class="language-php">/**
+ * Authorization filter settings.
+ * @var array
+ */
+'auth' => [
+	/**
+	 * The permission filter.
+	 * @var string
+	 */
+	'permission' => function () {
+		return Auth::check();
+	},
+
+	/**
+	 * The uri used to redirect if the auth filter fails.
+	 * @var string
+	 */
+	'login_path' => 'admin/sign-in',
+
+	/**
+	 * The uri used to sign the user out.
+	 * @var string
+	 */
+	'logout_path' => 'admin/sign-out'
+]</code></pre>
+
 			</div>
 
 			<div class="col-sm-3">
@@ -156,6 +199,10 @@
 					<li><a href="#a-basic-controller">A basic controller</a></li>
 					<li><a href="#architecture">Architecture</a></li>
 					<li><a href="#field-definition">Field definition</a></li>
+
+					<li class="title">Configuration</li>
+					<li><a href="#creating-menu-items">Creating menu items</a></li>
+					<li><a href="#authentication">Authentication</a></li>
 				</ul>
 			</div>
 		</div>
