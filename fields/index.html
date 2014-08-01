@@ -122,7 +122,7 @@
 
 				<h4>Example</h4>
 				<pre><code class="language-php">// Upload the great_document file to the uploads/documents directory and saving it with a random name
-	$mapper->file('great_document')
+$mapper->file('great_document')
 	->location('uploads/documents')
 	->naming('random');</code></pre>
 				
@@ -235,11 +235,11 @@
 
 				<h4>Examples</h4>
 				<pre><code class="language-php">// as a non-associative array
-	$mapper->select('gender')
+$mapper->select('gender')
 	->options(['Male', 'Female']);</code></pre>
 
 				<pre><code class="language-php">// as an associative array
-	$mapper->select('gender')
+$mapper->select('gender')
 	->options([
 		'm' => 'Male',
 		'f' => 'Female'
@@ -369,18 +369,18 @@
 
 				<h4>Examples</h4>
 				<pre><code class="language-php">// Your model file
-	class User extends Eloquent
-	{
+class User extends Eloquent
+{
 	// Setup the relationship with the Posts model
 	public function posts()
 	{
 		return $this->belongsTo('Posts');
 	}
-	}
+}
 
-	// Your Bauhaus file
-	class User extends Admin
-	{
+// Your Bauhaus file
+class User extends Admin
+{
 	public function configureList($mapper)
 	{
 		// This renders the post title as a string in your list view.
@@ -392,7 +392,7 @@
 		// This renders a list of posts in your form.
 		$mapper->belongsTo('posts')->display('title');
 	}
-	}</code></pre>
+}</code></pre>
 
 				<h4>See also</h4>
 				<ul>
