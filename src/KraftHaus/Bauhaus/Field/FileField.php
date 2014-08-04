@@ -23,43 +23,105 @@ use Illuminate\Support\Facades\View;
 class FileField extends BaseField
 {
 
+	/**
+	 * Holds the file location.
+	 * @var string
+	 */
 	protected $location;
+
+	/**
+	 * Holds the file naming strategy.
+	 * @var string
+	 */
 	protected $naming;
+
+	/**
+	 * Holds the temporary original name.
+	 * @var string
+	 */
 	protected $originalname;
 
+	/**
+	 * Sets the file location.
+	 *
+	 * @param  string $location
+	 *
+	 * @access public
+	 * @return $this
+	 */
 	public function location($location)
 	{
 		$this->location = $location;
 		return $this;
 	}
 
+	/**
+	 * Get the file location.
+	 *
+	 * @access public
+	 * @return string
+	 */
 	public function getLocation()
 	{
 		return $this->location;
 	}
 
+	/**
+	 * Set the file naming strategy.
+	 *
+	 * @param  string $naming
+	 *
+	 * @access public
+	 * @return $this
+	 */
 	public function naming($naming)
 	{
 		$this->naming = $naming;
 		return $this;
 	}
 
+	/**
+	 * Get the file naming strategy.
+	 *
+	 * @access public
+	 * @return string
+	 */
 	public function getNaming()
 	{
 		return $this->naming;
 	}
 
+	/**
+	 * Set the original file name.
+	 *
+	 * @param  string $name
+	 *
+	 * @access public
+	 * @return $this
+	 */
 	public function setOriginalname($name)
 	{
 		$this->originalname = $name;
 		return $this;
 	}
 
+	/**
+	 * Get the original file name.
+	 *
+	 * @access public
+	 * @return string
+	 */
 	public function getOriginalName()
 	{
 		return $this->originalname;
 	}
 
+	/**
+	 * Pre-update hook for file name handling.
+	 *
+	 * @access public
+	 * @return void
+	 */
 	public function preUpdate()
 	{
 		$formBuilder = $this->getAdmin()->getFormBuilder();
@@ -94,6 +156,15 @@ class FileField extends BaseField
 			->with('field', $this);
 	}
 
+	/**
+	 * Set the filename.
+	 *
+	 * @param  string      $name
+	 * @param  null|string $extention
+	 *
+	 * @access public
+	 * @return string
+	 */
 	protected function handleNaming($name, $extention = null)
 	{
 		switch ($this->getNaming()) {
