@@ -83,6 +83,12 @@ abstract class BaseField
 	];
 
 	/**
+	 * Whether or not to render an "infinite" field.
+	 * @var bool
+	 */
+	protected $isInfinite = false;
+
+	/**
 	 * Holds the field tab name.
 	 * @var null|string
 	 */
@@ -395,6 +401,31 @@ abstract class BaseField
 	public function getAttributes()
 	{
 		return $this->attributes;
+	}
+
+	/**
+	 * Set this field as an 'infinite' field.
+	 *
+	 * @access public
+	 * @return $this
+	 */
+	public function infinite()
+	{
+		$this->attribute('infinite', true)
+			->isInfinite = true;
+
+		return $this;
+	}
+
+	/**
+	 * Check if this field is set 'infinite'.
+	 *
+	 * @access public
+	 * @return bool
+	 */
+	public function isInfinite()
+	{
+		return $this->isInfinite;
 	}
 
 	/**

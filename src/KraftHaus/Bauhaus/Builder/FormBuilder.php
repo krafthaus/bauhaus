@@ -12,6 +12,7 @@ namespace KraftHaus\Bauhaus\Builder;
  */
 
 use Closure;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Validator;
 use KraftHaus\Bauhaus\Result\FormResult;
 use KraftHaus\Bauhaus\Field\BaseField;
@@ -113,6 +114,11 @@ class FormBuilder extends BaseBuilder
 				$clone = clone $field;
 				$name  = $clone->getName();
 
+				// Is this an infinite field?
+				if ($clone->isInfinite()) {
+					$clone->setValue(['']);
+				}
+
 				$clone->setContext(BaseField::CONTEXT_FORM);
 				$result->addField($name, $clone);
 			}
@@ -141,6 +147,21 @@ class FormBuilder extends BaseBuilder
 					$value = $before($value);
 				} else {
 					$value = $before;
+				}
+			}
+
+			// Is this an infinite field?
+			if ($clone->isInfinite()) {
+				switch (Config::get('bauhaus::admin.infinite-serializer')) {
+					case 'explode':
+						$value = explode(',', $value);
+						break;
+					case 'json':
+						$value = json_decode($value);
+						break;
+					case 'serialize':
+						$value = unserialize($value);
+						break;
 				}
 			}
 
@@ -196,6 +217,23 @@ class FormBuilder extends BaseBuilder
 		foreach ($this->getMapper()->getFields() as $field) {
 			$field->preUpdate();
 
+			// Is this an infinite field?
+			if ($field->isInfinite()) {
+				switch (Config::get('bauhaus::admin.infinite-serializer')) {
+					case 'explode':
+						$value = implode(',', $input[$field->getName()]);
+						break;
+					case 'json':
+						$value = json_encode($input[$field->getName()]);
+						break;
+					case 'serialize':
+						$value = serialize($input[$field->getName()]);
+						break;
+				}
+
+				$this->setInputVariable($field->getName(), $value);
+			}
+
 			if ($field->hasSaving()) {
 				$saving = $field->getSaving();
 				$this->setInputVariable($field->getName(), $saving($input[$field->getName()]));
@@ -242,6 +280,23 @@ class FormBuilder extends BaseBuilder
 		// Field pre update
 		foreach ($this->getMapper()->getFields() as $field) {
 			$field->preUpdate();
+
+			// Is this an infinite field?
+			if ($field->isInfinite()) {
+				switch (Config::get('bauhaus::admin.infinite-serializer')) {
+					case 'explode':
+						$value = implode(',', $input[$field->getName()]);
+						break;
+					case 'json':
+						$value = json_encode($input[$field->getName()]);
+						break;
+					case 'serialize':
+						$value = serialize($input[$field->getName()]);
+						break;
+				}
+
+				$this->setInputVariable($field->getName(), $value);
+			}
 
 			if ($field->hasSaving()) {
 				$saving = $field->getSaving();

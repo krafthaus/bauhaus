@@ -72,6 +72,33 @@
 		selector: '.form-wysiwyg'
 	});
 
+	// Infinite fields
+	$(document)
+		.on('click', '.field-infinite a[data-event="field-add"]', function () {
+			var clone = $(this).closest('.row').clone();
+
+			$(clone).find('input').val('');
+			$(this).closest('.row').after(clone);
+
+			redrawInfiniteFieldButtons();
+		}).on('click', '.field-infinite a[data-event="field-remove"]', function () {
+			$(this).closest('.row').remove();
+
+			redrawInfiniteFieldButtons();
+		});
+
+	function redrawInfiniteFieldButtons () {
+		$('.form-group').each(function () {
+			var addFields    = $(this).find('[data-event="field-add"]'),
+				removeFields = $(this).find('[data-event="field-remove"]');
+
+			for (var i = 0; i < addFields.length -1; i++) {
+				addFields.eq(i).hide();
+				removeFields.eq(i).show();
+			}
+		});
+	}
+
 	// ...
 
 })(jQuery, window, document);

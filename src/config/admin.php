@@ -106,6 +106,14 @@ return [
 		'xml',
 		'csv',
 		'xls'
-	]
+	],
+
+	/**
+	 * How to serialize infinite fields.
+	 *  - explode
+	 *  - json
+	 *  - serialize
+	 */
+	'infinite-serializer' => 'json'
 
 ];

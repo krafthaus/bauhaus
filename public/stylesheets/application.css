@@ -6300,3 +6300,10 @@ ul.wysihtml5-toolbar div[data-wysihtml5-command-value="orange"] {
 
 .glyphicon-quote:after {
   content: "\0000a0"; }
+
+.form-control[infinite] {
+  margin-bottom: 5px; }
+
+.field-infinite {
+  display: block;
+  margin-top: 7px; }
