@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\View;
 
-
 /**
  * Class FileField
  * @package KraftHaus\Bauhaus\Field
