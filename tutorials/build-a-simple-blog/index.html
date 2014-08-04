@@ -1,0 +1,289 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<title>Krafthaus Bauhaus - A Laravel Admin Generator</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta name="description" content="The missing Laravel 4 Admin Generator">
+	<meta name="keywords" content="admin,administrator,laravel,php,backend,cms,blog,simple">
+
+	<link rel="stylesheet" href="/static/stylesheets/application.css">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:400,700">
+
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-50553506-2', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+</head>
+<body>
+
+	<a name="top"></a>
+
+	<!--[if lt IE 8]>
+	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+
+	<header>
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+
+					<a class="navbar-brand" href="/">Bauhaus</a>
+				</div>
+
+				<div class="collapse navbar-collapse" id="navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="/configuration">Configuration</a></li>
+						<li><a href="/views">Views</a></li>
+						<li><a href="/fields">Fields</a></li>
+						<li class="active"><a href="/tutorials">Tutorials</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<div id="subheader">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-8">
+					<h1>Tutorials</h1>
+					<h3>Build a simple blog</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-9">
+
+				<h3>Build a simple blog</h3>
+				<p>
+					This tutorial assumes that you've installed Bauhaus and have a running, working copy of this package.
+					If this is not the case, please follow the installation process <a href="/#installation">here</a>.
+				</p>
+
+				<h4>Setting op the models and the database.</h4>
+				<p>
+					In this section, we will create the database tables and corresponding models for our simple blog website using the Bauhaus build-in tools.
+					Our website will be utilizing <code>posts</code> and <code>comments</code> tables to store articles and user comments respectively.
+				</p>
+
+				<p>First, let's create our posts:</p>
+				<pre><code class="language-bash">$ php artisan bauhaus:scaffold --model=post</code></pre>
+
+				<p>Running this command will create a couple of files:</p>
+				<ul>
+					<li>The PostAdmin Bauhaus controller in <code>app/admin/PostAdmin.php</code></li>
+					<li>The Post model in <code>app/models/Post.php</code></li>
+					<li>A new migration in <code>app/database/migrations</code></li>
+				</ul>
+
+				<p>Open the newly created migration at <code>app/database/migrations/{timestamp}_create_posts_table.php</code> and change it into something like this:</p>
+				<pre><code class="language-php">class CreatePostsTable extends Migration
+{
+	public function up()
+	{
+		Schema::create('posts', function(Blueprint $table) {
+			$table->increments('id');
+			$table->string('title');
+			$table->text('content');
+			$table->timestamps();
+		});
+	}
+
+	public function down()
+	{
+		Schema::drop('posts');
+	}
+}</code></pre>
+
+				<p>Now run the same command for our post comments:</p>
+				<pre><code class="language-bash">$ php artisan bauhaus:scaffold --model=comment</code></pre>
+
+				<p>And edit the migration to something like this:</p>
+				<pre><code class="language-php">Class CreateCommentsTable extends Migration
+{
+	public function up()
+	{
+		Schema::create('comments', function(BluePrint $table) {
+			$table->increments('id');
+			$table->integer('post_id');
+			$table->string('email');
+			$table->text('comment');
+			$table->tinyInteger('is_approved');
+			$table->timestamps();
+		});
+	}
+
+	public function down()
+	{
+		Schema::drop('comments')
+	}
+}</code></pre>
+
+				<p>Now is a good time to run our migrations and create the posts and comments tables in our database:</p>
+				<pre><code class="language-bash">$ php artisan migrate</code></pre>
+
+				<hr/>
+
+				<h4>Create a menu item</h4>
+
+				<p>When you visit the Bauhaus backend at <code>http://domain/admin</code> you'll see an empty Bauhaus dashboard without a posts or comments menu item present. Let's add those menu items.</p>
+				<p>Open <code>app/config/packages/krafthaus/bauhaus/admin.php</code> and look for the <code>menu</code> array and change it to something like the following:</p>
+				<pre><code class="language-php">'menu' => [
+	[
+		'title' => 'Posts',
+		'class' => 'Post'
+	]
+]</code></pre>
+
+				<div class="alert alert-warning">
+					<p>More information on how to configure and add menu items can be found <a href="/configuration/#creating-menu-items">here</a>.</p>
+				</div>
+
+				<hr/>
+
+				<h4>Create the list</h4>
+
+				<p>
+					Now when you refresh the admin interface you should see a <em>Posts</em> menu item. When you click on that item you'll get a new page telling you that there are <em>No fields added to the list.</em>
+					That's because we did, in fact, added no fields to the list yet. Let's do that right now. Open <code>app/admin/PostAdmin.php</code> and look for the <code>configureList($mapper)</code> method.
+				</p>
+
+				<p>This method handles the index, or list, view. You tell Bauhaus what fields with what type to render and it happily renders them for you.</p>
+				<p>Let's say we'd like to have a table with posts rendering the <em>title</em> only. When you click on that title, or an edit button, we like to be redirected to that post where we can edit it. So let's edit the <code>configureList($mapper)</code> method to something like this:</p>
+				<pre><code class="language-php">public function configureList($mapper)
+{
+	$mapper->identifier('title');
+}</code></pre>
+
+				<div class="alert alert-warning">
+					<p>More information on how to use fields can be found <a href="/fields">here</a>.</p>
+				</div>
+
+				<hr/>
+
+				<h4>Create the form</h4>
+
+				<p>
+					Now refresh the page and you'll see a message something like this: <em>You have no Posts created yet.</em>.
+					When you click that button, it will say that you did not added fields to the form yet.
+				</p>
+
+				<p>Lets edit <code>app/admin/PostAdmin.php</code> again, but now we'll concentrate on the <code>configureForm($mapper)</code> method.</p>
+				<p>On the form we'd like to see these two fields:</p>
+				<ul>
+					<li>A <a href="/fields/#field-text">text</a> field for our title</li>
+					<li>A <a href="/fields/#field-wysiwyg">WYSIWYG</a> editor for our content</li>
+				</ul>
+				<p>Luckily for use, this is easily managed with Bauhaus:</p>
+				<pre><code class="language-php">public function configureForm($mapper)
+{
+	$mapper->text('title');
+	$mapper->wysiwyg('content');
+}</code></pre>
+
+				<p>Again, refresh the page and you'll see a simple for with the fields you've just created.</p>
+				<p>
+					Create your first post and hit <em>Save Post</em>. You'll be confronted with a <code>MassAssignmentException</code>.
+					That's because Bauhaus is tightly integrated with <em>Eloquent</em> and tries to save your data via the <em>Post</em> model.
+					To fix this you'll have to tell Eloquent which fields could be saved to the database.
+				</p>
+
+				<p>Open <code>app/models/Post.php</code> and add the <code>$fillable</code> property like so:</p>
+				<pre><code class="language-php">class Post extends Eloquent
+{
+	protected $fillable = [
+		'title',
+		'content',
+		'is_approved'
+	];
+}</code></pre>
+
+				<p>
+					Once you've add the <code>$fillable</code> property, hit refresh and voila, your model is saved on you'll be presented with your first entry in the list view.
+					You can now click on the post title or the edit button and you're taken to the edit view. Try to edit some values and again, hit save. It just works!
+				</p>
+
+				<hr/>
+
+				<h4>Creating the comments controller</h4>
+				<p>Now you know the basics there is no need to explain how to create your Bauhaus controller again so I'll list the code needed to render your comments in Bauhaus.</p>
+
+				<pre><code class="language-php">'menu' => [
+	[
+		'title' => 'Posts',
+		'class' => 'Post'
+	], [
+		'title' => 'Comments',
+		'class' => 'Comment',
+	]
+]</code></pre>
+
+				<pre><code class="language-php">MORE SOON.</code></pre>
+
+			</div>
+		</div>
+	</div>
+
+	<footer>
+		<hr>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 text-center">
+					<iframe src="http://ghbtns.com/github-btn.html?user=krafthaus&repo=bauhaus&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
+					<iframe src="http://ghbtns.com/github-btn.html?user=krafthaus&repo=bauhaus&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
+
+					<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+					<div class="fb-like" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true" style="vertical-align: top;"></div>
+					<div id="fb-root"></div>
+					<script>(function(d, s, id) {
+						var js, fjs = d.getElementsByTagName(s)[0];
+						if (d.getElementById(id)) return;
+						js = d.createElement(s); js.id = id;
+						js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=474518069350805&version=v2.0";
+						fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));
+					</script>
+				</div>
+
+				<div class="col-sm-12 col-md-6 col-md-offset-3 text-center">
+					<p>
+						<small>
+							Designed and built with all the love in the world by <a href="https://github.com/krafthaus">@krafthaus</a> and <a href="https://github.com/jspekken">@jspekken</a>.
+							Maintained by the core team with the help of our contributors.
+							Code licensed under MIT, documentation under CC BY 3.0.
+						</small>
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="/static/javascripts/jquery-1.11.1.min.js"><\/script>')</script>
+	<script src="/static/javascripts/application.js"></script>
+
+</body>
+</html>
