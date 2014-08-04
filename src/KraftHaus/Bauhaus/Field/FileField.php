@@ -14,6 +14,8 @@ namespace KraftHaus\Bauhaus\Field;
 use KraftHaus\Bauhaus\Field\BaseField;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\View;
+
 
 /**
  * Class FileField
@@ -100,7 +102,7 @@ class FileField extends BaseField
 				return $name;
 			case 'random':
 				$name = Str::random();
-				
+
 				if ($extention !== null) {
 					$name = sprintf('%s.%s', $name, $extention);
 				}
