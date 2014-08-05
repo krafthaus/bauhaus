@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Validator;
 use KraftHaus\Bauhaus\Result\FormResult;
 use KraftHaus\Bauhaus\Field\BaseField;
+use KraftHaus\Bauhaus\Util\Value;
 
 /**
  * Class ListBuilder
@@ -152,17 +153,7 @@ class FormBuilder extends BaseBuilder
 
 			// Is this an infinite field?
 			if ($clone->isInfinite()) {
-				switch (Config::get('bauhaus::admin.infinite-serializer')) {
-					case 'explode':
-						$value = explode(',', $value);
-						break;
-					case 'json':
-						$value = json_decode($value);
-						break;
-					case 'serialize':
-						$value = unserialize($value);
-						break;
-				}
+				$value = Value::decode(Config::get('bauhaus::admin.infinite-serializer'), $value);
 			}
 
 			$clone
@@ -219,18 +210,7 @@ class FormBuilder extends BaseBuilder
 
 			// Is this an infinite field?
 			if ($field->isInfinite()) {
-				switch (Config::get('bauhaus::admin.infinite-serializer')) {
-					case 'explode':
-						$value = implode(',', $input[$field->getName()]);
-						break;
-					case 'json':
-						$value = json_encode($input[$field->getName()]);
-						break;
-					case 'serialize':
-						$value = serialize($input[$field->getName()]);
-						break;
-				}
-
+				$value = Value::encode(Config::get('bauhaus::admin.infinite-serializer'), $input[$field->getName()]);
 				$this->setInputVariable($field->getName(), $value);
 			}
 
@@ -283,18 +263,7 @@ class FormBuilder extends BaseBuilder
 
 			// Is this an infinite field?
 			if ($field->isInfinite()) {
-				switch (Config::get('bauhaus::admin.infinite-serializer')) {
-					case 'explode':
-						$value = implode(',', $input[$field->getName()]);
-						break;
-					case 'json':
-						$value = json_encode($input[$field->getName()]);
-						break;
-					case 'serialize':
-						$value = serialize($input[$field->getName()]);
-						break;
-				}
-
+				$value = Value::encode(Config::get('bauhaus::admin.infinite-serializer'), $input[$field->getName()]);
 				$this->setInputVariable($field->getName(), $value);
 			}
 

@@ -11,6 +11,7 @@ namespace KraftHaus\Bauhaus\Builder;
  * file that was distributed with this source code.
  */
 
+use Illuminate\Support\Facades\Config;
 use KraftHaus\Bauhaus\Mapper\ListMapper;
 
 /**

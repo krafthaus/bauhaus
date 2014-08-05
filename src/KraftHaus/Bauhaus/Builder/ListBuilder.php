@@ -13,6 +13,7 @@ namespace KraftHaus\Bauhaus\Builder;
 
 use KraftHaus\Bauhaus\Result\ListResult;
 use KraftHaus\Bauhaus\Field\BaseField;
+use KraftHaus\Bauhaus\Util\Value;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Config;
 
@@ -91,18 +92,7 @@ class ListBuilder extends BaseBuilder
 				}
 
 				if ($clone->isInfinite()) {
-					switch (Config::get('bauhaus::admin.infinite-serializer')) {
-						case 'explode':
-							$value = explode(',', $value);
-							break;
-						case 'json':
-							$value = json_decode($value);
-							break;
-						case 'serialize':
-							$value = unserialize($value);
-							break;
-					}
-
+					$value = Value::decode(Config::get('bauhaus::admin.infinite-serializer'), $value);
 					$value = implode(', ', $value);
 				}
 

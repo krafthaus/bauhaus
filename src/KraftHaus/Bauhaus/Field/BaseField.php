@@ -13,6 +13,7 @@ namespace KraftHaus\Bauhaus\Field;
 
 use Closure;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Config;
 
 /**
  * Class BaseField
