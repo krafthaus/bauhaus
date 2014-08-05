@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>http://bauhaus.krafthaus.nl</loc>
+        <changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>http://bauhaus.krafthaus.nl/configuration</loc>
+        <changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>http://bauhaus.krafthaus.nl/fields</loc>
+        <changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>http://bauhaus.krafthaus.nl/tutorials</loc>
+        <changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>http://bauhaus.krafthaus.nl/tutorials/build-a-simple-blog</loc>
+        <changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>http://bauhaus.krafthaus.nl/views</loc>
+        <changefreq>weekly</changefreq>
+    </url>
+</urlset>
