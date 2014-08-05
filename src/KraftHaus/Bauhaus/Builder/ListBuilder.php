@@ -55,8 +55,8 @@ class ListBuilder extends BaseBuilder
 		}
 
 		// Field ordering
-		if (Input::has('order_by')) {
-			// ...
+		if (Input::has('_order_by')) {
+			$items->orderBy(Input::get('_order_by'), Input::get('_order'));
 		}
 
 		// Field filters
