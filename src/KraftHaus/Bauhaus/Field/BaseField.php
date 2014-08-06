@@ -90,6 +90,12 @@ abstract class BaseField
 	protected $isInfinite = false;
 
 	/**
+	 * Holds the infinite limit.
+	 * @var string
+	 */
+	protected $infiniteLimit = null;
+
+	/**
 	 * Holds the field tab name.
 	 * @var null|string
 	 */
@@ -410,10 +416,14 @@ abstract class BaseField
 	 * @access public
 	 * @return $this
 	 */
-	public function infinite()
+	public function infinite($limit = null)
 	{
 		$this->attribute('infinite', true)
 			->isInfinite = true;
+
+		if ($limit !== null) {
+			$this->setInfiniteLimit($limit);
+		}
 
 		return $this;
 	}
@@ -427,6 +437,33 @@ abstract class BaseField
 	public function isInfinite()
 	{
 		return $this->isInfinite;
+	}
+
+	/**
+	 * Set the infinite limit.
+	 * 
+	 * @param  integer $limit
+	 *
+	 * @access public
+	 * @return $this
+	 */
+	public function setInfiniteLimit($limit)
+	{
+		$this->attribute('infinite-limit', $limit)
+			->infiniteLimit = $limit;
+			
+		return $this;
+	}
+
+	/**
+	 * Get the infinite limit.
+	 * 
+	 * @access public
+	 * @return integer
+	 */
+	public function getInfiniteLimit()
+	{
+		return $this->infiniteLimit;
 	}
 
 	/**

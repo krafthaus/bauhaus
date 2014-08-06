@@ -96,6 +96,18 @@
 				addFields.eq(i).hide();
 				removeFields.eq(i).show();
 			}
+
+			// infinite limit
+			var limit = $(this).find('input').last().attr('infinite-limit');
+			if (limit != undefined) {
+				var fields = $(this).find('input').length;
+
+				if (fields >= limit) {
+					addFields.last().hide();
+				} else {
+					addFields.last().show();
+				}
+			}
 		});
 	}
 
