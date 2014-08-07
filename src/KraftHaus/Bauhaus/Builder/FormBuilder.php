@@ -99,7 +99,8 @@ class FormBuilder extends BaseBuilder
 	public function build()
 	{
 		$formMapper = $this->getMapper();
-		$model = $this->getModel();
+		$model      = $this->getModel();
+		$primaryKey = (new $model)->getKeyName();
 
 		// Check if fields are present.
 		if (count($formMapper->getFields()) == 0) {
@@ -130,11 +131,11 @@ class FormBuilder extends BaseBuilder
 
 		$items = $model::with([]);
 
-		$items->where($items->getKeyName(), $this->getIdentifier());
+		$items->where($primaryKey, $this->getIdentifier());
 		$item = $items->first();
 
 		$result = new FormResult;
-		$result->setIdentifier($item->id);
+		$result->setIdentifier($item->{$primaryKey});
 
 		foreach ($formMapper->getFields() as $field) {
 			$clone = clone $field;
@@ -201,7 +202,9 @@ class FormBuilder extends BaseBuilder
 	 */
 	public function create($input)
 	{
-		$model = $this->getModel();
+		$model      = $this->getModel();
+		$primaryKey = (new $model)->getKeyName();
+
 		$this->setInput($input);
 
 		// Field pre update
@@ -233,7 +236,7 @@ class FormBuilder extends BaseBuilder
 			$this->getMapper()->getAdmin()->create($this->getInput());
 		} else {
 			$model = $model::create($this->getInput());
-			$this->setIdentifier($model->id);
+			$this->setIdentifier($model->{$primaryKey});
 		}
 
 		// Field post update

@@ -42,14 +42,15 @@ class BelongsToField extends RelationField
 				break;
 
 			case BaseField::CONTEXT_FILTER:
-                $baseModel = $this->getAdmin()->getModel();
-                $baseModel = new $baseModel;
+                $baseModel  = $this->getAdmin()->getModel();
+                $baseModel  = new $baseModel;
+				$primaryKey = $baseModel->getKeyName();
 
                 $relatedModel = $baseModel->{$this->getName()}()->getRelated();
 
                 $items = [];
                 foreach ($relatedModel::all() as $item) {
-                    $items[$item->id] = $item->{$this->getDisplayField()};
+                    $items[$item->{$primaryKey}] = $item->{$this->getDisplayField()};
                 }
 
                 $column = Str::singular($relatedModel->getTable()) . '_id';
@@ -63,18 +64,19 @@ class BelongsToField extends RelationField
 				break;
 
 			case BaseField::CONTEXT_FORM:
-				$baseModel = $this->getAdmin()->getModel();
-				$baseModel = new $baseModel;
+				$baseModel  = $this->getAdmin()->getModel();
+				$baseModel  = new $baseModel;
+				$primaryKey = $baseModel->getKeyName();
 
 				$relatedModel = $baseModel->{$this->getName()}()->getRelated();
 
 				$items = [];
 				foreach ($relatedModel::all() as $item) {
-					$items[$item->id] = $item->{$this->getDisplayField()};
+					$items[$item->{$primaryKey}] = $item->{$this->getDisplayField()};
 				}
 
 				if ($this->getValue() !== null) {
-					$this->setValue($this->getValue()->id);
+					$this->setValue($this->getValue()->{$primaryKey});
 				}
 
 				return View::make('krafthaus/bauhaus::models.fields._belongs_to')

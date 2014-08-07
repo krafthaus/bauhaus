@@ -46,8 +46,9 @@ class ListBuilder extends BaseBuilder
 	{
 		$listMapper = $this->getMapper();
 
-		$model = $this->getModel();
-		$items = $model::with([]);
+		$model      = $this->getModel();
+		$items      = $model::with([]);
+		$primaryKey = (new $model)->getKeyName();
 
 		// Check if fields are present.
 		if (count($listMapper->getFields()) == 0) {
@@ -79,7 +80,7 @@ class ListBuilder extends BaseBuilder
 		$result = [];
 		foreach ($items as $item) {
 			$row = new ListResult;
-			$row->setIdentifier($item->id);
+			$row->setIdentifier($item->{$primaryKey});
 
 			foreach ($listMapper->getFields() as $field) {
 				$clone = clone $field;
@@ -98,7 +99,7 @@ class ListBuilder extends BaseBuilder
 
 				$clone
 					->setContext(BaseField::CONTEXT_LIST)
-					->setRowId($item->id)
+					->setRowId($item->{$primaryKey})
 					->setValue($value);
 
 				$row->addField($name, $clone);

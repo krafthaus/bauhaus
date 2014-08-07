@@ -36,25 +36,27 @@ class BelongsToManyField extends RelationField
 
 		switch ($this->getContext()) {
 			case BaseField::CONTEXT_LIST:
-				$model = $this->getName();
+				$model      = $this->getName();
+				$primaryKey = (new $model)->getKeyName();
 
 				$values = [];
 				foreach ($this->getValue() as $item) {
-					$values[$item->id] = $item->{$this->getDisplayField()};
+					$values[$item->{$primaryKey}] = $item->{$this->getDisplayField()};
 				}
 
 				return implode(', ', $values);
 
 				break;
 			case BaseField::CONTEXT_FORM:
-				$baseModel = $this->getAdmin()->getModel();
-				$baseModel = new $baseModel;
+				$baseModel  = $this->getAdmin()->getModel();
+				$baseModel  = new $baseModel;
+				$primaryKey = $baseModel->getKeyName();
 
 				$relatedModel = $baseModel->{$this->getName()}()->getRelated();
 
 				$items = [];
 				foreach ($relatedModel::all() as $item) {
-					$items[$item->id] = $item->{$this->getDisplayField()};
+					$items[$item->{$primaryKey}] = $item->{$this->getDisplayField()};
 				}
 
 				$id = $this->getAdmin()->getFormBuilder()->getIdentifier();
@@ -62,7 +64,7 @@ class BelongsToManyField extends RelationField
 
 				if ($id !== null) {
 					foreach ($baseModel::find($id)->{$relatedModel->getTable()} as $item) {
-						$values[$item->id] = $item->id;
+						$values[$item->{$primaryKey}] = $item->{$primaryKey};
 					}
 				}
 

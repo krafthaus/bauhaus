@@ -116,7 +116,7 @@ class SelectPolymorphicField extends SelectField
 		// update new item with polymorphic relation
 		$baseModel->{$this->getName()}()
 			->getRelated()
-			->where($baseModel->getKeyName(), $input[$this->getName()])
+			->where($items->getKeyName(), $input[$this->getName()])
 			->update([
 				$foreignKey => $this->getAdmin()->getFormBuilder()->getIdentifier(),
 				$morphType  => get_class($baseModel),

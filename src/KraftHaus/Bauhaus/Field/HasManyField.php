@@ -32,11 +32,12 @@ class HasManyField extends RelationField
 	{
 		switch ($this->getContext()) {
 			case BaseField::CONTEXT_LIST:
-				$model = $this->getName();
+				$model      = $this->getName();
+				$primaryKey = (new $model)->getKeyName();
 
 				$values = [];
 				foreach ($this->getValue() as $item) {
-					$values[$item->id] = $item->{$this->getDisplayField()};
+					$values[$item->{$primaryKey}] = $item->{$this->getDisplayField()};
 				}
 
 				return implode(', ', $values);
@@ -44,22 +45,23 @@ class HasManyField extends RelationField
 				break;
 			case BaseField::CONTEXT_FORM:
 
-				$baseModel = $this->getAdmin()->getModel();
-				$baseModel = new $baseModel;
+				$baseModel  = $this->getAdmin()->getModel();
+				$baseModel  = new $baseModel;
+				$primaryKey = $baseModel->getKeyName();
 
 				$relatedModel = $baseModel->{$this->getName()}()->getRelated();
 				$relatedModel = get_class($relatedModel);
 
 				$items = [];
 				foreach ($relatedModel::all() as $item) {
-					$items[$item->id] = $item->{$this->getDisplayField()};
+					$items[$item->{$primaryKey}] = $item->{$this->getDisplayField()};
 				}
 
 				$id = $this->getAdmin()->getFormBuilder()->getIdentifier();
 
 				$values = [];
 				foreach ($baseModel::where(Str::singular($baseModel->getTable()) . '_id', $id)->get() as $item) {
-					$values[] = (string) $item->id;
+					$values[] = (string) $item->{$primaryKey};
 				}
 
 				return View::make('krafthaus/bauhaus::models.fields._has_many')
