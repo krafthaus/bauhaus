@@ -130,7 +130,7 @@ class FormBuilder extends BaseBuilder
 
 		$items = $model::with([]);
 
-		$items->where('id', $this->getIdentifier());
+		$items->where($items->getKeyName(), $this->getIdentifier());
 		$item = $items->first();
 
 		$result = new FormResult;
