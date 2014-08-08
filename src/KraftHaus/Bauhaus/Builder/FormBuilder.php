@@ -134,6 +134,11 @@ class FormBuilder extends BaseBuilder
 		$items->where($primaryKey, $this->getIdentifier());
 		$item = $items->first();
 
+		// modifyModelItem hook
+		if (method_exists($this->getMapper()->getAdmin(), 'modifyModelItem')) {
+			$item = $this->getMapper()->getAdmin()->modifyModelItem($item);
+		}
+
 		$result = new FormResult;
 		$result->setIdentifier($item->{$primaryKey});
 
