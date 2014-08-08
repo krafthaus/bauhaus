@@ -36,8 +36,11 @@ class BelongsToManyField extends RelationField
 
 		switch ($this->getContext()) {
 			case BaseField::CONTEXT_LIST:
-				$model      = $this->getName();
-				$primaryKey = (new $model)->getKeyName();
+				$baseModel    = $this->getAdmin()->getModel();
+				$baseModel    = new $baseModel;
+
+				$relatedModel = $baseModel->{$this->getName()}()->getRelated();
+				$primaryKey   = $relatedModel->getKeyName();
 
 				$values = [];
 				foreach ($this->getValue() as $item) {
