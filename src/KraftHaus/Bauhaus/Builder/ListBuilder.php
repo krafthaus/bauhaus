@@ -62,7 +62,7 @@ class ListBuilder extends BaseBuilder
 
 		// Field filters
 		foreach (Input::all() as $key => $value) {
-			if (empty($value) || substr($key, 0, 1) == '_') {
+			if (empty($value) || substr($key, 0, 1) == '_' || $key == 'page') {
 				continue;
 			}
 
@@ -138,7 +138,7 @@ class ListBuilder extends BaseBuilder
 
 	/**
 	 * Set the paginator object.
-	 * 
+	 *
 	 * @param  Paginator $paginator
 	 *
 	 * @access public
