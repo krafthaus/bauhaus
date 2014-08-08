@@ -60,7 +60,7 @@ class HasManyField extends RelationField
 				$id = $this->getAdmin()->getFormBuilder()->getIdentifier();
 
 				$values = [];
-				foreach ($baseModel::where(Str::singular($baseModel->getTable()) . '_id', $id)->get() as $item) {
+				foreach ($relatedModel::where(Str::singular($baseModel->getTable()) . '_id', $id)->get() as $item) {
 					$values[] = (string) $item->{$primaryKey};
 				}
 
@@ -75,11 +75,15 @@ class HasManyField extends RelationField
 
 	public function postUpdate($input)
 	{
-		$model = $this->getName();
-		$self  = $this->getAdmin()->getModel();
+		$baseModel = $this->getAdmin()->getModel();
+		$baseModel = new $baseModel;
 
-		foreach ($input[$model] as $item) {
-			$model::find($item)->update([strtolower($self) . '_id' => $this->getAdmin()->getFormBuilder()->getIdentifier()]);
+		$relatedModel = $baseModel->{$this->getName()}()->getRelated();
+		$relatedModel = get_class($relatedModel);
+
+		foreach ($input[$this->getName()] as $item) {
+			$relatedModel::find($item)
+				->update([strtolower(get_class($baseModel)) . '_id' => $this->getAdmin()->getFormBuilder()->getIdentifier()]);
 		}
 	}
 
