@@ -92,8 +92,8 @@ class ListBuilder extends BaseBuilder
 					$value  = $before($value);
 				}
 
-				if ($clone->isInfinite()) {
-					$value = Value::decode(Config::get('bauhaus::admin.infinite-serializer'), $value);
+				if ($clone->isMultiple()) {
+					$value = Value::decode(Config::get('bauhaus::admin.multiple-serializer'), $value);
 					$value = implode(', ', $value);
 				}
 

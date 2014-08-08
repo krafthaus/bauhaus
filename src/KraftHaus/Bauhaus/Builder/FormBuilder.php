@@ -116,8 +116,8 @@ class FormBuilder extends BaseBuilder
 				$clone = clone $field;
 				$name  = $clone->getName();
 
-				// Is this an infinite field?
-				if ($clone->isInfinite()) {
+				// Is this a multiple field?
+				if ($clone->isMultiple()) {
 					$clone->setValue(['']);
 				}
 
@@ -152,9 +152,9 @@ class FormBuilder extends BaseBuilder
 				}
 			}
 
-			// Is this an infinite field?
-			if ($clone->isInfinite()) {
-				$value = Value::decode(Config::get('bauhaus::admin.infinite-serializer'), $value);
+			// Is this a multiple field?
+			if ($clone->isMultiple()) {
+				$value = Value::decode(Config::get('bauhaus::admin.multiple-serializer'), $value);
 			}
 
 			$clone
@@ -211,9 +211,9 @@ class FormBuilder extends BaseBuilder
 		foreach ($this->getMapper()->getFields() as $field) {
 			$field->preUpdate();
 
-			// Is this an infinite field?
-			if ($field->isInfinite()) {
-				$value = Value::encode(Config::get('bauhaus::admin.infinite-serializer'), $input[$field->getName()]);
+			// Is this a multiple field?
+			if ($field->isMultiple()) {
+				$value = Value::encode(Config::get('bauhaus::admin.multiple-serializer'), $input[$field->getName()]);
 				$this->setInputVariable($field->getName(), $value);
 			}
 
@@ -264,9 +264,9 @@ class FormBuilder extends BaseBuilder
 		foreach ($this->getMapper()->getFields() as $field) {
 			$field->preUpdate();
 
-			// Is this an infinite field?
-			if ($field->isInfinite()) {
-				$value = Value::encode(Config::get('bauhaus::admin.infinite-serializer'), $input[$field->getName()]);
+			// Is this a multiple field?
+			if ($field->isMultiple()) {
+				$value = Value::encode(Config::get('bauhaus::admin.multiple-serializer'), $input[$field->getName()]);
 				$this->setInputVariable($field->getName(), $value);
 			}
 

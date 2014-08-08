@@ -109,11 +109,11 @@ return [
 	],
 
 	/**
-	 * How to serialize infinite fields.
+	 * How to serialize `multiple` fields.
 	 *  - explode
 	 *  - json
 	 *  - serialize
 	 */
-	'infinite-serializer' => 'json'
+	'multiple-serializer' => 'json'
 
 ];

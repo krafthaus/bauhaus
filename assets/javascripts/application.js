@@ -97,8 +97,8 @@
 				removeFields.eq(i).show();
 			}
 
-			// infinite limit
-			var limit = $(this).find('input').last().attr('infinite-limit');
+			// multiple limit
+			var limit = $(this).find('input').last().attr('multiple-limit');
 			if (limit != undefined) {
 				var fields = $(this).find('input').length;
 

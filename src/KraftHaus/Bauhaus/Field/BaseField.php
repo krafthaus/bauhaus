@@ -84,16 +84,16 @@ abstract class BaseField
 	];
 
 	/**
-	 * Whether or not to render an "infinite" field.
+	 * Whether or not to render a "multiple" field.
 	 * @var bool
 	 */
-	protected $isInfinite = false;
+	protected $isMultiple = false;
 
 	/**
-	 * Holds the infinite limit.
-	 * @var string
+	 * Holds the multiple limit.
+	 * @var boolean
 	 */
-	protected $infiniteLimit = null;
+	protected $multipleLimit = null;
 
 	/**
 	 * Holds the field tab name.
@@ -411,59 +411,59 @@ abstract class BaseField
 	}
 
 	/**
-	 * Set this field as an 'infinite' field.
+	 * Set this field as a 'multiple' field.
 	 *
 	 * @access public
 	 * @return $this
 	 */
-	public function infinite($limit = null)
+	public function multiple($limit = null)
 	{
 		$this->attribute('infinite', true)
-			->isInfinite = true;
+			->isMultiple = true;
 
 		if ($limit !== null) {
-			$this->setInfiniteLimit($limit);
+			$this->setMultipleLimit($limit);
 		}
 
 		return $this;
 	}
 
 	/**
-	 * Check if this field is set 'infinite'.
+	 * Check if this field is set 'multiple'.
 	 *
 	 * @access public
 	 * @return bool
 	 */
-	public function isInfinite()
+	public function isMultiple()
 	{
-		return $this->isInfinite;
+		return $this->isMultiple;
 	}
 
 	/**
-	 * Set the infinite limit.
+	 * Set the multiple limit.
 	 * 
 	 * @param  integer $limit
 	 *
 	 * @access public
 	 * @return $this
 	 */
-	public function setInfiniteLimit($limit)
+	public function setMultipleLimit($limit)
 	{
-		$this->attribute('infinite-limit', $limit)
-			->infiniteLimit = $limit;
+		$this->attribute('multiple-limit', $limit)
+			->multipleLimit = $limit;
 			
 		return $this;
 	}
 
 	/**
-	 * Get the infinite limit.
+	 * Get the multiple limit.
 	 * 
 	 * @access public
 	 * @return integer
 	 */
-	public function getInfiniteLimit()
+	public function getMultipleLimit()
 	{
-		return $this->infiniteLimit;
+		return $this->multipleLimit;
 	}
 
 	/**

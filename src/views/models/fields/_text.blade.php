@@ -2,7 +2,7 @@
 	<label class="col-sm-3 control-label">{{ $field->getLabel() }}</label>
 	<div class="col-sm-9">
 
-		@if ($field->isInfinite())
+		@if ($field->isMultiple())
 			@foreach ($field->getValue() as $key => $value)
 				<div class="row">
 					<div class="col-sm-11">
