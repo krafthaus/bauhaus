@@ -207,13 +207,16 @@ class FormBuilder extends BaseBuilder
 	 */
 	public function create($input)
 	{
+		$mapper = $this->getMapper();
+		$admin  = $mapper->getAdmin();
+
 		$model      = $this->getModel();
 		$primaryKey = (new $model)->getKeyName();
 
 		$this->setInput($input);
 
 		// Field pre update
-		foreach ($this->getMapper()->getFields() as $field) {
+		foreach ($mapper->getFields() as $field) {
 			$field->preUpdate();
 
 			// Is this a multiple field?
@@ -237,15 +240,15 @@ class FormBuilder extends BaseBuilder
 		}
 
 		// Create hook
-		if (method_exists($this->getMapper()->getAdmin(), 'create')) {
-			$this->getMapper()->getAdmin()->create($this->getInput());
+		if (method_exists($admin, 'create')) {
+			$admin->create($this->getInput());
 		} else {
 			$model = $model::create($this->getInput());
 			$this->setIdentifier($model->{$primaryKey});
 		}
 
 		// Field post update
-		foreach ($this->getMapper()->getFields() as $field) {
+		foreach ($mapper->getFields() as $field) {
 			$field->postUpdate($this->getInput());
 		}
 
