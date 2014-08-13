@@ -25,7 +25,8 @@
         }
     },
 	"suggest": {
-		"krafthaus/bauhaususer": "Add user capabilities to bauhaus"
+		"krafthaus/bauhaususer": "Add user capabilities to bauhaus",
+		"krafthaus/bauhausblock": "Simple block handling for laravel"
 	},
     "minimum-stability": "stable"
 }
