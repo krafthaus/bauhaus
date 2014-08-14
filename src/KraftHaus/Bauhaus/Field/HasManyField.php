@@ -32,12 +32,9 @@ class HasManyField extends RelationField
 	{
 		switch ($this->getContext()) {
 			case BaseField::CONTEXT_LIST:
-				$model      = $this->getName();
-				$primaryKey = (new $model)->getKeyName();
-
 				$values = [];
 				foreach ($this->getValue() as $item) {
-					$values[$item->{$primaryKey}] = $item->{$this->getDisplayField()};
+					$values[] = $item->{$this->getDisplayField()};
 				}
 
 				return implode(', ', $values);
