@@ -354,7 +354,7 @@ abstract class BaseField
 	 */
 	public function getPlaceholder()
 	{
-		return $this->placeholder;
+		return $this->getAttribute('placeholder');
 	}
 
 	/**
