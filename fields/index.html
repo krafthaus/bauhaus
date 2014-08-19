@@ -93,6 +93,12 @@
 					<dd>The field name in your model.</dd>
 				</dl>
 
+				<h4>Optional methods</h4>
+				<dl>
+					<dt>description( string $description )</dt>
+					<dd>Set the description for this field</dd>
+				</dl>
+
 				<hr/>
 
 				<!-- FILE -->
@@ -102,8 +108,7 @@
 
 				<h4>Description</h4>
 				<pre><code class="language-php">$mapper->file( string $field )
-	->location( string $location )
-	->naming( string $naming <em>[ original | random ]</em> ) // optional</code></pre>
+	->location( string $location )</code></pre>
 				<div class="alert alert-warning">
 					<p><strong>NOTE:</strong> The file field requires the use of the <strong><em>location( string $location )</em></strong> method.</p>
 				</div>
@@ -115,9 +120,15 @@
 
 					<dt>$location</dt>
 					<dd>The location to upload your file to.</dd>
+				</dl>
 
-					<dt>$naming</dt>
+				<h4>Optional methods</h4>
+				<dl>
+					<dt>naming( string $naming <em>[ original | random ]</em> )</dt>
 					<dd>Whether or not to randomize the filename.</dd>
+
+					<dt>description( string $description )</dt>
+					<dd>Set the description for this field</dd>
 				</dl>
 
 				<h4>Example</h4>
@@ -167,20 +178,24 @@ $mapper->file('great_document')
 				<p>Renders a number formatted version of the <a href="#field-text">TextField</a>.</p>
 
 				<h4>Description</h4>
-				<pre><code class="language-php">$mapper->number( string $field )
-	->decimals( int $decimals = 2 ) // optional
-	->separators( array $separators = ['.', ','] ) // optional</code></pre>
+				<pre><code class="language-php">$mapper->number( string $field )</code></pre>
 
 				<h4>Parameters</h4>
 				<dl>
 					<dt>$field</dt>
 					<dd>The field name in your model.</dd>
+				</dl>
 
-					<dt>$decimals</dt>
+				<h4>Optional methods</h4>
+				<dl>
+					<dt>decimals( int $decimals = 2 )</dt>
 					<dd>Sets the number of decimal points.</dd>
 
-					<dt>$separators</dt>
+					<dt>separators( array $separators = ['.', ','] )</dt>
 					<dd>Sets the decimal point and the thousands separator.</dd>
+
+					<dt>description( string $description )</dt>
+					<dd>Set the description for this field</dd>
 				</dl>
 
 				<h4>See also</h4>
@@ -201,6 +216,12 @@ $mapper->file('great_document')
 
 				<h4>Description</h4>
 				<pre><code class="language-php">$mapper->password( string $field )</code></pre>
+
+				<h4>Optional methods</h4>
+				<dl>
+					<dt>description( string $description )</dt>
+					<dd>Set the description for this field</dd>
+				</dl>
 
 				<h4>Parameters</h4>
 				<dl>
@@ -223,6 +244,12 @@ $mapper->file('great_document')
 				<h4>Description</h4>
 				<pre><code class="language-php">$mapper->select( string $field )
 	->options( array $options )</code></pre>
+
+				<h4>Optional methods</h4>
+				<dl>
+					<dt>description( string $description )</dt>
+					<dd>Set the description for this field</dd>
+				</dl>
 
 				<h4>Parameters</h4>
 				<dl>
