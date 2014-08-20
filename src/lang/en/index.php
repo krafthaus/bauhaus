@@ -21,7 +21,7 @@ return [
 		'create-new'      => 'Create new :model',
 		'reset-filters'   => 'Reset filters',
 		'edit'            => 'Edit',
-		'delete-selected' => 'Deleted selected :model',
+		'delete-selected' => 'Delete selected :model',
 		'reset'           => 'Reset',
 		'filter-submit'   => 'Filter :model',
 		'overview'        => 'Overview'
