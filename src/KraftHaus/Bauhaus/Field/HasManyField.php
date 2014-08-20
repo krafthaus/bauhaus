@@ -78,9 +78,11 @@ class HasManyField extends RelationField
 		$relatedModel = $baseModel->{$this->getName()}()->getRelated();
 		$relatedModel = get_class($relatedModel);
 
-		foreach ($input[$this->getName()] as $item) {
-			$relatedModel::find($item)
-				->update([strtolower(get_class($baseModel)) . '_id' => $this->getAdmin()->getFormBuilder()->getIdentifier()]);
+		if (isset($input[$this->getName()])) {
+			foreach ($input[$this->getName()] as $item) {
+				$relatedModel::find($item)
+					->update([strtolower(get_class($baseModel)) . '_id' => $this->getAdmin()->getFormBuilder()->getIdentifier()]);
+			}
 		}
 	}
 
