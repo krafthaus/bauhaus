@@ -110,7 +110,7 @@ class Builder
 			$url = '';
 
 			if (isset($value['class'])) {
-				$url = route('admin.model.index', Str::snake($value['class']));
+				$url = route('admin.model.index', urlencode($value['class']));
 			} elseif (isset($value['url'])) {
 				$url = $value['url'];
 			}
