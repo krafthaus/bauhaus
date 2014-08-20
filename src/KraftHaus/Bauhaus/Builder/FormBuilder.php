@@ -254,7 +254,11 @@ class FormBuilder extends BaseBuilder
 
 		// Model after create hook
 		if (method_exists($admin, 'afterCreate')) {
-			$admin->afterCreate($this->getInput());
+			$result = $admin->afterCreate($this->getInput());
+
+			if ($result instanceof \Illuminate\Http\RedirectResponse) {
+				$result->send();
+			}
 		}
 
 		return $this;
@@ -320,7 +324,11 @@ class FormBuilder extends BaseBuilder
 
 		// Model after update hook
 		if (method_exists($admin, 'afterCreate')) {
-			$admin->afterUpdate($this->getInput());
+			$result = $admin->afterUpdate($this->getInput());
+
+			if ($result instanceof \Illuminate\Http\RedirectResponse) {
+				$result->send();
+			}
 		}
 
 		return $this;
@@ -354,7 +362,11 @@ class FormBuilder extends BaseBuilder
 
 		// Model after delete hook
 		if (method_exists($admin, 'afterDelete')) {
-			$admin->afterDelete($model);
+			$result = $admin->afterDelete($model);
+
+			if ($result instanceof \Illuminate\Http\RedirectResponse) {
+				$result->send();
+			}
 		}
 
 		return $this;
