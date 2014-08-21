@@ -35,7 +35,11 @@ class Builder
 	 */
 	public function __construct()
 	{
-		$this->items['left'] = Config::get('bauhaus::admin.menu');
+		$config = Config::get('bauhaus::admin.menu');
+
+		if ($config !== null) {
+			$this->items['left'] = Config::get('bauhaus::admin.menu');
+		}
 	}
 
 	/**
