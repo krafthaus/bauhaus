@@ -102,11 +102,6 @@ class FormBuilder extends BaseBuilder
 		$model      = $this->getModel();
 		$primaryKey = (new $model)->getKeyName();
 
-		// Check if fields are present.
-		if (count($formMapper->getFields()) == 0) {
-			throw new \Exception('No fields added to the form.');
-		}
-
 		/**
 		 * Empty form
 		 */

@@ -50,11 +50,6 @@ class ListBuilder extends BaseBuilder
 		$items      = $model::with([]);
 		$primaryKey = (new $model)->getKeyName();
 
-		// Check if fields are present.
-		if (count($listMapper->getFields()) == 0) {
-			throw new \Exception('No fields added to the list.');
-		}
-
 		// Field ordering
 		if (Input::has('_order_by')) {
 			$items->orderBy(Input::get('_order_by'), Input::get('_order'));
