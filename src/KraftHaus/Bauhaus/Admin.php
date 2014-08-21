@@ -159,8 +159,9 @@ class Admin
 	 *
 	 * @access public
 	 * @return string
+	 * @static
 	 */
-	public function getInstance($name)
+	public static function getInstance($name)
 	{
 		$model = sprintf('\\%sAdmin', Str::studly($name));
 		$model = new $model;
