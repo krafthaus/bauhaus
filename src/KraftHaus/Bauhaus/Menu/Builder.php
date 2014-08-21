@@ -43,6 +43,17 @@ class Builder
 	}
 
 	/**
+	 * Get the menu items.
+	 *
+	 * @access public
+	 * @return array
+	 */
+	public function getItems()
+	{
+		return $this->items;
+	}
+
+	/**
 	 * Add new items to the menu array.
 	 * 
 	 * @param  array $menu
