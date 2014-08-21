@@ -1,6 +1,7 @@
 Bauhaus - The missing Laravel 4 Admin Generator
 ---
 
+[![Build Status](https://api.travis-ci.org/krafthaus/bauhaus.svg?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/krafthaus/bauhaus/v/stable.png)](https://packagist.org/packages/krafthaus/bauhaus)
 [![Latest Unstable Version](https://poser.pugx.org/krafthaus/bauhaus/v/unstable.png)](https://packagist.org/packages/krafthaus/bauhaus)
 [![Total Downloads](https://poser.pugx.org/krafthaus/bauhaus/downloads.png)](https://packagist.org/packages/krafthaus/bauhaus)
