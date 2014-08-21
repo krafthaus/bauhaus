@@ -127,7 +127,9 @@ class Builder
 			if (isset($value['class'])) {
 				$url = route('admin.model.index', urlencode($value['class']));
 			} elseif (isset($value['url'])) {
-				$url = $value['url'];
+				$url = url($value['url']);
+			} elseif (isset($value['route'])) {
+				$url = route($value['route']);
 			}
 
 			if (isset($value['text'])) {
