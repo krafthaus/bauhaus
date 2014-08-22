@@ -208,6 +208,7 @@ class FormBuilder extends BaseBuilder
 		// Field pre update
 		foreach ($mapper->getFields() as $field) {
 			$field->preUpdate();
+			$input = $this->getInput();
 
 			// Is this a multiple field?
 			if ($field->isMultiple()) {

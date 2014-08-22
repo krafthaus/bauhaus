@@ -124,24 +124,42 @@ class FileField extends BaseField
 	 */
 	public function preUpdate()
 	{
+		// Get the form builder for input value altering
 		$formBuilder = $this->getAdmin()->getFormBuilder();
-		$tempName    = $this->getName();
 
+		// Check the file input
 		if (Input::hasFile($this->getName())) {
-			$file = Input::file($this->getName());
-			$this->setOriginalname($file->getClientOriginalName());
 
-			$name = $file->getClientOriginalName();
-			$name = $this->handleNaming($name, $file->getClientOriginalExtension());
-			$this->setName($name);
+			// Multiple file upload
+			if ($this->isMultiple()) {
+				$filenames = [];
 
-			$file->move($this->getLocation(), $name);
+				foreach (Input::file($this->getName()) as $file) {
+					if ($file->isValid()) {
+						$filename = $this->handleNaming($file->getClientOriginalName(), $file->getClientOriginalExtension());
+						$file->move($this->getLocation(), $filename);
 
-			$value = sprintf('%s/%s', $this->getLocation(), $name);
-			$formBuilder->setInputVariable($tempName, $value);
-		} else {
-			$formBuilder->unsetInputVariable($this->getName());
+						$filenames[] = sprintf('%s/%s', $this->getLocation(), $filename);
+					}
+				}
+
+				$formBuilder->setInputVariable($this->getName(), $filenames);
+			} else {
+				$file = Input::file($this->getName());
+
+				if ($file->isValid()) {
+					$filename = $this->handleNaming($file->getClientOriginalName(), $file->getClientOriginalExtension());
+					$file->move($this->getLocation(), $filename);
+
+					$formBuilder->setInputVariable($this->getName(), sprintf('%s/%s', $this->getLocation(), $filename));
+				}
+			}
+
+			return true;
 		}
+
+		// Empty file, so unset the input for saving
+		$formBuilder->unsetInputVariable($this->getName());
 	}
 
 	/**
@@ -168,8 +186,6 @@ class FileField extends BaseField
 	protected function handleNaming($name, $extention = null)
 	{
 		switch ($this->getNaming()) {
-			case 'original':
-				return $name;
 			case 'random':
 				$name = Str::random();
 
@@ -177,6 +193,9 @@ class FileField extends BaseField
 					$name = sprintf('%s.%s', $name, $extention);
 				}
 
+				return $name;
+			case 'original':
+			default:
 				return $name;
 		}
 	}
