@@ -75,14 +75,15 @@
 	// Infinite fields
 	$(document)
 		.on('click', '.field-infinite a[data-event="field-add"]', function () {
-			var clone = $(this).closest('.row').clone();
+			var clone = $(this).closest('[data-multiply]').clone();
 
 			$(clone).find('input').val('');
-			$(this).closest('.row').after(clone);
+			$(clone).find('.image-preview').css('background-image', '');
+			$(this).closest('[data-multiply]').after(clone);
 
 			redrawInfiniteFieldButtons();
 		}).on('click', '.field-infinite a[data-event="field-remove"]', function () {
-			$(this).closest('.row').remove();
+			$(this).closest('[data-multiply]').remove();
 
 			redrawInfiniteFieldButtons();
 		});
@@ -110,6 +111,21 @@
 			}
 		});
 	}
+
+	// Image upload
+	$(document).on('change', '.image-file-wrapper input[type=file]', function () {
+		var self = $(this);
+
+		if (this.files && this.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function (e) {
+				$(self).next().css('background-image', 'url("' + e.target.result + '")');
+			}
+
+			reader.readAsDataURL(this.files[0]);
+		}
+	});
 
 	// ...
 
