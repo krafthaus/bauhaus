@@ -4,7 +4,7 @@
 
 		@if ($field->isMultiple())
 			@foreach ($field->getValue() as $key => $value)
-				<div class="row">
+				<div class="row" data-multiply>
 					<div class="col-sm-11">
 						{{ Form::text($field->getName() . '[]', $value, $field->getAttributes()) }}
 					</div>
