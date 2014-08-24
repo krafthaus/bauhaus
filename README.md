@@ -19,7 +19,7 @@ Bauhaus is currently available in the following languages:
 - Brazilian (Thanks [willmkt](https://github.com/willmkt))
 - Dutch
 
-> Warning: Right now, Bauhaus is a moving target. Every day new changes will be pushed possibly breaking the design and/or other things. If you're having trouble running this package, please consider running the `php artisan asset:publish krafthaus/bauhaus` and/or the `php artisan config:publish krafthaus/bauhaus` command. Thank you!
+> Warning: Right now, Bauhaus is a moving target. Every day new changes will be pushed possibly breaking the design and/or inner workings. If you're having trouble running this package, please consider running the `php artisan asset:publish krafthaus/bauhaus` and/or the `php artisan config:publish krafthaus/bauhaus` command. Thank you!
 
 [Documentation is located here.](http://bauhaus.krafthaus.nl)
 
