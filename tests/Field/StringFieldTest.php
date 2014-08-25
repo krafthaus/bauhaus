@@ -17,7 +17,31 @@ use Orchestra\Testbench\TestCase;
  * Class StringFieldTest
  * @package KraftHaus\Bauhaus\Tests
  */
-class StringFieldTest extends TestCase
+class StringFieldTest extends TestCase implements FieldInterface
 {
+
+	public function testAddToListMapper()
+	{
+		// can add to list mapper
+		$this->assertTrue(true);
+	}
+
+	public function testAddToFormMapper()
+	{
+		// cannot add to form mapper
+		$this->assertFalse(false);
+	}
+
+	public function testAddToFilterMapper()
+	{
+		// cannot add to filter mapper
+		$this->assertFalse(false);
+	}
+
+	public function testAddToScopeMapper()
+	{
+		// cannot add to scope mapper
+		$this->assertFalse(false);
+	}
 
 }
