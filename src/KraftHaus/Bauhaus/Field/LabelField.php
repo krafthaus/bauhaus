@@ -58,6 +58,14 @@ class LabelField extends BaseField
 		return $this->states;
 	}
 
+	/**
+	 * Get the current or a specific state.
+	 *
+	 * @param  string null $state
+	 *
+	 * @access public
+	 * @return string
+	 */
 	public function getState($state = null)
 	{
 		if ($state === null) {
