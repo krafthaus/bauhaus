@@ -237,11 +237,13 @@ class FormBuilder extends BaseBuilder
 
 		// Model create hook
 		if (method_exists($admin, 'create')) {
-			$admin->create($this->getInput());
+			$model = $admin->create($this->getInput());
 		} else {
 			$model = $model::create($this->getInput());
-			$this->setIdentifier($model->{$primaryKey});
 		}
+
+		// Set the primary id from the `new` model
+		$this->setIdentifier($model->{$primaryKey});
 
 		// Field post update
 		foreach ($mapper->getFields() as $field) {
