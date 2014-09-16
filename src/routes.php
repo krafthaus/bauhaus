@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-//Route::group(['prefix' => Config::get('bauhaus::admin.uri')], function () {
+Route::group(['prefix' => Config::get('bauhaus::admin.uri')], function () {
 
 	Route::group(['before' => 'bauhaus.auth'], function () {
 		Route::get('/', [
@@ -17,42 +17,42 @@
 			'uses' => 'KraftHaus\Bauhaus\DashboardController@index'
 		]);
 
-		Route::get('{model}', [
+		Route::get('model/{model}', [
 			'as'   => 'admin.model.index',
 			'uses' => 'KraftHaus\Bauhaus\ModelController@index'
 		]);
 
-		Route::get('{model}/create', [
+		Route::get('model/{model}/create', [
 			'as'   => 'admin.model.create',
 			'uses' => 'KraftHaus\Bauhaus\ModelController@create'
 		]);
 
-		Route::post('{model}', [
+		Route::post('model/{model}', [
 			'as'   => 'admin.model.store',
 			'uses' => 'KraftHaus\Bauhaus\ModelController@store'
 		]);
 
-		Route::get('{model}/{id}', [
+		Route::get('model/{model}/{id}', [
 			'as'   => 'admin.model.edit',
 			'uses' => 'KraftHaus\Bauhaus\ModelController@edit'
 		]);
 
-		Route::put('{model}/{id}', [
+		Route::put('model/{model}/{id}', [
 			'as'   => 'admin.model.update',
 			'uses' => 'KraftHaus\Bauhaus\ModelController@update'
 		]);
 
-		Route::delete('{model}/{id}', [
+		Route::delete('model/{model}/{id}', [
 			'as'   => 'admin.model.destroy',
 			'uses' => 'KraftHaus\Bauhaus\ModelController@destroy'
 		]);
 
-		Route::post('{model}/multi-destroy', [
+		Route::post('model/{model}/multi-destroy', [
 			'as'   => 'admin.model.multi-destroy',
 			'uses' => 'KraftHaus\Bauhaus\ModelController@multiDestroy'
 		]);
 
-		Route::get('{model}/export/{type}', [
+		Route::get('model/{model}/export/{type}', [
 			'as'   => 'admin.model.export',
 			'uses' => 'KraftHaus\Bauhaus\ModelController@export'
 		])->where('type', 'json|xml|csv|xls');
@@ -61,4 +61,4 @@
 		require_once __DIR__ . '/routes/modals.php';
 	});
 
-//});
+});
