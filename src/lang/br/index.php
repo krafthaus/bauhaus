@@ -13,7 +13,7 @@ return [
 
 	'list-title'        => 'Todos :model',
 	'filter-title'      => 'Busca :model',
-	'browsing-filtered' => 'Você esta visualizando resultados da pesquiza.',
+	'browsing-filtered' => 'Você está visualizando resultados da pesquisa.',
 	'no-filter-results' => 'Nenhum resultado encontrado.',
 	'no-items-yet'      => 'Nenhum :model cadastrado.',
 
