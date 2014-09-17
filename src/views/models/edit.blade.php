@@ -37,7 +37,7 @@
 
 	{{ Form::open(['method' => 'PUT', 'route' => ['admin.model.update', $name, $id], 'class' => 'form-horizontal', 'files' => true]) }}
 
-		<input type="hidden" name="{{ Str::singular($model->getTable()) }}_id" value="{{ $id }}">
+		<input type="hidden" name="id" value="{{ $id }}">
 
 		@include('krafthaus/bauhaus::models.partials._form')
 	{{ Form::close() }}
