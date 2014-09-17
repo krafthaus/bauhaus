@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-//Route::group(['prefix' => Config::get('bauhaus::admin.uri')], function () {
+Route::group(['prefix' => Config::get('bauhaus::admin.uri')], function () {
 
 	Route::group(['before' => 'bauhaus.auth'], function () {
 		Route::get('/', [
@@ -61,4 +61,4 @@
 		require_once __DIR__ . '/routes/modals.php';
 	});
 
-//});
+});
