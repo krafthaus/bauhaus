@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<h3>
-				{{ trans('bauhaus::index.list-title', ['model' => trans("bauhaus::index.button.overview")]) }}
+				{{ trans('bauhaus::index.list-title', ['model' => trans("bauhaus.index.$model->getSingularName().list-title")]) }}
 			</h3>
 		</div>
 	</div>
