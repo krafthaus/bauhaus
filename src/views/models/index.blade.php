@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<h3>
-				{{ trans("bauhaus.".lower($model->getModel()).".index.list-title") }}
+				{{ trans("bauhaus.".$model->getModel().".index.list-title") | downcase }}
 			</h3>
 		</div>
 	</div>
@@ -111,7 +111,7 @@
 								@foreach ($model->getListMapper()->getFields() as $field)
 									<th>
 										<a href="{{ route('admin.model.index', [$name, '_order_by' => $field->getName(), '_order' => Input::get('_order') == 'ASC' ? 'DESC' : 'ASC']) }}">
-											{{ trans("bauhaus.".lower($model->getModel()).".".lower($field->getLabel())) }}
+											{{ trans("bauhaus.".$model->getModel().".".$field->getLabel()) | downcase }}
 											@if (Input::has('_order_by') && Input::get('_order_by') == $field->getName())
 											<i class="fa fa-sort-{{ Input::get('_order') == 'DESC' ? 'up' : 'down' }}"></i>
 											@endif
