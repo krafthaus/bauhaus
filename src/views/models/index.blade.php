@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<h3>
-				{{ trans('bauhaus::index.list-title', ['model' => $model->getPluralName()]) }}
+				{{ trans('bauhaus::index.list-title', ['model' => trans("bauhaus::index.button.overview")]) }}
 			</h3>
 		</div>
 	</div>
