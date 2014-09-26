@@ -84,8 +84,9 @@ class BelongsToManyField extends RelationField
 		$model = $model::find($this->getAdmin()->getFormBuilder()->getIdentifier());
 
 		$pivot = $this->getName();
-
-		$model->{$pivot}()->sync($input[$pivot]);
+		if(isset($input[$pivot])) {
+			$model->{$pivot}()->sync($input[$pivot]);
+		}
 	}
 
 	/**
