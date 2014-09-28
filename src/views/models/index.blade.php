@@ -21,7 +21,7 @@
 		<li>
 			<a href="{{ route('admin.model.create', $name) }}">
 				<i class="fa fa-plus"></i>
-				{{ trans('bauhaus::index.button.create-new', ['model' => $model->getSingularName()]) }}
+                {{ trans("bauhaus.".$model->getModel().".index.button.create-new") }}
 			</a>
 		</li>
 	</ul>
@@ -90,10 +90,10 @@
 								{{ trans('bauhaus::index.button.reset-filters') }}
 							</a>
 						@else
-							<p>{{ trans('bauhaus::index.no-items-yet', ['model' => $model->getPluralName()]) }}</p>
+							<p>{{ trans("bauhaus.".$model->getModel().".index.no-items-yet") }}</p>
 							<a href="{{ route('admin.model.create', $name) }}" class="btn btn-default btn-red btn-rounded">
 								<i class="fa fa-plus"></i>
-								{{ trans('bauhaus::index.button.create-new', ['model' => $model->getSingularName()]) }}
+                                {{ trans("bauhaus.".$model->getModel().".index.button.create-new") }}
 							</a>
 						@endif
 					</div>
@@ -143,7 +143,7 @@
 							<tr>
 								<td colspan="{{ count($model->getListMapper()->getFields()) + 1 }}">
 									<a href="{{ route('modal.delete', $name) }}" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#field-modal">
-										{{ trans('bauhaus::index.button.delete-selected', ['model' => $model->getPluralName()]) }}
+                                        {{ trans("bauhaus.".$model->getModel().".index.button.delete-selected") }}
 									</a>
 								</td>
 								<td align="right">

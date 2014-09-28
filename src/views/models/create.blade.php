@@ -19,7 +19,7 @@
 		<li>
 			<a href="{{ route('admin.model.create', $name) }}">
 				<i class="fa fa-plus"></i>
-				{{ trans('bauhaus::index.button.create-new', ['model' => $model->getSingularName()]) }}
+                {{ trans("bauhaus.".$model->getModel().".index.button.create-new") }}
 			</a>
 		</li>
 	</ul>
