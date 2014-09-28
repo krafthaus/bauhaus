@@ -87,9 +87,7 @@ class ModelController extends Controller
 		}
 
 		// Set the flash message
-		Session::flash('message.success', trans('bauhaus::messages.success.model-created', [
-			'model' => $model->getSingularName()
-		]));
+		Session::flash('message.success', trans("bauhaus.".$model->getModel().".messages.success.model-created"));
 
 		return Redirect::route('admin.model.index', $name);
 	}
@@ -138,9 +136,7 @@ class ModelController extends Controller
 		}
 
 		// Set the flash message
-		Session::flash('message.success', trans('bauhaus::messages.success.model-updated', [
-			'model' => $model->getSingularName()
-		]));
+		Session::flash('message.success', trans("bauhaus.".$model->getModel().".messages.success.model-updated"));
 
 		return Redirect::route('admin.model.index', $name);
 	}
@@ -170,10 +166,7 @@ class ModelController extends Controller
 		}
 
 		// Set the flash message
-		Session::flash('message.success', trans('bauhaus::messages.success.model-deleted', [
-			'count' => (count($items) > 1 ? 'multiple' : 'one'),
-			'model' => $model->getPluralName()
-		]));
+		Session::flash('message.success', trans("bauhaus.".$model->getModel().".messages.success.model-deleted"));
 
 		return Redirect::route('admin.model.index', $name);
 	}

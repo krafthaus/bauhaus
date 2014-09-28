@@ -3,7 +3,7 @@
 @section('subheader')
 	<div class="row">
 		<div class="col-sm-12">
-			<h3>{{ trans('bauhaus::form.title.edit-model', ['model' => $model->getSingularName()]) }}</h3>
+			<h3>{{ trans("bauhaus.".$model->getModel().".form.title.edit-model") }}</h3>
 		</div>
 	</div>
 @stop
@@ -13,7 +13,7 @@
 		<li>
 			<a href="{{ route('admin.model.index', $name) }}">
 				<i class="fa fa-long-arrow-left"></i>
-				{{ trans('bauhaus::form.button.back-to-index', ['model' => $model->getPluralName()]) }}
+                {{ trans("bauhaus.".$model->getModel().".form.button.back-to-index") }}
 			</a>
 		</li>
 		<li>
