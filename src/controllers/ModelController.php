@@ -91,7 +91,12 @@ class ModelController extends Controller
 			'model' => $model->getSingularName()
 		]));
 
-		return Redirect::route('admin.model.index', $name);
+		// afterStore hook
+		if (method_exists($model, 'afterStore')) {
+			$redirect = $model->afterStore(Redirect::route('admin.model.index', $name));
+		}
+
+		return $redirect;
 	}
 
 	/**
@@ -142,7 +147,12 @@ class ModelController extends Controller
 			'model' => $model->getSingularName()
 		]));
 
-		return Redirect::route('admin.model.index', $name);
+		// afterUpdate hook
+		if (method_exists($model, 'afterUpdate')) {
+			$redirect = $model->afterUpdate(Redirect::route('admin.model.index', $name));
+		}
+
+		return $redirect;
 	}
 
 	/**
@@ -175,7 +185,12 @@ class ModelController extends Controller
 			'model' => $model->getPluralName()
 		]));
 
-		return Redirect::route('admin.model.index', $name);
+		// afterMultiDestroy hook
+		if (method_exists($model, 'afterMultiDestroy')) {
+			$redirect = $model->afterMultiDestroy(Redirect::route('admin.model.index', $name));
+		}
+
+		return $redirect;
 	}
 
 	/**
