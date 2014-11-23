@@ -93,10 +93,10 @@ class ModelController extends Controller
 
 		// afterStore hook
 		if (method_exists($model, 'afterStore')) {
-			$redirect = $model->afterStore(Redirect::route('admin.model.index', $name));
+			return $model->afterStore(Redirect::route('admin.model.index', $name));
 		}
 
-		return $redirect;
+		return Redirect::route('admin.model.index', $name);
 	}
 
 	/**
@@ -149,10 +149,10 @@ class ModelController extends Controller
 
 		// afterUpdate hook
 		if (method_exists($model, 'afterUpdate')) {
-			$redirect = $model->afterUpdate(Redirect::route('admin.model.index', $name));
+			return $model->afterUpdate(Redirect::route('admin.model.index', $name));
 		}
 
-		return $redirect;
+		return Redirect::route('admin.model.index', $name);
 	}
 
 	/**
@@ -187,10 +187,10 @@ class ModelController extends Controller
 
 		// afterMultiDestroy hook
 		if (method_exists($model, 'afterMultiDestroy')) {
-			$redirect = $model->afterMultiDestroy(Redirect::route('admin.model.index', $name));
+			return $model->afterMultiDestroy(Redirect::route('admin.model.index', $name));
 		}
 
-		return $redirect;
+		return Redirect::route('admin.model.index', $name);
 	}
 
 	/**
