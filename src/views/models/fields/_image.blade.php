@@ -32,6 +32,13 @@
             </div>
         @else
             {{ Form::file($field->getName(), $field->getAttributes()) }}
+            @if ($field->getValue() !== null)
+                <div class="row">
+                    <div class="col-sm-12">
+                        <img src="{{ asset($field->getValue()) }}" width="100%">
+                    </div>
+                </div>
+            @endif
         @endif
 
     </div>
