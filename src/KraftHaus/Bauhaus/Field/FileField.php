@@ -14,7 +14,6 @@ namespace KraftHaus\Bauhaus\Field;
 use KraftHaus\Bauhaus\Field\BaseField;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\View;
 
 /**
  * Class FileField
@@ -23,143 +22,63 @@ use Illuminate\Support\Facades\View;
 class FileField extends BaseField
 {
 
-	/**
-	 * Holds the file location.
-	 * @var string
-	 */
 	protected $location;
-
-	/**
-	 * Holds the file naming strategy.
-	 * @var string
-	 */
 	protected $naming;
-
-	/**
-	 * Holds the temporary original name.
-	 * @var string
-	 */
 	protected $originalname;
 
-	/**
-	 * Sets the file location.
-	 *
-	 * @param  string $location
-	 *
-	 * @access public
-	 * @return $this
-	 */
 	public function location($location)
 	{
 		$this->location = $location;
 		return $this;
 	}
 
-	/**
-	 * Get the file location.
-	 *
-	 * @access public
-	 * @return string
-	 */
 	public function getLocation()
 	{
 		return $this->location;
 	}
 
-	/**
-	 * Set the file naming strategy.
-	 *
-	 * @param  string $naming
-	 *
-	 * @access public
-	 * @return $this
-	 */
 	public function naming($naming)
 	{
 		$this->naming = $naming;
 		return $this;
 	}
 
-	/**
-	 * Get the file naming strategy.
-	 *
-	 * @access public
-	 * @return string
-	 */
 	public function getNaming()
 	{
 		return $this->naming;
 	}
 
-	/**
-	 * Set the original file name.
-	 *
-	 * @param  string $name
-	 *
-	 * @access public
-	 * @return $this
-	 */
 	public function setOriginalname($name)
 	{
 		$this->originalname = $name;
 		return $this;
 	}
 
-	/**
-	 * Get the original file name.
-	 *
-	 * @access public
-	 * @return string
-	 */
 	public function getOriginalName()
 	{
 		return $this->originalname;
 	}
 
-	/**
-	 * Pre-update hook for file name handling.
-	 *
-	 * @access public
-	 * @return void
-	 */
 	public function preUpdate()
 	{
-		// Get the form builder for input value altering
 		$formBuilder = $this->getAdmin()->getFormBuilder();
+		$tempName    = $this->getName();
 
-		// Check the file input
 		if (Input::hasFile($this->getName())) {
+			$file = Input::file($this->getName());
+			$this->setOriginalname($file->getClientOriginalName());
 
-			// Multiple file upload
-			if ($this->isMultiple()) {
-				$filenames = [];
+			$name = $file->getClientOriginalName();
+			$name = $this->handleNaming($name, $file->getClientOriginalExtension());
+			$this->setName($name);
 
-				foreach (Input::file($this->getName()) as $file) {
-					if ($file->isValid()) {
-						$filename = $this->handleNaming($file->getClientOriginalName(), $file->getClientOriginalExtension());
-						$file->move($this->getLocation(), $filename);
+			$file->move($this->getLocation(), $name);
 
-						$filenames[] = sprintf('%s/%s', $this->getLocation(), $filename);
-					}
-				}
-
-				$formBuilder->setInputVariable($this->getName(), $filenames);
-			} else {
-				$file = Input::file($this->getName());
-
-				if ($file->isValid()) {
-					$filename = $this->handleNaming($file->getClientOriginalName(), $file->getClientOriginalExtension());
-					$file->move($this->getLocation(), $filename);
-
-					$formBuilder->setInputVariable($this->getName(), sprintf('%s/%s', $this->getLocation(), $filename));
-				}
-			}
-
-			return true;
+			$value = sprintf('%s/%s', $this->getLocation(), $name);
+			$formBuilder->setInputVariable($tempName, $value);
+		} else {
+			$formBuilder->unsetInputVariable($this->getName());
 		}
-
-		// Empty file, so unset the input for saving
-		$formBuilder->unsetInputVariable($this->getName());
 	}
 
 	/**
@@ -174,28 +93,18 @@ class FileField extends BaseField
 			->with('field', $this);
 	}
 
-	/**
-	 * Set the filename.
-	 *
-	 * @param  string      $name
-	 * @param  null|string $extention
-	 *
-	 * @access public
-	 * @return string
-	 */
 	protected function handleNaming($name, $extention = null)
 	{
 		switch ($this->getNaming()) {
+			case 'original':
+				return $name;
 			case 'random':
 				$name = Str::random();
-
+				
 				if ($extention !== null) {
 					$name = sprintf('%s.%s', $name, $extention);
 				}
 
-				return $name;
-			case 'original':
-			default:
 				return $name;
 		}
 	}
