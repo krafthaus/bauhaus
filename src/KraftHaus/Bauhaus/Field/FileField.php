@@ -105,7 +105,7 @@ class FileField extends BaseField
 					$name = sprintf('%s.%s', $name, $extention);
 				}
 
-				return $name;
+				return strtolower($name);
 		}
 	}
 
