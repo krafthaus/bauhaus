@@ -107,6 +107,8 @@ class FileField extends BaseField
 
 				return strtolower($name);
 		}
+		
+		return $name;
 	}
 
 }
