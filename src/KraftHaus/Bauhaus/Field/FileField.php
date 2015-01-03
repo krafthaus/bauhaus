@@ -13,6 +13,7 @@ namespace KraftHaus\Bauhaus\Field;
 
 use KraftHaus\Bauhaus\Field\BaseField;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
 
 /**
