@@ -11,7 +11,7 @@
 
 return [
 
-	'list-title'        => 'Liste :model',
+	'list-title'        => 'Liste des :model',
 	'filter-title'      => 'Filtre :model',
 	'browsing-filtered' => 'Vous regardez actuellement des résultats filtrés.',
 	'no-filter-results' => 'Aucun résultat ne correspond au filtre.',
