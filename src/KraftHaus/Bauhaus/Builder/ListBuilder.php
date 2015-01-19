@@ -89,8 +89,7 @@ class ListBuilder extends BaseBuilder
 					$model = $parts[0];
 					$field = $parts[1];
 				
-					if(method_exists($item, $model))
-					{
+					if(method_exists($item, $model)) {
 						$value = $item->{$model}->{$field};
 					}
 				}
