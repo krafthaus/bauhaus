@@ -50,14 +50,14 @@ class ScaffoldCommand extends Command
 		// Create the model
 		$stub = file_get_contents(__DIR__ . '/stubs/model.txt');
 		$stub = str_replace('$NAME$', Str::studly($model), $stub);
-		file_put_contents(app_path('models/' . Str::studly($model) . '.php'), $stub);
+		file_put_contents(app_path('models/' . ucfirst($model) . '.php'), $stub);
 
 		// Create the admin controller
 		$directory = Config::get('bauhaus::admin.directory');
 
 		$stub = file_get_contents(__DIR__ . '/stubs/admin.txt');
 		$stub = str_replace('$NAME$', Str::studly($model), $stub);
-		file_put_contents(app_path($directory . '/' . Str::studly($model) . 'Admin.php'), $stub);
+		file_put_contents(app_path($directory . '/' . ucfirst($model) . 'Admin.php'), $stub);
 
 		// Create the migration
 		$this->call('migrate:make', [
