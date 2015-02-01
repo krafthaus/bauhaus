@@ -93,7 +93,7 @@ class FileField extends BaseField
 			->with('field', $this);
 	}
 
-	protected function handleNaming($name, $extention = null)
+	protected function handleNaming($name, $extension = null)
 	{
 		switch ($this->getNaming()) {
 			case 'original':
@@ -101,8 +101,8 @@ class FileField extends BaseField
 			case 'random':
 				$name = Str::random();
 				
-				if ($extention !== null) {
-					$name = sprintf('%s.%s', $name, $extention);
+				if ($extension !== null) {
+					$name = sprintf('%s.%s', $name, $extension);
 				}
 
 				return strtolower($name);
