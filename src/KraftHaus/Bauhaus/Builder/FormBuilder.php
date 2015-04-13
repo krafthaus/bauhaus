@@ -62,6 +62,10 @@ class FormBuilder extends BaseBuilder
 	 */
 	public function getIdentifier()
 	{
+        $model = $this->getModel();
+        if ($this->identifier !== null && method_exists($model, 'castIdentifier')) {
+            $this->identifier = $model::castIdentifier($this->identifier);
+        }
 		return $this->identifier;
 	}
 
