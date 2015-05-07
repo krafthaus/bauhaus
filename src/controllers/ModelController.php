@@ -76,7 +76,7 @@ class ModelController extends Controller
 		$model  = Bauhaus::getInstance($name);
 		$result = $model->buildForm()
 			->getFormBuilder()
-			->create(Input::all());
+			->create(Input::except('_token'));
 
 		// Check validation errors
 		if (get_class($result) == 'Illuminate\Validation\Validator') {
@@ -132,7 +132,7 @@ class ModelController extends Controller
 		$model  = Bauhaus::getInstance($name);
 		$result = $model->buildForm($id)
 			->getFormBuilder()
-			->update(Input::all());
+			->update(Input::except('_token'));
 
 		// Check validation errors
 		if (get_class($result) == 'Illuminate\Validation\Validator') {
