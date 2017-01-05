@@ -24,7 +24,7 @@ class FileField extends BaseField
 
 	protected $location;
 	protected $naming;
-	protected $originalname;
+	protected $originalName;
 
 	public function location($location)
 	{
@@ -48,15 +48,15 @@ class FileField extends BaseField
 		return $this->naming;
 	}
 
-	public function setOriginalname($name)
+	public function setOriginalName($name)
 	{
-		$this->originalname = $name;
+		$this->originalName = $name;
 		return $this;
 	}
 
 	public function getOriginalName()
 	{
-		return $this->originalname;
+		return $this->originalName;
 	}
 
 	public function preUpdate()
@@ -66,7 +66,7 @@ class FileField extends BaseField
 
 		if (Input::hasFile($this->getName())) {
 			$file = Input::file($this->getName());
-			$this->setOriginalname($file->getClientOriginalName());
+			$this->setOriginalName($file->getClientOriginalName());
 
 			$name = $file->getClientOriginalName();
 			$name = $this->handleNaming($name, $file->getClientOriginalExtension());
@@ -93,7 +93,7 @@ class FileField extends BaseField
 			->with('field', $this);
 	}
 
-	protected function handleNaming($name, $extention = null)
+	protected function handleNaming($name, $extension = null)
 	{
 		switch ($this->getNaming()) {
 			case 'original':
@@ -101,8 +101,8 @@ class FileField extends BaseField
 			case 'random':
 				$name = Str::random();
 				
-				if ($extention !== null) {
-					$name = sprintf('%s.%s', $name, $extention);
+				if ($extension !== null) {
+					$name = sprintf('%s.%s', $name, $extension);
 				}
 
 				return strtolower($name);
