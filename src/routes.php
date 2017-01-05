@@ -17,42 +17,42 @@ Route::group(['prefix' => Config::get('bauhaus::admin.uri')], function () {
 			'uses' => 'KraftHaus\Bauhaus\DashboardController@index'
 		]);
 
-		Route::get('model/{model}', [
+		Route::get('{model}', [
 			'as'   => 'admin.model.index',
 			'uses' => 'KraftHaus\Bauhaus\ModelController@index'
 		]);
 
-		Route::get('model/{model}/create', [
+		Route::get('{model}/create', [
 			'as'   => 'admin.model.create',
 			'uses' => 'KraftHaus\Bauhaus\ModelController@create'
 		]);
 
-		Route::post('model/{model}', [
+		Route::post('{model}', [
 			'as'   => 'admin.model.store',
 			'uses' => 'KraftHaus\Bauhaus\ModelController@store'
 		]);
 
-		Route::get('model/{model}/{id}', [
+		Route::get('{model}/{id}', [
 			'as'   => 'admin.model.edit',
 			'uses' => 'KraftHaus\Bauhaus\ModelController@edit'
 		]);
 
-		Route::put('model/{model}/{id}', [
+		Route::put('{model}/{id}', [
 			'as'   => 'admin.model.update',
 			'uses' => 'KraftHaus\Bauhaus\ModelController@update'
 		]);
 
-		Route::delete('model/{model}/{id}', [
+		Route::delete('{model}/{id}', [
 			'as'   => 'admin.model.destroy',
 			'uses' => 'KraftHaus\Bauhaus\ModelController@destroy'
 		]);
 
-		Route::post('model/{model}/multi-destroy', [
+		Route::post('{model}/multi-destroy', [
 			'as'   => 'admin.model.multi-destroy',
 			'uses' => 'KraftHaus\Bauhaus\ModelController@multiDestroy'
 		]);
 
-		Route::get('model/{model}/export/{type}', [
+		Route::get('{model}/export/{type}', [
 			'as'   => 'admin.model.export',
 			'uses' => 'KraftHaus\Bauhaus\ModelController@export'
 		])->where('type', 'json|xml|csv|xls');

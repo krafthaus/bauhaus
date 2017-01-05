@@ -87,9 +87,7 @@ class ModelController extends Controller
 		}
 
 		// Set the flash message
-		Session::flash('message.success', trans('bauhaus::messages.success.model-created', [
-			'model' => $model->getSingularName()
-		]));
+		Session::flash('message.success', trans("bauhaus.".$model->getModel().".messages.success.model-created"));
 
 		// afterStore hook
 		if (method_exists($model, 'afterStore')) {
@@ -143,9 +141,7 @@ class ModelController extends Controller
 		}
 
 		// Set the flash message
-		Session::flash('message.success', trans('bauhaus::messages.success.model-updated', [
-			'model' => $model->getSingularName()
-		]));
+		Session::flash('message.success', trans("bauhaus.".$model->getModel().".messages.success.model-updated"));
 
 		// afterUpdate hook
 		if (method_exists($model, 'afterUpdate')) {
@@ -180,10 +176,7 @@ class ModelController extends Controller
 		}
 
 		// Set the flash message
-		Session::flash('message.success', trans('bauhaus::messages.success.model-deleted', [
-			'count' => (count($items) > 1 ? 'multiple' : 'one'),
-			'model' => $model->getPluralName()
-		]));
+		Session::flash('message.success', trans("bauhaus.".$model->getModel().".messages.success.model-deleted"));
 
 		// afterMultiDestroy hook
 		if (method_exists($model, 'afterMultiDestroy')) {

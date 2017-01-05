@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<h3>
-				{{ trans('bauhaus::index.list-title', ['model' => $model->getPluralName()]) }}
+				{{ trans("bauhaus.".$model->getModel().".index.list-title") }}
 			</h3>
 		</div>
 	</div>
@@ -21,7 +21,7 @@
 		<li>
 			<a href="{{ route('admin.model.create', $name) }}">
 				<i class="fa fa-plus"></i>
-				{{ trans('bauhaus::index.button.create-new', ['model' => $model->getSingularName()]) }}
+                {{ trans("bauhaus.".$model->getModel().".index.button.create-new") }}
 			</a>
 		</li>
 	</ul>
@@ -90,10 +90,10 @@
 								{{ trans('bauhaus::index.button.reset-filters') }}
 							</a>
 						@else
-							<p>{{ trans('bauhaus::index.no-items-yet', ['model' => $model->getPluralName()]) }}</p>
+							<p>{{ trans("bauhaus.".$model->getModel().".index.no-items-yet") }}</p>
 							<a href="{{ route('admin.model.create', $name) }}" class="btn btn-default btn-red btn-rounded">
 								<i class="fa fa-plus"></i>
-								{{ trans('bauhaus::index.button.create-new', ['model' => $model->getSingularName()]) }}
+                                {{ trans("bauhaus.".$model->getModel().".index.button.create-new") }}
 							</a>
 						@endif
 					</div>
@@ -111,7 +111,7 @@
 								@foreach ($model->getListMapper()->getFields() as $field)
 									<th>
 										<a href="{{ route('admin.model.index', [$name, '_order_by' => $field->getName(), '_order' => Input::get('_order') == 'ASC' ? 'DESC' : 'ASC']) }}">
-											{{ $field->getLabel() }}
+											{{ trans("bauhaus.".$model->getModel().".".$field->getLabel()) }}
 											@if (Input::has('_order_by') && Input::get('_order_by') == $field->getName())
 											<i class="fa fa-sort-{{ Input::get('_order') == 'DESC' ? 'up' : 'down' }}"></i>
 											@endif
@@ -143,7 +143,7 @@
 							<tr>
 								<td colspan="{{ count($model->getListMapper()->getFields()) + 1 }}">
 									<a href="{{ route('modal.delete', $name) }}" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#field-modal">
-										{{ trans('bauhaus::index.button.delete-selected', ['model' => $model->getPluralName()]) }}
+                                        {{ trans("bauhaus.".$model->getModel().".index.button.delete-selected") }}
 									</a>
 								</td>
 								<td align="right">
