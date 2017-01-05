@@ -14,6 +14,7 @@ namespace KraftHaus\Bauhaus\Field;
 use KraftHaus\Bauhaus\Field\BaseField;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\View;
 
 /**
  * Class FileField
